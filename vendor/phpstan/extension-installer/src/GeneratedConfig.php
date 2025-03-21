@@ -12,7 +12,7 @@ final class GeneratedConfig
 	public const EXTENSIONS = array (
   'composer/composer' => 
   array (
-    'install_path' => '/home/tirazel/Projects/sites/ucbdev-samlauth/vendor/composer/composer',
+    'install_path' => '/home/tirazel/Projects/sites/pantheon-upstream-tiamat11-experimental/vendor/composer/composer',
     'relative_install_path' => '../../../composer/composer',
     'extra' => 
     array (
@@ -26,7 +26,7 @@ final class GeneratedConfig
   ),
   'composer/pcre' => 
   array (
-    'install_path' => '/home/tirazel/Projects/sites/ucbdev-samlauth/vendor/composer/pcre',
+    'install_path' => '/home/tirazel/Projects/sites/pantheon-upstream-tiamat11-experimental/vendor/composer/pcre',
     'relative_install_path' => '../../../composer/pcre',
     'extra' => 
     array (
@@ -40,7 +40,7 @@ final class GeneratedConfig
   ),
   'mglaman/phpstan-drupal' => 
   array (
-    'install_path' => '/home/tirazel/Projects/sites/ucbdev-samlauth/vendor/mglaman/phpstan-drupal',
+    'install_path' => '/home/tirazel/Projects/sites/pantheon-upstream-tiamat11-experimental/vendor/mglaman/phpstan-drupal',
     'relative_install_path' => '../../../mglaman/phpstan-drupal',
     'extra' => 
     array (
@@ -55,7 +55,7 @@ final class GeneratedConfig
   ),
   'phpstan/phpstan-deprecation-rules' => 
   array (
-    'install_path' => '/home/tirazel/Projects/sites/ucbdev-samlauth/vendor/phpstan/phpstan-deprecation-rules',
+    'install_path' => '/home/tirazel/Projects/sites/pantheon-upstream-tiamat11-experimental/vendor/phpstan/phpstan-deprecation-rules',
     'relative_install_path' => '../../phpstan-deprecation-rules',
     'extra' => 
     array (
@@ -69,7 +69,7 @@ final class GeneratedConfig
   ),
   'phpstan/phpstan-phpunit' => 
   array (
-    'install_path' => '/home/tirazel/Projects/sites/ucbdev-samlauth/vendor/phpstan/phpstan-phpunit',
+    'install_path' => '/home/tirazel/Projects/sites/pantheon-upstream-tiamat11-experimental/vendor/phpstan/phpstan-phpunit',
     'relative_install_path' => '../../phpstan-phpunit',
     'extra' => 
     array (

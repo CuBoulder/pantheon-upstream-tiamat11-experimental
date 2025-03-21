@@ -2,7 +2,7 @@
 name: CU Boulder Install Profile
 type: profile
 description: "CU Boulder Web Express D10 Installation Profile"
-core_version_requirement: "^11"
+core_version_requirement: "^10"
 # Modules to install to support the profile.
 install:
   - history
@@ -67,6 +67,8 @@ install:
   - externalauth
   - config_update
   - features
+  - pantheon_advanced_page_cache
+  - pantheon_domain_masking
   - simple_sitemap
   - google_cse
   - google_tag
@@ -99,6 +101,7 @@ install:
   - menu_firstchild
   - responsive_preview
   - anchor_link
+  - simplesamlphp_auth
   - captcha
   - recaptcha_v3
   - rebuild_cache_access

@@ -1,9 +1,9 @@
 <?php return array(
     'root' => array(
         'name' => 'cu-boulder/tiamat_upstream',
-        'pretty_version' => 'dev-master',
-        'version' => 'dev-master',
-        'reference' => '527804d042fc34df8343bac631190def47e280e8',
+        'pretty_version' => 'dev-main',
+        'version' => 'dev-main',
+        'reference' => '466b4c3374b77e6951a842148a2219a325f4c48f',
         'type' => 'project',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -262,9 +262,9 @@
             'dev_requirement' => false,
         ),
         'cu-boulder/tiamat_upstream' => array(
-            'pretty_version' => 'dev-master',
-            'version' => 'dev-master',
-            'reference' => '527804d042fc34df8343bac631190def47e280e8',
+            'pretty_version' => 'dev-main',
+            'version' => 'dev-main',
+            'reference' => '466b4c3374b77e6951a842148a2219a325f4c48f',
             'type' => 'project',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
