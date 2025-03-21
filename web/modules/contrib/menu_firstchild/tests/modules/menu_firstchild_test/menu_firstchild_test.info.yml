@@ -1,0 +1,13 @@
+name: Menu Firstchild Test
+type: module
+description: Tests API for Menu Firstchild module
+core_version_requirement: ^10 || ^11
+package: Menu
+dependencies:
+  - drupal:menu_link_content
+  - menu_firstchild:menu_firstchild
+
+# Information added by Drupal.org packaging script on 2024-10-11
+version: '2.2.0-alpha1'
+project: 'menu_firstchild'
+datestamp: 1728663345

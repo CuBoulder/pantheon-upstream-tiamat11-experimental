@@ -1,0 +1,7 @@
+langcode: en
+status: true
+dependencies: {  }
+id: video_hero_unit
+label: 'Video Hero Unit'
+revision: 0
+description: 'A lightweight, flexible component to showcase key content on your site with a video background'

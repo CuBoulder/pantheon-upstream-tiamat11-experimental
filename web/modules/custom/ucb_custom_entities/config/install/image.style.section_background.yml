@@ -1,0 +1,14 @@
+langcode: en
+status: true
+dependencies: {  }
+name: section_background
+label: 'Section Background'
+effects:
+  dd727089-dd3d-4848-8f93-da12a965c5c8:
+    uuid: dd727089-dd3d-4848-8f93-da12a965c5c8
+    id: image_scale
+    weight: 1
+    data:
+      width: 1920
+      height: null
+      upscale: false

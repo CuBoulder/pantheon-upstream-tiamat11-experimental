@@ -1,0 +1,22 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_ucb_expose_category
+    - node.type.ucb_article_list
+id: node.ucb_article_list.field_ucb_expose_category
+field_name: field_ucb_expose_category
+entity_type: node
+bundle: ucb_article_list
+label: 'Show Category Filter'
+description: 'Allow visitors to filter on Categories'
+required: false
+translatable: false
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: Show
+  off_label: Hide
+field_type: boolean

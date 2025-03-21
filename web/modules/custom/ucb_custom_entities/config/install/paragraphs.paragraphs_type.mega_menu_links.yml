@@ -1,0 +1,9 @@
+langcode: en
+status: true
+dependencies: {  }
+id: mega_menu_links
+label: 'Mega Menu Links'
+icon_uuid: null
+icon_default: null
+description: 'The links to be used in a mega menu'
+behavior_plugins: {  }

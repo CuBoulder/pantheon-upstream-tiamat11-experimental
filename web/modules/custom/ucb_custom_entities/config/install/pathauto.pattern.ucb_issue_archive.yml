@@ -1,0 +1,21 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+id: ucb_issue_archive
+label: 'Issue Archive'
+type: 'canonical_entities:node'
+pattern: '/[site:name]/issue/archive'
+selection_criteria:
+  fe14e864-95cd-4760-be21-89a09c56f511:
+    id: 'entity_bundle:node'
+    negate: false
+    uuid: fe14e864-95cd-4760-be21-89a09c56f511
+    context_mapping:
+      node: node
+    bundles:
+      ucb_issue_archive: ucb_issue_archive
+selection_logic: and
+weight: -5
+relationships: {  }

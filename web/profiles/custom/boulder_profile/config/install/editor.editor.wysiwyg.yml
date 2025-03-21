@@ -1,0 +1,253 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - filter.format.wysiwyg
+  module:
+    - ckeditor5
+format: wysiwyg
+editor: ckeditor5
+settings:
+  toolbar:
+    items:
+      - bold
+      - italic
+      - superscript
+      - subscript
+      - removeFormat
+      - '|'
+      - alignment
+      - bulletedList
+      - numberedList
+      - blockQuote
+      - '|'
+      - undo
+      - redo
+      - '|'
+      - link
+      - anchor
+      - '|'
+      - drupalMedia
+      - horizontalLine
+      - specialCharacters
+      - insertTable
+      - '|'
+      - icon
+      - box
+      - bootstrapAccordion
+      - button
+      - buttongroup
+      - map
+      - calendar
+      - invisible
+      - countup
+      - countdown
+      - callout
+      - column
+      - jumpmenu
+      - '|'
+      - heading
+      - style
+      - sourceEditing
+      - '-'
+  plugins:
+    ckeditor5_alignment:
+      enabled_alignments:
+        - center
+        - left
+        - right
+    ckeditor5_heading:
+      enabled_headings:
+        - heading2
+        - heading3
+        - heading4
+        - heading5
+        - heading6
+    ckeditor5_icons_icon:
+      fa_version: '6'
+      fa_styles:
+        - solid
+        - regular
+        - brands
+      custom_metadata: false
+      async_metadata: true
+      recommended_enabled: false
+    ckeditor5_list:
+      properties:
+        reversed: true
+        startIndex: true
+      multiBlock: true
+    ckeditor5_paste_filter_pasteFilter:
+      enabled: true
+      filters:
+        -
+          enabled: true
+          weight: -10
+          search: '<o:p><\/o:p>'
+          replace: ''
+        -
+          enabled: true
+          weight: -9
+          search: '(<[^>]*) (style="[^"]*")'
+          replace: $1
+        -
+          enabled: true
+          weight: -8
+          search: '(<[^>]*) (face="[^"]*")'
+          replace: $1
+        -
+          enabled: false
+          weight: -7
+          search: '(<[^>]*) (class="[^"]*")'
+          replace: $1
+        -
+          enabled: true
+          weight: -6
+          search: '(<[^>]*) (valign="[^"]*")'
+          replace: $1
+        -
+          enabled: true
+          weight: -5
+          search: '<font[^>]*>'
+          replace: ''
+        -
+          enabled: true
+          weight: -4
+          search: '<\/font>'
+          replace: ''
+        -
+          enabled: false
+          weight: -3
+          search: '<span[^>]*>'
+          replace: ''
+        -
+          enabled: false
+          weight: -2
+          search: '<\/span>'
+          replace: ''
+        -
+          enabled: true
+          weight: -1
+          search: '<p>&nbsp;<\/p>'
+          replace: ''
+        -
+          enabled: true
+          weight: 0
+          search: '<p><\/p>'
+          replace: ''
+        -
+          enabled: true
+          weight: 1
+          search: '<b><\/b>'
+          replace: ''
+        -
+          enabled: false
+          weight: 2
+          search: '<i><\/i>'
+          replace: ''
+        -
+          enabled: true
+          weight: 3
+          search: '<a name="OLE_LINK[^"]*">(.*?)<\/a>'
+          replace: $1
+    ckeditor5_sourceEditing:
+      allowed_tags: {  }
+    ckeditor5_style:
+      styles:
+        -
+          label: Lead
+          element: '<p class="lead">'
+        -
+          label: Hero
+          element: '<p class="hero">'
+        -
+          label: Supersize
+          element: '<p class="supersize">'
+        -
+          label: Small
+          element: '<p class="small-text">'
+        -
+          label: Clear Floats
+          element: '<p class="clearfix">'
+        -
+          label: 'Small Span'
+          element: '<span class="small-text">'
+        -
+          label: '2 Columns'
+          element: '<ul class="column-list column-list-2">'
+        -
+          label: '3 Columns'
+          element: '<ul class="column-list column-list-3">'
+        -
+          label: '4 Columns'
+          element: '<ul class="column-list column-list-4">'
+        -
+          label: Underline
+          element: '<ul class="list-style-underline">'
+        -
+          label: 'No Bullets'
+          element: '<ul class="list-style-nobullet">'
+        -
+          label: Border
+          element: '<ul class="list-style-border">'
+        -
+          label: 'Alpha Uppercase'
+          element: '<ol class="list-style-alpha-upper">'
+        -
+          label: 'Alpha Lowercase'
+          element: '<ol class="list-style-alpha-lower">'
+        -
+          label: 'Roman Uppercase'
+          element: '<ol class="list-style-roman-upper">'
+        -
+          label: 'Roman Lowercase'
+          element: '<ol class="list-style-roman-lower">'
+        -
+          label: '2 Column'
+          element: '<ol class="column-list column-list-2">'
+        -
+          label: '3 Column'
+          element: '<ol class="column-list column-list-3">'
+        -
+          label: '4 Column'
+          element: '<ol class="column-list column-list-4">'
+        -
+          label: Zebra
+          element: '<table class="table-zebra">'
+        -
+          label: Condensed
+          element: '<table class="table-condensed">'
+        -
+          label: 'Small Table'
+          element: '<table class="table-small">'
+        -
+          label: Columns
+          element: '<table class="table-vertical">'
+        -
+          label: Rows
+          element: '<table class="table-horizontal">'
+        -
+          label: 'Margin Clear - Paragraph'
+          element: '<p class="clear-margin">'
+        -
+          label: 'Margin Clear - Heading 2'
+          element: '<h2 class="clear-margin">'
+        -
+          label: 'Margin Clear - Heading 3'
+          element: '<h3 class="clear-margin">'
+        -
+          label: 'Margin Clear - Heading 4'
+          element: '<h4 class="clear-margin">'
+        -
+          label: 'Margin Clear - Heading 5'
+          element: '<h5 class="clear-margin">'
+        -
+          label: 'Margin Clear - Heading 6'
+          element: '<h6 class="clear-margin">'
+    linkit_extension:
+      linkit_enabled: true
+      linkit_profile: default
+    media_media:
+      allow_view_mode_override: true
+image_upload:
+  status: false

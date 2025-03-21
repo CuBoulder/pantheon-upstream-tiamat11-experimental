@@ -1,0 +1,16 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - focal_point
+name: wide_image_style
+label: Wide
+effects:
+  98b51ab4-3704-41d5-b713-d7626daf4414:
+    uuid: 98b51ab4-3704-41d5-b713-d7626daf4414
+    id: focal_point_scale_and_crop
+    weight: 2
+    data:
+      width: 1500
+      height: 563
+      crop_type: focal_point

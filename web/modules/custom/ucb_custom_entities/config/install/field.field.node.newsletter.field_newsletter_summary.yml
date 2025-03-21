@@ -1,0 +1,18 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_newsletter_summary
+    - node.type.newsletter
+id: node.newsletter.field_newsletter_summary
+field_name: field_newsletter_summary
+entity_type: node
+bundle: newsletter
+label: Summary
+description: 'A summary of the email which will be used as an email pre-header (will appears after the Subject Line of your email) and shown on aggregator block/page content'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string_long

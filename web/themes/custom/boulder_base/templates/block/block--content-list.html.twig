@@ -1,0 +1,151 @@
+{#
+/**
+ * @file Contains the template to display the Content List block.
+ */
+#}
+{% set baseURL = url('<front>')|render|trim('/') %}
+
+{% set blockContent = content['#block_content'] %}
+{% set _rendered = blockContent|view|render %}{# Easiest way to ensure the cache is updated when the block or a referenced node is. Resolves #377, 378. #}
+{% set sort = blockContent.field_content_list_sort.value %}
+{% set display = blockContent.field_content_list_display.value %}
+{% set items = blockContent.field_content_list_content %}
+
+{# sorting #}
+{% if sort == 'created_asc' %}
+  {% set items = items|sort((a, b) => a.entity.created.value <=> b.entity.created.value) %}
+{% elseif sort == 'created_desc' %}
+  {% set items = items|sort((a, b) => b.entity.created.value <=> a.entity.created.value) %}
+{% elseif sort == 'alphabetical' %}
+  {% set items = items|sort((a, b) => a.entity.title.0.value|trim <=> b.entity.title.0.value|trim) %}
+{% endif %}
+
+{% set classes = [
+  'container',
+  'block',
+  'block-' ~ configuration.provider|clean_class,
+  'block-' ~ plugin_id|clean_class,
+  bundle ? 'block--type-' ~ bundle|clean_class,
+  view_mode ? 'block--view-mode-' ~ view_mode|clean_class,
+  'ucb-content-list',
+  'ucb-content-list-display-' ~ display,
+] %}
+
+{% extends '@boulder_base/block/styled-block.html.twig' %}
+{% block content %}
+  {{ attach_library('boulder_base/ucb-content-list') }}
+  <div class="ucb-content-list-container ucb-content-list-{{display}}">
+  {# Adds a ul around the content if the display is selected as 'title' #}
+    {% if display == 'title' %}
+      <ul class="ucb-content-list-list">
+    {% endif %}
+
+    {% for item in items %}
+    {# Skip unpublished items if the user is not logged in #}
+      {% if item.entity.status.value == 1 or user.isAuthenticated %}
+        {% set image = item.entity.field_ucb_article_thumbnail.entity.field_media_image ?? item.entity.field_ucb_person_photo.entity.field_media_image ?? item.entity.field_how_to_initial_image.entity.field_media_image ?? item.entity.field_social_sharing_image.entity.field_media_image ?? item.entity.field_collection_item_thumbnail.entity.field_media_image %}
+        {% if image %}
+        {% set imageURI = image.entity.fileuri|image_style('focal_image_square') %}{% set imageAlt = image.alt|render %}
+        {% endif %}
+        {% set summary = item.entity.field_collection_item_summary.0.value ?? item.entity.body.0.summary ?? item.entity.field_ucb_article_summary.0.value %}
+        {% if not summary %}
+          {% set body = (item.entity.body.0 ?? item.entity.field_ucb_article_content.0.entity.field_article_text.0).value|render|replace({"&nbsp;": ""})|striptags|trim %}
+          {% set bodyTrimmed = body|slice(0, 512) %}
+          {% set summary = bodyTrimmed ~ (body|length > bodyTrimmed|length ? '...') %}
+
+        {% endif %}
+
+        {% if display == 'full' %}
+          <div class="row ucb-content-list-row ">
+            <div class="ucb-content-list-text-container ">
+              <h4 class="ucb-content-list-title">
+                <a href="{{ baseURL ~ item.entity.path.alias }}">{{ item.entity.title.0.value }}</a>
+              </h4>
+              {% if item.entity.type.0.entity.id == 'ucb_person' %}
+                <div class="ucb-content-list-person-info">
+                  <div class="ucb-content-list-person-titles">
+                    {% for title in item.entity.field_ucb_person_title %}<span class="ucb-content-list-person-title">{{ title.value }}</span>{% endfor %}
+                  </div>
+                  <div class="ucb-content-list-person-departments">
+                    {% for department in item.entity.field_ucb_person_department %}<span class="ucb-content-list-person-department">{{ department.entity.name.value }}</span>{% endfor %}
+                  </div>
+                  <div class="ucb-content-list-person-contact">
+                    {% set email = item.entity.field_ucb_person_email.0.value %}{% if email %}<span class="ucb-content-list-person-contact-item ucb-content-list-person-email"><a href="mailto:{{ email }}">{{ email }}</a></span>{% endif %}
+                    {% set phone = item.entity.field_ucb_person_phone.0.value %}{% if phone %}<span class="ucb-content-list-person-contact-item ucb-content-list-person-phone"><a href="tel:{{ phone|preg_replace('/[^0-9\+]/', '') }}">{{ phone }}</a></span>{% endif %}
+                  </div>
+                </div>
+              {% endif %}
+              <p class="ucb-content-list-summary">
+                {% autoescape false %}
+                  {{ summary }}
+                {% endautoescape %}
+              </p>
+            </div>
+            {% if image %}
+              <div class="ucb-content-list-image-container">
+                  <a role="presentation" aria-hidden="true" href="{{ baseURL ~ item.entity.path.alias }}">
+                    <img class="ucb-content-list-image" src="{{ imageURI }}" alt="{{ imageAlt }}">
+                  </a>
+              </div>
+            {% endif %}
+          </div>
+        {% elseif display == 'condensed' or display == 'teaser' %}
+        <div class="row ucb-content-list-row">
+          {% if image %}
+            <div class="ucb-content-list-image-container">
+              <a role="presentation" aria-hidden="true" href="{{ baseURL ~ item.entity.path.alias }}"><img class="ucb-content-list-image" src="{{ imageURI }}" alt="{{ imageAlt }}"></a>
+            </div>
+          {% endif %}
+          <div class="ucb-content-list-text-container container">
+            <h4 class="ucb-content-list-title">
+              <a href="{{ baseURL ~ item.entity.path.alias }}">{{ item.entity.title.0.value }}</a>
+            </h4>
+            {% if item.entity.type.0.entity.id == 'ucb_person' %}
+              <div class="ucb-content-list-person-info">
+                <div class="ucb-content-list-person-titles">
+                  {% for title in item.entity.field_ucb_person_title %}<span class="ucb-content-list-person-title">{{ title.value }}</span>{% endfor %}
+                </div>
+                <div class="ucb-content-list-person-departments">
+                  {% for department in item.entity.field_ucb_person_department %}<span class="ucb-content-list-person-department">{{ department.entity.name.value }}</span>{% endfor %}
+                </div>
+                <div class="ucb-content-list-person-contact">
+                  {% set email = item.entity.field_ucb_person_email.0.value %}{% if email %}<span class="ucb-content-list-person-contact-item ucb-content-list-person-email"><a href="mailto:{{ email }}">{{ email }}</a></span>{% endif %}
+                  {% set phone = item.entity.field_ucb_person_phone.0.value %}{% if phone %}<span class="ucb-content-list-person-contact-item ucb-content-list-person-phone"><a href="tel:{{ phone|preg_replace('/[^0-9\+]/', '') }}">{{ phone }}</a></span>{% endif %}
+                </div>
+              </div>
+            {% endif %}
+            <p class="ucb-content-list-summary">
+              {% autoescape false %}
+                {{ summary }}
+              {% endautoescape %}
+            </p>
+          </div>
+        </div>
+        {% elseif display == 'title' %}
+          <ul class="ucb-content-list-list">
+            {# ISSUE WE NEED TO MAKE EACH ITEM AN LI INSTEAD OF DUPLICATING THE UL #}
+            <li class="ucb-content-list-row ucb-content-list-title">
+              <a href="{{ baseURL ~ item.entity.path.alias }}">{{ item.entity.title.0.value }}</a>
+            </li>
+          </ul>
+        {% elseif display == 'sidebar' %}
+          <div class="row ucb-content-list-row">
+            {% if image %}
+              <div class="ucb-content-list-image-container col-2">
+                  <a role="presentation" aria-hidden="true" href="{{ baseURL ~ item.entity.path.alias }}"><img class="ucb-content-list-image" src="{{ imageURI }}" alt="{{ imageAlt }}"></a>
+              </div>
+            {% endif %}
+            <div class="ucb-content-list-text-container col-10">
+              <span class="ucb-content-list-title"><a href="{{ baseURL ~ item.entity.path.alias }}">{{ item.entity.title.0.value }}</a></span>
+            </div>
+          </div>
+        {% endif %}
+      {% endif %}
+    {% endfor %}
+
+    {# Adds a closing ul tag around the content if the display is selected as 'title' #}
+    {% if display == 'title' %}
+      </ul>
+    {% endif %}
+  </div>
+{% endblock content %}

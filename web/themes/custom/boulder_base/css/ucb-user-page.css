@@ -1,0 +1,18 @@
+.user-profile-wrapper {
+  display: flex;
+  flex-direction: row;
+}
+
+.user-profile-wrapper div {
+  flex-grow: 1;
+}
+
+.ucb-user-documentation {
+  padding-bottom: 10px;
+}
+
+.ucb-webexpress-version {
+  text-align: right;
+  font-size: smaller;
+  font-style: italic;
+}

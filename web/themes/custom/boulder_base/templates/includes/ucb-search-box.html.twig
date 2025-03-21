@@ -1,0 +1,56 @@
+{#
+/**
+ * @file Contains the template to display the search box.
+ *
+ * The search box is shown by opening the search modal via the search icon on
+ * the top left of the page.
+ */
+#}
+{{ attach_library('boulder_base/ucb-search-box') }}
+<div class="ucb-search-box" role="search">
+  <form{{ create_attribute({ method: 'get', action: site_search.0.url }) }}>
+    <div class="ucb-search-box-inputs">
+      <div class="ucb-search-input-text">
+        <label for="ucb-search-text-field" class="visually-hidden">Enter the terms you wish to search for.</label>
+        <input{{
+          create_attribute({
+            id: 'ucb-search-text-field',
+            placeholder: site_search.0.placeholder,
+            type: 'search',
+            name: site_search.0.parameter ?? 'keys',
+            value: '',
+            size: '15',
+            maxlength: '1024'
+          })
+        }}>
+      </div>
+      <div class="ucb-search-input-submit">
+        <input type="submit" value="Search">
+      </div>
+    </div>
+    {% if site_search|length > 1 %}
+      <div class="ucb-search-box-options">
+        {% for index, search in site_search %}
+          <div>
+            <input{{
+              create_attribute({
+                id: 'search-' ~ search.name,
+                name: 'search-box-option',
+                type: 'radio',
+                checked: index == 0 ? '' : null,
+                value: search.name,
+                'data-placeholder': search.placeholder,
+                'data-parameter': search.parameter ?? 'keys',
+                'data-action': search.url
+              })
+            }}> <label{{ create_attribute({ for: 'search-' ~ search.name }) }}>{{ search.label }}</label>
+          </div>
+        {% endfor %}
+      </div>
+    {% endif %}
+    <div class="ucb-search-box-links">
+      <h3 class="d-inline">Other ways to search:</h3>
+      <ul class="d-inline list-inline"><li class="list-inline-item"><a href="https://calendar.colorado.edu">Events Calendar</a></li><li class="list-inline-item"><a href="https://www.colorado.edu/map">Campus Map</a></li></ul>
+    </div>
+  </form>
+</div>

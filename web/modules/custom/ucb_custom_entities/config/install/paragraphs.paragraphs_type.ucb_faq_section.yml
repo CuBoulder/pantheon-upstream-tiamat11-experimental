@@ -1,0 +1,9 @@
+langcode: en
+status: true
+dependencies: {  }
+id: ucb_faq_section
+label: 'FAQ Section'
+icon_uuid: null
+icon_default: null
+description: 'Creates a section for the FAQ Content Type'
+behavior_plugins: {  }

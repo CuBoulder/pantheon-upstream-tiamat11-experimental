@@ -1,0 +1,21 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+id: ucb_class_note
+label: 'UCB Class Note'
+type: 'canonical_entities:node'
+pattern: '/class-notes/[node:title]'
+selection_criteria:
+  8c62a636-ec67-4986-aa06-a3676d02b43d:
+    id: 'entity_bundle:node'
+    negate: false
+    uuid: 8c62a636-ec67-4986-aa06-a3676d02b43d
+    context_mapping:
+      node: node
+    bundles:
+      ucb_class_notes: ucb_class_notes
+selection_logic: and
+weight: -5
+relationships: {  }

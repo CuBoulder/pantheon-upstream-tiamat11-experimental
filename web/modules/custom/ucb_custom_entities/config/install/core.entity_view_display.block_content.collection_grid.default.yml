@@ -1,0 +1,188 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.collection_grid
+    - field.field.block_content.collection_grid.body
+    - field.field.block_content.collection_grid.field_bs_background_style
+    - field.field.block_content.collection_grid.field_bs_content_font_scale
+    - field.field.block_content.collection_grid.field_bs_heading
+    - field.field.block_content.collection_grid.field_bs_heading_alignment
+    - field.field.block_content.collection_grid.field_bs_heading_style
+    - field.field.block_content.collection_grid.field_bs_icon
+    - field.field.block_content.collection_grid.field_bs_icon_color
+    - field.field.block_content.collection_grid.field_bs_icon_position
+    - field.field.block_content.collection_grid.field_bs_icon_size
+    - field.field.block_content.collection_grid.field_bs_title_font_scale
+    - field.field.block_content.collection_grid.field_collection_category_select
+    - field.field.block_content.collection_grid.field_collection_grid_type
+    - field.field.block_content.collection_grid.field_collections_display
+    - field.field.block_content.collection_grid.field_collections_filter
+    - field.field.block_content.collection_grid.field_collections_multiselect
+  module:
+    - entity_reference_revisions
+    - field_group
+    - options
+    - text
+third_party_settings:
+  field_group:
+    group_collections_tabs:
+      children:
+        - group_filter
+        - group_display
+      label: 'Collections Tabs'
+      parent_name: ''
+      region: content
+      weight: 0
+      format_type: tabs
+      format_settings:
+        classes: ''
+        show_empty_fields: false
+        id: ''
+        direction: horizontal
+        width_breakpoint: 640
+    group_filter:
+      children:
+        - field_collection_grid_type
+        - field_collection_category_select
+        - field_collections_multiselect
+      label: Filter
+      parent_name: group_collections_tabs
+      region: content
+      weight: 7
+      format_type: tab
+      format_settings:
+        classes: ''
+        show_empty_fields: false
+        id: ''
+        formatter: closed
+        description: ''
+    group_display:
+      children:
+        - field_collections_display
+        - field_collections_filter
+      label: Display
+      parent_name: group_collections_tabs
+      region: content
+      weight: 8
+      format_type: tab
+      format_settings:
+        classes: ''
+        show_empty_fields: false
+        id: ''
+        formatter: closed
+        description: ''
+id: block_content.collection_grid.default
+targetEntityType: block_content
+bundle: collection_grid
+mode: default
+content:
+  field_bs_background_style:
+    type: list_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 1
+    region: content
+  field_bs_content_font_scale:
+    type: list_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 2
+    region: content
+  field_bs_heading:
+    type: list_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 10
+    region: content
+  field_bs_heading_alignment:
+    type: list_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 3
+    region: content
+  field_bs_heading_style:
+    type: list_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 4
+    region: content
+  field_bs_icon:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 0
+    region: content
+  field_bs_icon_color:
+    type: list_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 5
+    region: content
+  field_bs_icon_position:
+    type: list_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 6
+    region: content
+  field_bs_icon_size:
+    type: list_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 7
+    region: content
+  field_bs_title_font_scale:
+    type: list_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 8
+    region: content
+  field_collection_category_select:
+    type: entity_reference_revisions_entity_view
+    label: above
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
+    weight: 2
+    region: content
+  field_collection_grid_type:
+    type: entity_reference_entity_id
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 1
+    region: content
+  field_collections_display:
+    type: list_default
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 5
+    region: content
+  field_collections_filter:
+    type: list_default
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 6
+    region: content
+  field_collections_multiselect:
+    type: list_default
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 3
+    region: content
+hidden:
+  body: true

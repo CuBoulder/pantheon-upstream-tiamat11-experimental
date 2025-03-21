@@ -1,0 +1,99 @@
+# --- Top-level menus ---
+ucb_admin_menus.node.add:
+  title: 'Add content'
+  description: ''
+  route_name: node.add_page
+
+
+ucb_admin_menus.content_groups.general:
+  title: 'General'
+  description: ''
+  route_name: ucb_admin_menus.content_groups.general
+  parent: 'ucb_admin_menus.node.add'
+  weight: 0
+ucb_admin_menus.content_groups.news_and_articles:
+  title: 'News and Articles'
+  description: ''
+  route_name: ucb_admin_menus.content_groups.news_and_articles
+  parent: 'ucb_admin_menus.node.add'
+  weight: 1
+ucb_admin_menus.content_groups.forms:
+  title: 'Forms'
+  description: ''
+  route_name: ucb_admin_menus.content_groups.forms
+  parent: 'ucb_admin_menus.node.add'
+  weight: 2
+ucb_admin_menus.content_groups.people:
+  title: 'People'
+  description: ''
+  route_name: ucb_admin_menus.content_groups.people
+  parent: 'ucb_admin_menus.node.add'
+  weight: 3
+ucb_admin_menus.content_groups.alumni_class_notes:
+  title: 'Alumni Class Notes'
+  description: ''
+  route_name: ucb_admin_menus.content_groups.alumni_class_notes
+  parent: 'ucb_admin_menus.node.add'
+  weight: 4
+
+# --- General ---
+ucb_admin_menus.node.add.basic_page:
+  class: 'Drupal\ucb_admin_menus\Plugin\Menu\NodeTypeMenuLink'
+  parent: ucb_admin_menus.content_groups.general
+  weight: 0
+ucb_admin_menus.node.add.ucb_faq_page:
+  class: 'Drupal\ucb_admin_menus\Plugin\Menu\NodeTypeMenuLink'
+  parent: ucb_admin_menus.content_groups.general
+  weight: 1
+ucb_admin_menus.node.add.collection_item_page:
+  class: 'Drupal\ucb_admin_menus\Plugin\Menu\NodeTypeMenuLink'
+  parent: ucb_admin_menus.content_groups.general
+  weight: 2
+
+# --- News and Articles ---
+ucb_admin_menus.node.add.ucb_article:
+  class: 'Drupal\ucb_admin_menus\Plugin\Menu\NodeTypeMenuLink'
+  parent: ucb_admin_menus.content_groups.news_and_articles
+  weight: 0
+ucb_admin_menus.node.add.ucb_article_list:
+  class: 'Drupal\ucb_admin_menus\Plugin\Menu\NodeTypeMenuLink'
+  parent: ucb_admin_menus.content_groups.news_and_articles
+  weight: 1
+ucb_admin_menus.node.add.newsletter:
+  class: 'Drupal\ucb_admin_menus\Plugin\Menu\NodeTypeMenuLink'
+  parent: ucb_admin_menus.content_groups.news_and_articles
+  weight: 2
+ucb_admin_menus.node.add.ucb_issue:
+  class: 'Drupal\ucb_admin_menus\Plugin\Menu\NodeTypeMenuLink'
+  parent: ucb_admin_menus.content_groups.news_and_articles
+  weight: 3
+ucb_admin_menus.node.add.ucb_issue_archive:
+  class: 'Drupal\ucb_admin_menus\Plugin\Menu\NodeTypeMenuLink'
+  parent: ucb_admin_menus.content_groups.news_and_articles
+  weight: 4
+
+# --- Forms ---
+ucb_admin_menus.node.add.form_page:
+  class: 'Drupal\ucb_admin_menus\Plugin\Menu\NodeTypeMenuLink'
+  parent: ucb_admin_menus.content_groups.forms
+  weight: 0
+
+# --- People ---
+ucb_admin_menus.node.add.ucb_person:
+  class: 'Drupal\ucb_admin_menus\Plugin\Menu\NodeTypeMenuLink'
+  parent: ucb_admin_menus.content_groups.people
+  weight: 0
+ucb_admin_menus.node.add.ucb_people_list_page:
+  class: 'Drupal\ucb_admin_menus\Plugin\Menu\NodeTypeMenuLink'
+  parent: ucb_admin_menus.content_groups.people
+  weight: 1
+
+# --- Alumni Class Notes ---
+ucb_admin_menus.node.add.ucb_class_notes:
+  class: 'Drupal\ucb_admin_menus\Plugin\Menu\NodeTypeMenuLink'
+  parent: ucb_admin_menus.content_groups.alumni_class_notes
+  weight: 0
+ucb_admin_menus.node.add.ucb_class_notes_list_page:
+  class: 'Drupal\ucb_admin_menus\Plugin\Menu\NodeTypeMenuLink'
+  parent: ucb_admin_menus.content_groups.alumni_class_notes
+  weight: 1

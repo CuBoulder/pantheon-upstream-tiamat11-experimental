@@ -1,0 +1,22 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.ucb_slate_form
+    - field.storage.block_content.field_bs_icon_position
+  module:
+    - options
+id: block_content.ucb_slate_form.field_bs_icon_position
+field_name: field_bs_icon_position
+entity_type: block_content
+bundle: ucb_slate_form
+label: 'Icon Position'
+description: 'Choose how the icon positions itself with the heading.'
+required: true
+translatable: false
+default_value:
+  -
+    value: bs_icon_position_default
+default_value_callback: ''
+settings: {  }
+field_type: list_string

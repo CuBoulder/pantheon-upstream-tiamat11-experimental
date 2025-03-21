@@ -1,0 +1,122 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.newsletter.field_newsletter_block_title_one
+    - field.field.node.newsletter.field_newsletter_block_title_two
+    - field.field.node.newsletter.field_newsletter_content_blocks
+    - field.field.node.newsletter.field_newsletter_intro_body
+    - field.field.node.newsletter.field_newsletter_intro_image
+    - field.field.node.newsletter.field_newsletter_promo_image_one
+    - field.field.node.newsletter.field_newsletter_promo_image_two
+    - field.field.node.newsletter.field_newsletter_promo_link_one
+    - field.field.node.newsletter.field_newsletter_promo_link_two
+    - field.field.node.newsletter.field_newsletter_section_block
+    - field.field.node.newsletter.field_newsletter_summary
+    - field.field.node.newsletter.field_newsletter_type
+    - node.type.newsletter
+  module:
+    - entity_reference_revisions
+    - link
+    - text
+    - user
+id: node.newsletter.default
+targetEntityType: node
+bundle: newsletter
+mode: default
+content:
+  field_newsletter_content_blocks:
+    type: entity_reference_revisions_entity_view
+    label: hidden
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
+    weight: 12
+    region: content
+  field_newsletter_intro_body:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 1
+    region: content
+  field_newsletter_intro_image:
+    type: entity_reference_entity_view
+    label: hidden
+    settings:
+      view_mode: default
+      link: false
+    third_party_settings: {  }
+    weight: 0
+    region: content
+  field_newsletter_promo_image_one:
+    type: entity_reference_entity_view
+    label: hidden
+    settings:
+      view_mode: default
+      link: false
+    third_party_settings: {  }
+    weight: 8
+    region: content
+  field_newsletter_promo_image_two:
+    type: entity_reference_entity_view
+    label: hidden
+    settings:
+      view_mode: default
+      link: false
+    third_party_settings: {  }
+    weight: 9
+    region: content
+  field_newsletter_promo_link_one:
+    type: link
+    label: hidden
+    settings:
+      trim_length: 80
+      url_only: false
+      url_plain: false
+      rel: ''
+      target: ''
+    third_party_settings: {  }
+    weight: 11
+    region: content
+  field_newsletter_promo_link_two:
+    type: link
+    label: hidden
+    settings:
+      trim_length: 80
+      url_only: false
+      url_plain: false
+      rel: ''
+      target: ''
+    third_party_settings: {  }
+    weight: 10
+    region: content
+  field_newsletter_section_block:
+    type: entity_reference_revisions_entity_view
+    label: hidden
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
+    weight: 7
+    region: content
+  field_newsletter_summary:
+    type: basic_string
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 13
+    region: content
+  field_newsletter_type:
+    type: entity_reference_label
+    label: hidden
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 2
+    region: content
+hidden:
+  field_newsletter_block_title_one: true
+  field_newsletter_block_title_two: true
+  links: true

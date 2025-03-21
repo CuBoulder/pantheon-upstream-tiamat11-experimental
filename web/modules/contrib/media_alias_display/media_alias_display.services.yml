@@ -1,0 +1,10 @@
+services:
+  media_alias_display.route_subscriber:
+    class: 'Drupal\media_alias_display\Routing\RouteSubscriber'
+    tags:
+      - { name: 'event_subscriber' }
+  cache_context.media_alias_display_kill_switch_toggle:
+    class: 'Drupal\media_alias_display\Cache\KillSwitchToggleCacheContext'
+    arguments: ['@config.factory']
+    tags:
+      - { name: 'cache.context' }

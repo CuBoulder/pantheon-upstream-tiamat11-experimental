@@ -1,0 +1,29 @@
+{#
+/**
+ * Theme layout to display a Form Page.
+ *
+ */
+#}
+
+{{ attach_library('boulder_base/ucb-form-page') }}
+
+{% set classes = ['ucb-content-wrapper'] %}
+
+<article{{ attributes.addClass(classes) }}>
+  <div class="container">
+    <h1{{ title_attributes.addClass(is_front ? 'visually-hidden') }}>
+      {{ label }}
+    </h1>
+    {% if content.body|render %}
+    <div class="ucb-form-page-section ucb-form-page-body">
+      {{ content.body }}
+    </div>
+    {% endif %}
+  </div>
+  <div class="container mb-4">
+    {{ content['#block_content'].body }}
+    <div class="form-page-webform">
+      {{ content.field_form_page_webform }}
+    </div>
+  </div>
+</article>

@@ -1,0 +1,18 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.faculty_publications
+    - field.storage.block_content.field_faculty_publications_dpt
+id: block_content.faculty_publications.field_faculty_publications_dpt
+field_name: field_faculty_publications_dpt
+entity_type: block_content
+bundle: faculty_publications
+label: Department
+description: 'University of Colorado Boulder department id or name as it appears on <a target="_blank" href="https://experts.colorado.edu/organizations">CU Experts</a>.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

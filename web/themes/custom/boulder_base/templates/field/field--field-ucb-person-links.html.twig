@@ -1,0 +1,13 @@
+{#
+/**
+ * @file Contains the template to display the Links field of a Person node.
+ */
+#}
+
+{% import '@boulder_base/navigation/menu--social-media-menu.html.twig' as socialMediaMenu %}
+
+{% if items %}
+  <ul>
+    {{ socialMediaMenu.links(items, true) }}
+  </ul>
+{% endif %}

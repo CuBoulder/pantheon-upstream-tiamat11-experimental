@@ -1,0 +1,31 @@
+.ucb-article-grid-block-button-container {
+  text-align: center;
+}
+
+.ucb-article-grid-block-button-container a.ucb-article-grid-block-button {
+  display: inline-block;
+  padding: 5px 10px;
+  font-weight: bold;
+  font-family: "Roboto", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  margin-bottom: 5px;
+  background-clip: padding-box;
+  color: inherit;
+  border: 1px solid currentColor;
+  text-decoration: none;
+  border-radius: 0px;
+  background-color: transparent;
+}
+
+.ucb-article-grid-block-button-container a.ucb-article-grid-block-button:hover {
+  text-decoration: none;
+}
+
+.ucb-article-grid-header-link h3 {
+  margin: 5px 0;
+  padding: 0;
+  font-size: 100%;
+}
+
+.ucb-article-grid-summary {
+  font-size: 85%;
+}

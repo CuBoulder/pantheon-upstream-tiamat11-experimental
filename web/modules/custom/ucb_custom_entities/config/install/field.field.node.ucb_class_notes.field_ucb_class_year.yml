@@ -1,0 +1,22 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_ucb_class_year
+    - node.type.ucb_class_notes
+  module:
+    - options
+id: node.ucb_class_notes.field_ucb_class_year
+field_name: field_ucb_class_year
+entity_type: node
+bundle: ucb_class_notes
+label: 'Class Year'
+description: ''
+required: true
+translatable: false
+default_value:
+  -
+    value: 1900
+default_value_callback: ''
+settings: {  }
+field_type: list_integer

@@ -1,0 +1,219 @@
+.ucb-article-meta {
+  display: flex;
+  flex-direction: row;
+  font-size: 14px;
+  margin-bottom: 1em;
+}
+
+.ucb-article-date {
+  padding-right: 0.5em;
+}
+
+.ucb-article-author-name {
+  display: inline-flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  font-weight: 700;
+}
+
+.ucb-article-author-name a,
+.ucb-article-author-name span {
+  display: block;
+}
+
+i.fa-regular.fa-calendar {
+  color: #999;
+}
+
+.ucb-article-image img {
+  max-width: 100%;
+  height: auto;
+  margin: 1em 0;
+}
+
+.ucb-article-tags,
+.ucb-article-categories,
+.ucb-article-issue {
+  margin-bottom: 1em;
+  display: flex;
+  font-size: 12px;
+  line-height: 1em;
+}
+
+.ucb-article-category-icon, .ucb-article-tag-icon, .ucb-article-issue-icon {
+  background-color: #555555;
+  color: #e7e7e7;
+  padding: 6px;
+}
+
+.ucb-article-categories div,
+.ucb-article-tags div,
+.ucb-article-issue div {
+  display: flex;
+  flex-direction: row;
+  line-height: 1.5em;
+}
+
+.ucb-article-categories a:link,
+.ucb-article-categories a:visited,
+.ucb-article-tags a:link,
+.ucb-article-tags a:visited,
+.ucb-article-issue a:link,
+.ucb-article-issue a:visited {
+  background: #e7e7e7;
+  color: #555;
+  padding: 6px;
+  display: inline-block;
+  margin-right: 8px;
+}
+
+.ucb-article-categories a:hover,
+.ucb-article-tags a:hover,
+.ucb-article-issue a:hover {
+  background: #555;
+  color: #fff;
+}
+
+.ucb-article-tags i.fa-solid,
+.ucb-article-categories i.fa-solid,
+.ucb-article-issue i.fa-solid {
+  padding: 0.5em;
+  background: #555;
+  color: #fff;
+  margin-right: -1em;
+}
+
+.ucb-article-blockquote {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  text-align: left;
+  margin: 0 20px 0 0;
+  padding: 20px;
+}
+
+.ucb-article-content-image {
+  text-align: center;
+}
+
+.ucb-article-content-media-left img,
+.ucb-article-content-media-right img,
+.ucb-article-content-media-above img,
+.ucb-article-content-media-below img {
+  width: auto;
+  height: auto;
+  margin: auto;
+  max-width: 100%;
+  max-height: 100%;
+}
+
+.ucb-article-content-media {
+  margin-bottom: 20px;
+}
+
+.ucb-article-content-media:has(.ucb-article-blockquote) {
+  align-self: center;
+  text-align: center;
+}
+
+.ucb-article-content-media.ucb-article-content-media-above:has(.paragraph--type--media),
+.ucb-article-content-media.ucb-article-content-media-below:has(.paragraph--type--media) {
+  text-align: center;
+}
+
+.ucb-article-blockquote-icon {
+  font-size: 150%;
+  padding-right: 20px;
+}
+
+.ucb-article-blockquote-text {
+  font-weight: bold;
+}
+
+.ucb-article-hero {
+  margin-bottom: 20px;
+}
+
+.ucb-page-style-striped .ucb-striped-content:nth-child(even) {
+  background-color: #eeeeee;
+  border-top: 1px solid transparent;
+  border-bottom: 1px solid transparent;
+  padding-top: 20px;
+  margin-bottom: 20px;
+}
+
+.backgroundTitleDiv {
+  position: relative;
+  z-index: 0;
+  object-fit: fill;
+  background-size: cover;
+  margin-bottom: 20px;
+}
+
+.backgroundTitleDiv .ucb-article-heading {
+  width: 100%;
+  background-color: transparent;
+  padding: 300px 20px 30px;
+}
+
+.backgroundTitleDiv.ucb-overlay-dark .ucb-article-heading {
+  background-image: -webkit-linear-gradient(top, transparent, rgba(0, 0, 0, 0.85));
+  background-image: -moz-linear-gradient(top, transparent, rgba(0, 0, 0, 0.85));
+  background-image: -o-linear-gradient(top, transparent, rgba(0, 0, 0, 0.85));
+  background-image: -ms-linear-gradient(top, transparent, rgba(0, 0, 0, 0.85));
+  background-image: linear-gradient(top, transparent, rgba(0, 0, 0, 0.85));
+}
+
+.backgroundTitleDiv.ucb-overlay-light .ucb-article-heading {
+  background-image: -webkit-linear-gradient(top, transparent, rgba(255, 255, 255, 0.85));
+  background-image: -moz-linear-gradient(top, transparent, rgba(255, 255, 255, 0.85));
+  background-image: -o-linear-gradient(top, transparent, rgba(255, 255, 255, 0.85));
+  background-image: -ms-linear-gradient(top, transparent, rgba(255, 255, 255, 0.85));
+  background-image: linear-gradient(top, transparent, rgba(255, 255, 255, 0.85));
+}
+
+.ucb-article-heading.article-header-White, .ucb-article-heading.article-header-White h1 {
+  color: #FFF;
+}
+
+.ucb-article-heading.article-header-Black, .ucb-article-heading.article-header-Black h1 {
+  color: #000;
+}
+
+.backgroundTitleDiv .imageMediaStyle img {
+  width: 100%;
+  max-height: 600px;
+  object-fit: cover;
+}
+
+.backgroundTitleDiv .imageMediaStyle {
+  padding-bottom: 0;
+  margin-bottom: 20px;
+}
+
+.ucb-article-supplemental-text {
+  margin-bottom: 1em;
+  font-style: italic;
+  font-size: 0.85em;
+}
+
+/* Removes caption on header img */
+.backgroundTitleDiv .media-image-caption {
+  display: none;
+}
+
+/* These fixes display issues on Article Header Image caused by .imageMediaStyle defaults */
+.backgroundTitleDiv .imageMediaStyle {
+  display: block;
+}
+
+.backgroundTitleDiv .imageMediaStyle img {
+  padding-bottom: 0px;
+}
+
+/* Fixes the overlay covering the mobile hamburger menu */
+@media only screen and (max-width: 575px) {
+  .backgroundTitleDiv .ucb-article-heading {
+    padding: 150px 20px 30px;
+  }
+}

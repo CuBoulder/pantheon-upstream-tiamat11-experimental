@@ -1,0 +1,24 @@
+.ucb-related-articles-block {
+  display: none;
+	margin-top: 20px;
+  --bs-gutter-x: 0 !important;
+  --bs-gutter-y: 0 !important;
+}
+
+.ucb-article-card-img {
+  max-width: 100%;
+  height: auto;
+}
+
+.ucb-article-card-data {
+  display: flex;
+  flex-direction: column;
+}
+
+.ucb-article-card {
+  margin-bottom: 2em;
+}
+
+.ucb-related-article-card-body{
+  font-size: 85%;
+}

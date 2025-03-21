@@ -1,0 +1,370 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.faculty_publications
+    - field.field.block_content.faculty_publications.field_bs_background_style
+    - field.field.block_content.faculty_publications.field_bs_content_font_scale
+    - field.field.block_content.faculty_publications.field_bs_heading
+    - field.field.block_content.faculty_publications.field_bs_heading_alignment
+    - field.field.block_content.faculty_publications.field_bs_heading_style
+    - field.field.block_content.faculty_publications.field_bs_icon
+    - field.field.block_content.faculty_publications.field_bs_icon_color
+    - field.field.block_content.faculty_publications.field_bs_icon_position
+    - field.field.block_content.faculty_publications.field_bs_icon_size
+    - field.field.block_content.faculty_publications.field_bs_title_font_scale
+    - field.field.block_content.faculty_publications.field_faculty_publications_auto
+    - field.field.block_content.faculty_publications.field_faculty_publications_count
+    - field.field.block_content.faculty_publications.field_faculty_publications_dpt
+    - field.field.block_content.faculty_publications.field_faculty_publications_email
+    - field.field.block_content.faculty_publications.field_faculty_publications_from
+    - field.field.block_content.faculty_publications.field_faculty_publications_jt
+    - field.field.block_content.faculty_publications.field_faculty_publications_p
+    - field.field.block_content.faculty_publications.field_faculty_publications_sort
+    - field.field.block_content.faculty_publications.field_faculty_publications_to
+  module:
+    - datetime
+    - field_group
+    - text
+third_party_settings:
+  field_group:
+    group_content:
+      children:
+        - group_publication_date
+        - group_custom
+        - group_on_this_site
+      label: Filters
+      region: content
+      parent_name: group_tabs
+      weight: 1
+      format_type: tab
+      format_settings:
+        classes: ''
+        show_empty_fields: false
+        id: ''
+        label_as_html: false
+        formatter: closed
+        description: ''
+        required_fields: true
+    group_styles:
+      children:
+        - group_block_styles
+        - group_block_icon
+        - group_block_heading
+        - group_block_style
+        - group_block_typography
+      label: Styles
+      region: content
+      parent_name: group_tabs
+      weight: 3
+      format_type: tab
+      format_settings:
+        classes: ''
+        show_empty_fields: false
+        id: ''
+        formatter: closed
+        description: ''
+        required_fields: true
+    group_block_styles:
+      children: {  }
+      label: 'Block Styles'
+      region: content
+      parent_name: group_styles
+      weight: 20
+      format_type: tabs
+      format_settings:
+        classes: ''
+        show_empty_fields: false
+        id: ''
+        direction: vertical
+        width_breakpoint: 640
+    group_block_icon:
+      children:
+        - field_bs_icon
+        - field_bs_icon_position
+        - field_bs_icon_color
+        - field_bs_icon_size
+      label: 'Block Icon'
+      region: content
+      parent_name: group_styles
+      weight: 20
+      format_type: tab
+      format_settings:
+        classes: ''
+        show_empty_fields: false
+        id: ''
+        formatter: closed
+        description: ''
+        required_fields: true
+    group_block_style:
+      children:
+        - field_bs_background_style
+      label: 'Block Style'
+      region: content
+      parent_name: group_styles
+      weight: 21
+      format_type: tab
+      format_settings:
+        classes: ''
+        show_empty_fields: false
+        id: ''
+        formatter: closed
+        description: ''
+        required_fields: true
+    group_block_heading:
+      children:
+        - field_bs_heading
+        - field_bs_heading_alignment
+        - field_bs_heading_style
+      label: 'Block Heading'
+      region: content
+      parent_name: group_styles
+      weight: 20
+      format_type: tab
+      format_settings:
+        classes: ''
+        show_empty_fields: false
+        id: ''
+        formatter: closed
+        description: ''
+        required_fields: true
+    group_block_typography:
+      children:
+        - field_bs_title_font_scale
+        - field_bs_content_font_scale
+      label: 'Block Typography'
+      region: content
+      parent_name: group_styles
+      weight: 22
+      format_type: tab
+      format_settings:
+        classes: ''
+        show_empty_fields: false
+        id: ''
+        formatter: closed
+        description: ''
+        required_fields: true
+    group_tabs:
+      children:
+        - group_content
+        - group_sort
+        - group_styles
+      label: Tabs
+      region: content
+      parent_name: ''
+      weight: 0
+      format_type: tabs
+      format_settings:
+        classes: ''
+        show_empty_fields: false
+        id: ''
+        direction: horizontal
+        width_breakpoint: 640
+    group_publication_date:
+      children:
+        - field_faculty_publications_from
+        - field_faculty_publications_to
+      label: 'Publication date'
+      region: content
+      parent_name: group_content
+      weight: 9
+      format_type: details
+      format_settings:
+        classes: ''
+        show_empty_fields: false
+        id: ''
+        label_as_html: false
+        open: true
+        description: ''
+        required_fields: true
+    group_sort:
+      children:
+        - field_faculty_publications_count
+        - field_faculty_publications_sort
+      label: Display
+      region: content
+      parent_name: group_tabs
+      weight: 2
+      format_type: tab
+      format_settings:
+        classes: ''
+        show_empty_fields: false
+        id: ''
+        label_as_html: false
+        formatter: closed
+        description: ''
+        required_fields: false
+    group_on_this_site:
+      children:
+        - field_faculty_publications_p
+        - field_faculty_publications_jt
+      label: 'Authors – On this site'
+      region: content
+      parent_name: group_content
+      weight: 11
+      format_type: details
+      format_settings:
+        classes: ''
+        show_empty_fields: false
+        id: ''
+        label_as_html: false
+        open: true
+        description: 'Select from faculty members on this site. The faculty member''s primary email address must match the one on <a target="_blank" href="https://experts.colorado.edu/people">CU Experts</a> or no publications will be returned. Choosing multiple people will include results matching one or more people.'
+        required_fields: true
+    group_custom:
+      children:
+        - field_faculty_publications_dpt
+        - field_faculty_publications_email
+        - field_faculty_publications_auto
+      label: 'Authors – Custom'
+      region: content
+      parent_name: group_content
+      weight: 10
+      format_type: details
+      format_settings:
+        classes: ''
+        show_empty_fields: false
+        id: ''
+        label_as_html: false
+        open: true
+        description: ''
+        required_fields: false
+id: block_content.faculty_publications.default
+targetEntityType: block_content
+bundle: faculty_publications
+mode: default
+content:
+  field_bs_background_style:
+    type: options_select
+    weight: 12
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_bs_content_font_scale:
+    type: options_select
+    weight: 11
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_bs_heading:
+    type: options_select
+    weight: 7
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_bs_heading_alignment:
+    type: options_select
+    weight: 8
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_bs_heading_style:
+    type: options_select
+    weight: 9
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_bs_icon:
+    type: text_textarea
+    weight: 2
+    region: content
+    settings:
+      rows: 1
+      placeholder: ''
+    third_party_settings: {  }
+  field_bs_icon_color:
+    type: options_select
+    weight: 4
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_bs_icon_position:
+    type: options_select
+    weight: 3
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_bs_icon_size:
+    type: options_select
+    weight: 6
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_bs_title_font_scale:
+    type: options_select
+    weight: 10
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_faculty_publications_auto:
+    type: boolean_checkbox
+    weight: 12
+    region: content
+    settings:
+      display_label: true
+    third_party_settings: {  }
+  field_faculty_publications_count:
+    type: options_select
+    weight: 27
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_faculty_publications_dpt:
+    type: string_textfield
+    weight: 10
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_faculty_publications_email:
+    type: email_default
+    weight: 11
+    region: content
+    settings:
+      placeholder: ''
+      size: 60
+    third_party_settings: {  }
+  field_faculty_publications_from:
+    type: datetime_default
+    weight: 2
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_faculty_publications_jt:
+    type: options_buttons
+    weight: 30
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_faculty_publications_p:
+    type: entity_reference_autocomplete
+    weight: 29
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_faculty_publications_sort:
+    type: options_select
+    weight: 28
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_faculty_publications_to:
+    type: datetime_default
+    weight: 3
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  info:
+    type: string_textfield
+    weight: 0
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+hidden: {  }

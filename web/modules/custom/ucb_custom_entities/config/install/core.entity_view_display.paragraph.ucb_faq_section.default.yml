@@ -1,0 +1,41 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.ucb_faq_section.field_ucb_faq_question_ans_para
+    - field.field.paragraph.ucb_faq_section.field_ucb_faq_section_body
+    - field.field.paragraph.ucb_faq_section.field_ucb_faq_section_title
+    - paragraphs.paragraphs_type.ucb_faq_section
+  module:
+    - entity_reference_revisions
+    - text
+id: paragraph.ucb_faq_section.default
+targetEntityType: paragraph
+bundle: ucb_faq_section
+mode: default
+content:
+  field_ucb_faq_question_ans_para:
+    type: entity_reference_revisions_entity_view
+    label: hidden
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
+    weight: 1
+    region: content
+  field_ucb_faq_section_body:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 2
+    region: content
+  field_ucb_faq_section_title:
+    type: string
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 0
+    region: content
+hidden: {  }

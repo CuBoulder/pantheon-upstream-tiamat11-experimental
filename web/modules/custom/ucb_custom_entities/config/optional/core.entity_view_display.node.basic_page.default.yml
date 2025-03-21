@@ -1,0 +1,157 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.basic_page.body
+    - field.field.node.basic_page.field_social_sharing_image
+    - field.field.node.basic_page.layout_builder__layout
+    - node.type.basic_page
+  module:
+    - layout_builder
+    - menu_block
+    - text
+    - ucb_bootstrap_layouts
+    - user
+third_party_settings:
+  layout_builder:
+    enabled: true
+    allow_custom: true
+    sections:
+      -
+        layout_id: ucb_bootstrap_layouts__two_column
+        layout_settings:
+          context_mapping: {  }
+          background_color: white
+          content_frame_color: none
+          0: false
+          1: false
+          overlay_color: none
+          background_effect: fixed
+          class: null
+          column_width: 8-4
+          section_padding_top: 0px
+          section_padding_right: 0px
+          section_padding_bottom: 0px
+          section_padding_left: 0px
+          2: false
+          3: false
+          4: false
+          5: false
+          background_image: null
+          background_image_styles: 'padding:0px 0px 0px 0px'
+        components:
+          c8331f70-2f4b-40a5-b6f1-daa093ceca4e:
+            uuid: c8331f70-2f4b-40a5-b6f1-daa093ceca4e
+            region: first
+            configuration:
+              id: 'field_block:node:basic_page:title'
+              label: Title
+              label_display: '0'
+              provider: layout_builder
+              context_mapping:
+                entity: layout_builder.entity
+                view_mode: view_mode
+              formatter:
+                type: string
+                label: hidden
+                settings:
+                  link_to_entity: false
+                third_party_settings: {  }
+            weight: 0
+            additional: {  }
+          a9344b0c-abaf-439e-b72c-77e2e3c0bc01:
+            uuid: a9344b0c-abaf-439e-b72c-77e2e3c0bc01
+            region: first
+            configuration:
+              id: 'field_block:node:basic_page:body'
+              label_display: '0'
+              context_mapping:
+                entity: layout_builder.entity
+              formatter:
+                type: text_default
+                label: hidden
+                settings: {  }
+                third_party_settings: {  }
+            weight: 1
+            additional: {  }
+          0627162b-72b3-4714-aee1-bd39e8816b75:
+            uuid: 0627162b-72b3-4714-aee1-bd39e8816b75
+            region: second
+            configuration:
+              id: 'menu_block:main'
+              label: 'Main navigation'
+              label_display: '0'
+              provider: menu_block
+              context_mapping: {  }
+              follow: false
+              follow_parent: child
+              label_link: false
+              label_type: block
+              level: 2
+              depth: 0
+              expand_all_items: false
+              parent: 'main:'
+              suggestion: main
+            weight: 0
+            additional: {  }
+          d0f3fe35-b443-4419-842c-4eee36066f93:
+            uuid: d0f3fe35-b443-4419-842c-4eee36066f93
+            region: second
+            configuration:
+              id: 'menu_block:secondary'
+              label: 'Secondary menu'
+              label_display: '0'
+              provider: menu_block
+              context_mapping: {  }
+              follow: false
+              follow_parent: child
+              label_link: false
+              label_type: block
+              level: 2
+              depth: 0
+              expand_all_items: false
+              parent: 'secondary:'
+              suggestion: secondary
+            weight: 1
+            additional: {  }
+          33798309-27b1-4a55-9f74-f17591cf1d4f:
+            uuid: 33798309-27b1-4a55-9f74-f17591cf1d4f
+            region: second
+            configuration:
+              id: 'menu_block:footer'
+              label: Footer
+              label_display: '0'
+              provider: menu_block
+              context_mapping: {  }
+              follow: false
+              follow_parent: child
+              label_link: false
+              label_type: block
+              level: 2
+              depth: 0
+              expand_all_items: false
+              parent: 'footer:'
+              suggestion: footer
+            weight: 2
+            additional: {  }
+        third_party_settings: {  }
+id: node.basic_page.default
+targetEntityType: node
+bundle: basic_page
+mode: default
+content:
+  body:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 101
+    region: content
+  links:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 100
+    region: content
+hidden:
+  field_social_sharing_image: true
+  layout_builder__layout: true

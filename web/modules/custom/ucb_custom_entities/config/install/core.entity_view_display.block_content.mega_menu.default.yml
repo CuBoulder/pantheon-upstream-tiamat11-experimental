@@ -1,0 +1,49 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.mega_menu
+    - field.field.block_content.mega_menu.field_mega_menu_heading
+    - field.field.block_content.mega_menu.field_mega_menu_menu_links
+    - field.field.block_content.mega_menu.field_mega_menu_text_above
+    - field.field.block_content.mega_menu.field_mega_menu_text_below
+  module:
+    - entity_reference_revisions
+    - text
+id: block_content.mega_menu.default
+targetEntityType: block_content
+bundle: mega_menu
+mode: default
+content:
+  field_mega_menu_heading:
+    type: string
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 1
+    region: content
+  field_mega_menu_menu_links:
+    type: entity_reference_revisions_entity_view
+    label: above
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
+    weight: 3
+    region: content
+  field_mega_menu_text_above:
+    type: text_default
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 2
+    region: content
+  field_mega_menu_text_below:
+    type: text_default
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 4
+    region: content
+hidden: {  }

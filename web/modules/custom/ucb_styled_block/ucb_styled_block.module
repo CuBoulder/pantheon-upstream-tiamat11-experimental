@@ -1,0 +1,42 @@
+<?php
+
+/**
+ * @file
+ * Contains functional hooks used by the CU Boulder Styled Block module.
+ */
+
+/**
+ * Adds the `block_styles` variable to applicable blocks.
+ *
+ * Implements hook_preprocess_block().
+ */
+function ucb_styled_block_preprocess_block(array &$variables) {
+  if (isset($variables['elements']['#configuration']['block_styles'])) {
+    // This block is a programatic styled block.
+    /** @var \Drupal\ucb_styled_block\StyledBlockServiceInterface */
+    $service = \Drupal::service('ucb_styled_block.service');
+    $styles = [];
+    foreach ($variables['elements']['#configuration']['block_styles'] as $styleName => $styleValue) {
+      $styles[$styleName] = $service->getStyleOutput($styleName, $styleValue);
+    }
+    $variables['block_styles'] = $styles;
+  }
+  elseif (isset($variables['elements']['content']['#block_content'])) {
+    // This block is built from a block type and may contain block style
+    // fields.
+    /** @var \Drupal\ucb_styled_block\StyledBlockServiceInterface */
+    $service = \Drupal::service('ucb_styled_block.service');
+    $styles = [];
+    $defaultStyles = $service->getDefaultStyleOutputs();
+    foreach ($defaultStyles as $styleName => $styleDefault) {
+      $fieldName = 'field_bs_' . $styleName;
+      if (isset($variables['elements']['content'][$fieldName]['#items'])) {
+        $styles[$styleName] = $service->getStyleOutput($styleName, $variables['elements']['content'][$fieldName]['#items']->value);
+      }
+      else {
+        $styles[$styleName] = $styleDefault;
+      }
+    }
+    $variables['block_styles'] = $styles;
+  }
+}

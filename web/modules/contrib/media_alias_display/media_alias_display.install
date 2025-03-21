@@ -1,0 +1,33 @@
+<?php
+
+/**
+ * @file
+ * Media Alias Display install.
+ */
+
+/**
+ * Implements hook_requirements().
+ */
+function media_alias_display_requirements($phase) {
+  $requirements = [];
+  $checked = \Drupal::config('media.settings')->get('standalone_url');
+
+  if (!$checked) {
+    $requirements['media_alias_display'] = [
+      'description' => t('Media setting "Standalone URL" needs to be checked for the module to work. Go to <a href=":url">media settings</a>.', [
+        ':url' => 'https://www.drupal.org/cron',
+      ]),
+      'severity' => REQUIREMENT_WARNING,
+      'value' => t('Setting is not correct.'),
+    ];
+  }
+  else {
+    $requirements['media_alias_display'] = [
+      'severity' => REQUIREMENT_OK,
+      'value' => t('Setting is correct.'),
+    ];
+  }
+  $requirements['media_alias_display']['title'] = t('Media Alias Display Settings');
+
+  return $requirements;
+}

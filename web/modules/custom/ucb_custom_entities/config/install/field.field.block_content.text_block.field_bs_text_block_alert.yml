@@ -1,0 +1,22 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.text_block
+    - field.storage.block_content.field_bs_text_block_alert
+id: block_content.text_block.field_bs_text_block_alert
+field_name: field_bs_text_block_alert
+entity_type: block_content
+bundle: text_block
+label: Alert
+description: "Checking 'Alert' will override Background Style setting. This setting is useful for creating blocks containing site alerts or important notifications."
+required: false
+translatable: false
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

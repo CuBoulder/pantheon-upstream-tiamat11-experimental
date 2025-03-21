@@ -1,0 +1,10 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - media
+id: media.colorbox_square
+label: 'Colorbox Square'
+description: 'Image cropped to a square, 180 pixels per side; lightbox added. '
+targetEntityType: media
+cache: true

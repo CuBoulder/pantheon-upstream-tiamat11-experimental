@@ -1,0 +1,56 @@
+{#
+/**
+ * @file Contains the template to display the Image Slider block.
+ */
+#}
+{% set classes = [
+  'block',
+  'block-' ~ configuration.provider|clean_class,
+  'block-' ~ plugin_id|clean_class,
+  bundle ? 'block--type-' ~ bundle|clean_class,
+  view_mode ? 'block--view-mode-' ~ view_mode|clean_class,
+  content['#block_content'].field_slider_text_style.value,
+  'ucb-slider-block'
+] %}
+
+{% set id = 'carousel'|clean_unique_id %}
+
+{% extends '@boulder_base/block/styled-block.html.twig' %}
+{% block content %}
+  {{ attach_library('boulder_base/ucb-slider') }}
+  {# <h1> {{ dump(content['#block_content'].field_slider_slide.value) }} </h1> #}
+  <div id="{{ id }}" class="carousel slide" data-bs-ride="carousel" data-bs-interval="7000" data-bs-pause="hover">
+    <div class="carousel-indicators">
+      {% for i in 1..content['#block_content'].field_slider_slide.value|length %}
+        <button{{create_attribute({type:'button','data-bs-target':'#'~id,'data-bs-slide-to':i-1,'aria-label':'Slide'~i}).addClass(loop.first?'active')}}></button>
+      {% endfor %}
+    </div>
+    <div
+      class="carousel-inner">
+      {# Don't render these fields #}
+      {{ content|without(
+        'field_slider_size',
+        'field_slider_text_style',
+        'field_bs_heading',
+        'field_bs_heading_style',
+        'field_bs_heading_alignment',
+        'field_bs_icon_size',
+        'field_bs_icon_position',
+        'field_bs_icon_color',
+        'field_bs_title_font_scale',
+        'field_slider_text_style',
+        'field_bs_content_font_scale',
+        'field_bs_background_style',
+        'field_bs_icon'
+      ) }}
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#{{ id }}" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#{{ id }}" data-bs-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </button>
+  </div>
+{% endblock %}

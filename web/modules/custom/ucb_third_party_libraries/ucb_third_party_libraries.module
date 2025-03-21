@@ -1,0 +1,6 @@
+<?php
+
+function ucb_third_party_libraries_preprocess_page(&$variables) {
+  // Theme name: 'ucb_third_party_libraries', library name: 'FontAwesome6'. 
+  $variables['#attached']['library'][] = 'ucb_third_party_libraries/FontAwesome6';
+}

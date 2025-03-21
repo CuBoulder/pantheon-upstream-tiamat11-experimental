@@ -1,0 +1,6 @@
+{
+    "name": "cu-boulder/ucb_article_author",
+    "description": "Programatically generates a Author taxonomy on Person page creation",
+    "license": "GPL-2.0-or-later",
+    "type": "drupal-custom-module"
+}

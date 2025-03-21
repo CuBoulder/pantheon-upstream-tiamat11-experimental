@@ -1,0 +1,11 @@
+# === Admin / editing interface libraries ===
+
+bootstrapAccordion.admin: { css: { theme: { css/bootstrap-accordion.admin.css: { } } } }
+bootstrapAccordion.editor:
+  js:
+    js/build/bootstrapAccordion.js: { preprocess: false, minified: true }
+  dependencies:
+    - core/ckeditor5
+  css:
+    theme:
+      css/bootstrap-accordion.editor.css: { }

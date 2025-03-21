@@ -1,0 +1,15 @@
+cuboulder_today_filter_form_loader:
+  version: 1.0
+  js:
+    js/cuboulder-today-filter-form-loader.js: {}
+  css:
+    theme:
+      css/cuboulder-today-filter-form-display.css: {}
+
+ucb-campus-news:
+  version: 1.0
+  js:
+    js/ucb-campus-news.js: {}
+  css:
+    theme:
+      css/ucb-campus-news.css: {}

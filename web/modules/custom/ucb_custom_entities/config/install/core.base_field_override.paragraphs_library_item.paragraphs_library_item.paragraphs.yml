@@ -1,0 +1,91 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - paragraphs.paragraphs_type.article_secondary_content
+  module:
+    - entity_reference_revisions
+id: paragraphs_library_item.paragraphs_library_item.paragraphs
+field_name: paragraphs
+entity_type: paragraphs_library_item
+bundle: paragraphs_library_item
+label: Paragraphs
+description: ''
+required: true
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    target_bundles:
+      article_secondary_content: article_secondary_content
+    negate: 0
+    target_bundles_drag_drop:
+      article_content:
+        weight: 23
+        enabled: false
+      article_secondary_content:
+        weight: 24
+        enabled: true
+      blockquote:
+        weight: 25
+        enabled: false
+      collection_grid_filter:
+        weight: 26
+        enabled: false
+      content_sequence_item:
+        weight: 27
+        enabled: false
+      expandable_content_text:
+        weight: 28
+        enabled: false
+      from_library:
+        weight: 29
+        enabled: false
+      grid_layout_content:
+        weight: 30
+        enabled: false
+      media:
+        weight: 31
+        enabled: false
+      mega_menu_links:
+        weight: 32
+        enabled: false
+      mega_menu_links_list:
+        weight: 33
+        enabled: false
+      newsletter_section:
+        weight: 34
+        enabled: false
+      newsletter_section_article:
+        weight: 35
+        enabled: false
+      newsletter_section_content:
+        weight: 36
+        enabled: false
+      row_layout_content:
+        weight: 37
+        enabled: false
+      slider_image:
+        weight: 38
+        enabled: false
+      ucb_article_hero:
+        weight: 39
+        enabled: false
+      ucb_faq_question_and_answer:
+        weight: 40
+        enabled: false
+      ucb_faq_section:
+        weight: 41
+        enabled: false
+      ucb_issue_section:
+        weight: 42
+        enabled: false
+      ucb_newsletter_text_block:
+        weight: 43
+        enabled: false
+      ucb_related_articles_block:
+        weight: 44
+        enabled: false
+field_type: entity_reference_revisions

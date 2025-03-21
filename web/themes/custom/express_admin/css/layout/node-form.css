@@ -1,0 +1,9 @@
+/* Enables hiding the node edit form sidebar.  */
+
+.ucb-sidebar-closed .layout-form {
+  grid-template-columns: calc(100% - 2em) 2em;
+}
+
+.ucb-sidebar-closed #edit-advanced {
+  display: none;
+}

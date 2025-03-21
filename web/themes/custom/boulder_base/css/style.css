@@ -1,0 +1,1213 @@
+/**** GLOBAL STYLES ******/
+:root {
+  --ucb-gold: #cfb87b;
+  --ucb-light-gold: #F1EBD9;
+  --ucb-link: #0277bd;
+  --ucb-link-visited: #e51c23;
+  --ucb-link-dark: #01579B;
+  --ucb-white: #fff;
+  --ucb-black: #000;
+  --ucb-darker: #333;
+  --ucb-light-contrast: #e7e7e7;
+  --ucb-off-white: #f2f2f2;
+  --ucb-dark-gray: #424242;
+  --ucb-light-gray: #eee;
+  --ucb-light-blue: #e1f5fe;
+  --ucb-medium-blue: #4FC3F7;
+  --ucb-dark-blue: #01579B;
+  --ucb-light-green: #DCEDC8;
+  --ucb-brick: #AE5A39;
+  --ucb-amber: #FFF9C4;
+  --ucb-alert: #FFEBEE;
+}
+
+/* Needed for Font Awesome  */
+ @font-face {
+    font-family: 'Font Awesome 6 Free - Brands';
+    src: url('../css/webfonts/fa-brands-400.woff2') format('woff2'),
+}
+ @font-face {
+    font-family: 'Font Awesome 6 Free - Solid';
+    src: url('../css/webfonts/fa-solid-900.woff2') format('woff2'),
+}
+ @font-face {
+    font-family: 'Font Awesome 6 Free - Regular';
+    src: url('../css/webfonts/fa-regular-400.woff2') format('woff2'),
+}
+ @font-face {
+    font-family: 'Font Awesome 6 Free - v4';
+    src: url('../css/webfonts/fa-v4compatibility.woff2')  format('woff2'),
+}
+
+body {
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+  font: 16px/24px Roboto, "Helvetica Neue", Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizelegibility;
+}
+
+.ucb-breadcrumb-region {
+  padding: 10px 0;
+}
+
+.ucb-content-wrapper {
+  --bs-gutter-y: 3rem;
+  margin-top: calc(var(--bs-gutter-y)* .5);
+  margin-bottom: calc(var(--bs-gutter-y)* .5);
+}
+
+main {
+  padding: 0;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5 {
+  font-family: Roboto, "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+a:link,
+a:visited {
+  color: var(--ucb-link);
+}
+
+a:hover {
+  color: var(--ucb-link-visited);
+  text-decoration: none;
+}
+
+button {
+  border: none;
+}
+
+input[type="submit"] {
+  border: none;
+}
+.ucb-footer-print {
+  display: none;
+}
+.ucb-homepage-footer a {
+  color: var(--ucb-gold);
+}
+
+.toolbar-menu a,
+.toolbar-menu a:visited {
+  color: #565656;
+}
+
+.ucb-local-tasks li>a {
+  color: var(--ucb-light-contrast);
+  display:inline-block;
+  width:100%;
+  height:100%;
+}
+
+.ucb-homepage-footer a:hover {
+  color: var(--ucb-white);
+}
+
+.ucb-page-container {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.page-header.local-tasks-present {
+  margin-top: 32px;
+}
+
+.list-style-none {
+  list-style: none;
+  padding-left: 0;
+}
+
+/********* Fonts *************/
+.ucb-roboto-bold {
+  font-family:
+    Roboto,
+    "Helvetica Neue",
+    Helvetica,
+    Arial,
+    sans-serif;
+  font-weight: bold;
+}
+
+.ucb-roboto-condensed-bold {
+  font-family:
+    "Roboto Condensed",
+    "Helvetica Neue",
+    Helvetica,
+    Arial,
+    sans-serif;
+  font-weight: bold;
+}
+
+.ucb-roboto {
+  font-family: Roboto, "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+.font-white {
+  color: var(--ucb-white);
+}
+
+.font-gold {
+  color: var(--ucb-gold);
+}
+
+.font-black {
+  color: var(--ucb-black);
+}
+
+/******** Header Region **********/
+.ucb-brand-bar {
+  padding: 1rem 0;
+}
+
+.ucb-admin-alert {
+  margin-bottom: 0;
+  padding: 0.25em;
+}
+
+.ucb-alert {
+  text-align: center;
+  border-radius: 0;
+  width: 100%;
+  margin: 0;
+}
+
+.alert-danger {
+  --bs-alert-color: white !important;
+  --bs-alert-bg: #E41B23 !important;
+  --bs-alert-border-color: #E41B23;
+  font-weight: 600;
+}
+
+.ucb-alert-link:link,
+.ucb-alert-link:visited {
+  background-color: white;
+  padding: 2px 5px;
+  color: #222;
+  font-size: 85%;
+  display: inline-flex;
+  align-items: center;
+  margin-left: 5px;
+}
+
+.ucb-alert-link>svg {
+  margin-left: 2px;
+}
+
+header#ucb-header-block {
+  background: black;
+  padding: 1em 0;
+}
+
+.ucb-header-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 20px 0;
+}
+
+.ucb-header-container .homepage-logo {
+  flex-grow: 1;
+}
+
+.ucb-header-container>* {
+  flex-grow: 0;
+  flex-shrink: 0;
+}
+
+.ucb-menu-wrapper {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.ucb-menu-wrapper .ucb-site-name-wrapper {
+  flex: 1 auto;
+}
+
+.ucb-menu-wrapper #ucb-mobile-menu-toggle {
+  padding: 0;
+}
+
+.ucb-menu-wrapper #ucb-mobile-menu-toggle svg {
+  width: 1.2em;
+  height: 1.2em;
+}
+
+.ucb-site-affiliation-sport_club .ucb-menu-wrapper .ucb-site-name-wrapper {
+  background-image: url(../images/cu-buffs-logo.png);
+  background-repeat: no-repeat;
+  background-position: left center;
+  background-size: 45px 33px;
+  padding-left: 55px;
+  min-height: 33px;
+}
+
+img,
+article img {
+  max-width: 100%;
+  height: auto;
+}
+
+/** Image size in layout builder editor as article does not exist **/
+.layout-builder img {
+  width: 100%;
+  height: auto;
+}
+
+.homepage-logo img {
+  max-width: 320px;
+  min-width: 180px;
+  width: 320px;
+  height: 30px;
+}
+
+.homepage-slogan img {
+  min-width: 180px;
+  max-width: 240px;
+  margin-right: 0;
+}
+
+/*********** Navigations **************/
+section.ucb-main-nav-section {
+  box-shadow: 0 2px 5px rgba(0 0 0 /10%);
+  background: white;
+}
+
+.ucb-main-nav-container {
+  display: flex;
+  flex-grow: 0;
+  flex-shrink: 0;
+  padding: 0;
+  height: inherit;
+  align-items: center;
+}
+
+@media only screen and (max-width: 575px) {
+  .page-header {
+    box-shadow: 0 2px 5px rgba(0 0 0 / 10%);
+  }
+
+  .ucb-main-nav-container {
+    flex-direction: column;
+  }
+}
+
+/*********** Intro Wide **************/
+.ucb-intro-wide-region .block {
+  margin-bottom: 0;
+}
+.ucb-intro-wide-region {
+  background-color: #000;
+  color: #fff;
+}
+.ucb-intro-wide-region .block-hero-unit.bs-background-none .block-title-text {
+  color: #fff;
+}
+/*********** Main Menu **************/
+ul.ucb-main-menu.nav {
+  flex-grow: 1;
+}
+
+.ucb-menu a.nav-link {
+  font-size: 0.85em;
+  vertical-align: baseline;
+  font-family: Roboto, "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-weight: 600;
+  line-height: 1rem;
+  margin: 0.5rem;
+  color: var(--ucb-darker);
+  padding: 0.5rem;
+}
+
+.ucb-main-menu li.menu-item a.nav-link {
+  color: var(--ucb-darker);
+  border-bottom: 2px solid #fff;
+  font-weight: 600;
+  line-height: 2rem;
+  padding: .25rem 1rem;
+  margin: 2px 0 0 0;
+}
+
+
+.mobile-menu-toggle {
+  display: none;
+}
+
+/********** Secondary Menu **********/
+
+.ucb-main-nav-container.ucb-secondary-menu-position-inline .ucb-secondary-menu-region .menu.social-media .icon-bg:hover,
+.ucb-menu a.nav-link:hover {
+  color: var(--ucb-black);
+  background: var(--ucb-light-contrast);
+  border-radius: 3px;
+}
+.ucb-main-nav-container.ucb-secondary-menu-position-inline .menu.social-media .icon-bg {
+  transition: none;
+  color: var(--ucb-black);
+
+}
+.ucb-footer-nav-block .ucb-menu.nav {
+  flex-direction: column;
+  flex-grow: 1;
+  padding-right: 2em;
+}
+
+.ucb-footer-top .menu.social-media {
+  margin-bottom: 0;
+}
+
+.ucb-footer-nav-block .ucb-menu a.nav-link {
+  color: #cfb87b;
+  background: transparent;
+  text-align: left;
+  font-size: 14px;
+  border-bottom: 1px solid #555;
+  border-radius: 0;
+  padding: 0.5rem 0;
+  margin: 0.5rem 0;
+}
+
+.ucb-main-menu li.menu-item a.nav-link {
+  font-size: 1em;
+  background-color: inherit;
+  border-radius: 0;
+}
+
+.ucb-main-menu li.menu-item a.nav-link:hover,
+.ucb-main-menu li.menu-item a.nav-link.is-active,
+.ucb-main-menu li.menu-item.active a.nav-link:first-of-type {
+  border-bottom: 2px solid black;
+  color: black;
+}
+
+/****** Local Tasks ********/
+.ucb-local-tasks {
+  top: 0;
+  width: 100%;
+  background-color: var(--ucb-link);
+  z-index: 99;
+  height: 2.5em;
+  padding: 0;
+  margin: 0;
+}
+
+.ucb-local-tasks ul {
+  display: flex;
+  list-style-type: none;
+  height: 2.5em;
+  line-height: 1.25em;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 0;
+  margin: 0;
+}
+
+.ucb-local-tasks ul li {
+  width: 100px;
+  padding: 0.25em;
+  text-align: center;
+  background-color: inherit;
+  color: inherit;
+}
+
+.ucb-local-tasks ul li:hover {
+  background-color: rgba(255 255 255 / 15%);
+  transition: background-color 200ms;
+}
+
+.ucb-local-tasks li>a:hover {
+  color: #fff;
+}
+
+
+/********* Footer ***********/
+
+.ucb-footer p {
+  margin: 0;
+  padding: 0;
+}
+
+.ucb-footer a.ucb-home-link {
+  font-weight: bold;
+}
+
+.ucb-footer img.ucb-footer-be-boulder {
+  max-width: 240px;
+  width: 100%;
+  height: auto;
+  display: inline-block;
+}
+
+.ucb-footer .ucb-footer-links {
+  font-size: 85%;
+}
+
+.ucb-homepage-footer {
+  display: block;
+  flex: 1;
+}
+
+.ucb-footer-top {
+  padding: 20px 0;
+}
+
+.ucb-footer-top .ucb-menu li.menu-item {
+  flex-grow: 1;
+  text-align: center;
+}
+
+
+.ucb-footer-nav-block {
+  display: flex;
+  flex-direction: row;
+  flex-grow: 1;
+  max-width: 100%;
+  flex-basis: 0;
+  -ms-flex-positive: 1;
+  -mx-flex-preferred-size: 0;
+}
+
+.ucb-footer-nav-container {
+  display: flex;
+  flex: 1 0 auto;
+  margin: 2em auto;
+}
+
+.ucb-footer-nav-container .ucb-menu-title {
+  color: white;
+  font-size: 1.4rem;
+  font-family:
+    "Roboto Condensed",
+    Roboto,
+    "Helvetica Neue",
+    Helvetica,
+    Arial,
+    sans-serif;
+  font-weight: bold;
+}
+
+.ucb-system-menu-block {
+  display: block;
+  width: 100%;
+}
+
+.ucb-footer-nav-block .ucb-menu a.nav-link:hover {
+  color: white;
+  background: transparent;
+  box-shadow: none;
+}
+
+.ucb-footer-bottom {
+  color: white;
+  padding: 40px 0;
+  text-align: left;
+  font-size: 0.9rem;
+}
+
+.ucb-footer-bottom .block.bs-background-unstyled.container {
+  --bs-gutter-x: 0;
+}
+
+.ucb-footer-menu-region .block-menu-blocksocial-media-menu,
+.ucb-footer-menu-region .block-system-menu-blocksocial-media-menu {
+  padding: 10px;
+  display: flex;
+  align-items: center;
+}
+
+.ucb-footer-menu-region .container {
+  display: flex;
+}
+
+.menu.social-media {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  gap: 0.5rem;
+  margin-bottom: 1em;
+  font-size: 1.25rem;
+  line-height: 1.25;
+}
+
+.menu.social-media .icon-label {
+  display: none;
+}
+
+.be-boulder-container {
+  display: flex;
+  align-items: top;
+  justify-content: space-between;
+  padding-bottom: 2em;
+  flex-wrap: wrap;
+}
+
+.ucb-footer-be-boulder {
+  padding-bottom: 2em;
+}
+
+/**** Styles for media types inserted with the media text editor embed button ****/
+
+/**** O-EMBED Videos Media *******/
+.field_media_oembed_video {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  padding-top: 56.25%;
+  /* 16:9 Aspect Ratio (divide 9 by 16 = 0.5625) */
+}
+
+.field_media_oembed_video iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+}
+
+/* Overriding styles for inserted video media .field_media_oembed_video, if floated */
+div.align-left .field_media_oembed_video,
+div.align-right .field_media_oembed_video {
+  position: static; /* Reset position */
+  padding-top: 0; /* Remove padding-top */
+  object-fit: cover;
+  max-width: 100%; /* Stop embed from spanning across columns */
+  display: inline; /* Fixes overflow error tied to floating an iframe */
+}
+/* Overriding styles for inserted video media .field_media_oembed_video, if aligned */
+div.align-center .field_media_oembed_video {
+  position: static; /* Reset position */
+  width: 800px; /* Reset width to default */
+  padding-top: 0; /* Remove padding-top */
+  object-fit: cover;
+  max-width: 100%; /* Stop embed from spanning across columns */
+}
+
+div.align-center .field_media_oembed_video{
+  margin-right: auto;
+  margin-left: auto;
+}
+div.align-center .field_media_oembed_video iframe,
+div.align-right .field_media_oembed_video iframe,
+div.align-left .field_media_oembed_video iframe {
+  position: static; /* Reset position */
+  top: auto; /* Reset top position */
+  left: auto; /* Reset left position */
+  bottom: auto; /* Reset bottom position */
+  right: auto; /* Reset right position */
+  width: 800px;
+  aspect-ratio: 16/9;
+  max-width: 100%;
+}
+
+/* Embedded Video Floats - Remove Float at Mobile Sizing */
+div.align-left:has(.field_media_oembed_video){
+  margin-right: 1em;
+}
+div.align-right:has(.field_media_oembed_video){
+  margin-left: 1em;
+}
+/* Removes float on small screens so videos don't get too small */
+@media only screen and (max-width:650px) {
+  div.align-left:has(.field_media_oembed_video),
+  div.align-right:has(.field_media_oembed_video){
+    max-width: 100%;
+    float: none;
+    margin-left: 0em;
+    margin-right: 0em;
+    margin-bottom: 1em;
+  }
+
+  div.align-right .field_media_oembed_video iframe,
+  div.align-left .field_media_oembed_video iframe {
+    width: 100%;
+    height: auto;
+    margin-left: 0em !important;
+    margin-right: 0em !important;
+  }
+
+  div.align-right .field_media_oembed_video,
+  div.align-left .field_media_oembed_video{
+    margin-left: 0em !important;
+    margin-right: 0em !important;
+  }
+}
+
+/* Responsive sizing for overriding inserted video media if aligned/floated */
+@media only screen and (max-width:980px) {
+  div.align-right .field_media_oembed_video{
+    margin-left: 10px;
+    margin-bottom: 10px;
+  }
+  div.align-left .field_media_oembed_video{
+    margin-right: 10px;
+    margin-bottom:10px;
+  }
+}
+/**** Responsive Images ******/
+
+article .align-right img,
+article .align-right .media-image-caption p {
+  padding-left: 1em;
+}
+
+article .align-left img,
+article .align-left .media-image-caption p {
+  padding-right: 1em;
+}
+
+/**** Colorbox Image Overrides, these need some snowflake css because of how different they are ******/
+article .align-left .ucb-colorbox-small-square,
+article .align-left .ucb-colorbox-small-thumbnail,
+article .align-left .ucb-colorbox-small,
+article .align-left .ucb-colorbox-square{
+  margin-right: 1em;
+  padding-right: 0em;
+}
+article .align-right .ucb-colorbox-small-square,
+article .align-right .ucb-colorbox-small-thumbnail,
+article .align-right .ucb-colorbox-small,
+article .align-right .ucb-colorbox-square{
+  margin-left: 1em;
+  padding-left: 0em;
+}
+
+/* Adjusts list elements when a left-floated image (.align-left) is a preceeding sibling, aligns list indicators with other elements  */
+.align-left+ol,
+.align-left+ul {
+  right: -1em;
+  position: relative;
+}
+/* Adds dynamic sizing when images are aligned right or left */
+.align-right.image_style-small_500px_25_display_size_,
+.align-left.image_style-small_500px_25_display_size_,
+.align-right.image_style-square_thumbnail_image_style,
+.align-left.image_style-square_thumbnail_image_style,
+.align-right.image_style-small_square_image_style,
+.align-left.image_style-small_square_image_style,
+.align-right.image_style-wide_image_style,
+.align-left.image_style-wide_image_style,
+.align-right.image_style-medium_750px_50_display_size_,
+.align-left.image_style-medium_750px_50_display_size_,
+.align-right.image_style-focal_image_wide,
+.align-left.image_style-focal_image_wide,
+.align-right.image_style-focal_image_square,
+.align-left.image_style-focal_image_square,
+.align-right.image_style-default,
+.align-left.image_style-default {
+  max-width: 50%;
+  font-size: 85%;
+}
+
+/* Center image above caption that has been floated */
+.align-center .imageMediaStyle {
+  text-align: center;
+}
+
+.align-left .imageMediaStyle{
+  text-align: left;
+}
+
+.align-right .imageMediaStyle {
+  text-align: right;
+}
+
+.align-right.image_style-large_image_style,
+.align-left.image_style-large_image_style {
+  max-width: 100%;
+}
+/* Resets Bootstrap's `placeholder` class styles */
+.placeholder {
+  display: initial;
+  vertical-align: initial;
+  min-height: initial;
+  cursor: auto;
+  background-color: initial;
+  opacity: initial;
+}
+
+small,
+.small-text {
+  font-size: 80%;
+  font-family: Arial, Helvetica, sans-serif !important;
+}
+
+p.lead {
+  font-size: 130%;
+  line-height: 1.4;
+}
+
+p.lead strong {
+  font-weight: bold;
+}
+
+
+p.hero {
+  font-size: 200%;
+  line-height: 1.3;
+  font-weight: normal;
+}
+
+p.hero strong {
+  font-weight: 700;
+  font-family: "Roboto Condensed", "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+
+p.supersize {
+  font-size: 320%;
+  line-height: 1.3;
+  font-weight: normal;
+}
+
+p.supersize strong {
+  font-weight: 700;
+  font-family: "Roboto Condensed", "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+ul.list-style-underline>li {
+  list-style: none;
+}
+
+ul.list-style-underline {
+  list-style: none;
+  list-style-image: none;
+  padding-left: 0;
+}
+
+
+ul.list-style-nobullet {
+  list-style: none;
+  list-style-image: none;
+  padding-left: 0;
+}
+
+ul.list-style-nobullet>li {
+  list-style: none;
+  list-style-image: none;
+  margin-bottom: 10px;
+}
+
+
+ul.list-style-border {
+  list-style: none;
+  list-style-image: none;
+  padding-left: 0;
+  border-top: 1px solid rgba(128, 128, 128, 0.333);
+}
+
+ul.list-style-border>li {
+  list-style: none;
+  border: 1px solid rgba(128, 128, 128, 0.333);
+  border-top: none;
+  padding: 10px;
+  margin-bottom: 0;
+}
+
+/* UNORDERED LIST STYLES */
+
+ul.list-style-icon-1,
+ul.list-style-icon-2,
+ul.list-style-icon-3,
+ul.list-style-icon-4,
+ul.list-style-icon-5,
+ul.list-style-icon-6 {
+  list-style: none;
+  list-style-image: none;
+  overflow: hidden;
+}
+
+ul.list-style-icon-1>li,
+ul.list-style-icon-2>li,
+ul.list-style-icon-3>li,
+ul.list-style-icon-4>li,
+ul.list-style-icon-5>li,
+ul.list-style-icon-6>li {
+  list-style: none !important;
+  list-style-image: none !important;
+  position: relative;
+}
+
+ul.list-style-icon-1 li:before,
+ul.list-style-icon-2 li:before,
+ul.list-style-icon-3 li:before,
+ul.list-style-icon-4 li:before,
+ul.list-style-icon-5 li:before,
+ul.list-style-icon-6 li:before {
+  font-family: "Font Awesome 5 Free", "FontAwesome";
+  position: absolute;
+  top: 0;
+  left: -20px;
+  color: #cfb87c;
+}
+
+ul.list-style-icon-1>li:before,
+ul.list-style-icon-check>li:before {
+  content: '\f00c';
+  font-weight: 900;
+}
+
+ul.list-style-icon-2>li:before,
+ul.list-style-icon-checkbox>li:before {
+  content: '\f14a';
+  font-weight: 900;
+}
+
+ul.list-style-icon-3>li:before,
+ul.list-style-icon-angle-double>li:before {
+  content: '\f101';
+  font-weight: 900;
+}
+
+ul.list-style-icon-4>li:before,
+ul.list-style-icon-circle-arrow>li:before {
+  content: '\f0a9';
+  font-weight: 900;
+}
+
+ul.list-style-icon-5>li:before,
+ul.list-style-icon-star>li:before {
+  content: '\f005';
+  font-weight: 900;
+}
+
+ul.list-style-icon-6>li:before,
+ul.list-style-icon-finger>li:before {
+  content: '\f0a4';
+  font-weight: 900;
+}
+
+/* ORDERED LIST STYLES */
+ol.list-style-alpha-upper,
+ol.list-style-alpha-upper>li {
+  list-style: upper-alpha;
+}
+
+ol.list-style-alpha-lower,
+ol.list-style-alpha-lower>li {
+  list-style: lower-alpha;
+}
+
+ol.list-style-roman-upper,
+ol.list-style-roman-upper>li {
+  list-style: upper-roman;
+}
+
+ol.list-style-roman-lower,
+ol.list-style-roman-lower>li {
+  list-style: lower-roman;
+}
+
+/* TABLE STYLES */
+table {
+  border-collapse: collapse;
+  border: 1px solid rgba(128, 128, 128, 0.333);
+}
+
+table th {
+  background: rgba(128, 128, 128, 0.333);
+  border: 1px solid rgba(128, 128, 128, 0.333);
+  border: none;
+  padding: 8px;
+  font-weight: bold;
+}
+
+table td {
+  padding: 8px;
+  vertical-align: top;
+  border: 1px solid rgba(128, 128, 128, 0.333);
+}
+
+table tbody {
+  border: none;
+}
+table.table-zebra tr:nth-child(odd) td {
+  background: #f3f3f3;
+}
+
+table.table-condensed td,
+table.table-condensed th,
+div.table-condensed table td,
+div.table-condensed table th {
+  padding: 4px;
+}
+
+table.table-small,
+div.table-small table {
+  font-size: 80%;
+}
+
+table.table-small td,
+table.table-small th,
+div.table-small table td,
+div.table-small table th {
+  padding: 4px;
+}
+
+table.table-horizontal td,
+div.table-horizontal table td {
+  border-left: none;
+  border-right: none;
+}
+
+table.table-vertical td,
+div.table-vertical table td {
+  border-top: none;
+  border-bottom: none;
+}
+
+/* Needed for the Newsletter */
+#email-preview table, #email-preview tr, #email-preview td{
+  border: none;
+}
+
+.ucb-heading-font-normal h1,
+.ucb-heading-font-normal h2,
+.ucb-heading-font-normal h3,
+.ucb-heading-font-normal h4,
+.ucb-heading-font-normal h5,
+.ucb-heading-font-normal h6,
+.ucb-heading-font-normal .h1,
+.ucb-heading-font-normal .h2,
+.ucb-heading-font-normal .h3,
+.ucb-heading-font-normal .h4,
+.ucb-heading-font-normal .h5,
+.ucb-heading-font-normal .h6 {
+  font-weight: 400;
+}
+
+/* === Form styling === */
+
+legend {
+  font-size: 1.1em;
+  font-weight: bold;
+  margin-bottom: 1em;
+}
+
+fieldset:not(.fieldgroup) {
+  border: 1px solid rgba(200, 200, 200, 0.5);
+  padding: 10px;
+}
+
+fieldset:not(.fieldgroup) legend {
+  display: inline-block;
+  float: none;
+  width: auto;
+  margin: 0;
+  padding: 0 .5em 0 .5em;
+}
+
+input.form-text,
+input.form-url,
+textarea.form-textarea,
+input[type="text"],
+input[type="email"],
+input[type="tel"],
+textarea {
+  color: #111;
+  font-size: inherit;
+  line-height: 150%;
+  background-color: #f2f2f2;
+  border: 1px solid rgba(128, 128, 128, 0.333);
+  width: 100%;
+  padding: 10px;
+}
+
+form label {
+  font-weight: bold;
+  display: block;
+}
+
+.fieldset-wrapper {
+  box-sizing: border-box;
+}
+
+.form-item,
+.form-actions {
+  margin-top: 1em;
+  margin-bottom: 1em;
+}
+
+.webform-container-inline div,
+.webform-container-inline div.form-item {
+  display: inline;
+}
+
+/* Required * for Webform */
+form.webform-submission-form .form-required::after {
+  display: inline-block;
+  margin-inline: 0.15em;
+  content: "*";
+  color: #f00;
+  font-size: 0.875rem;
+}
+
+.form-type-checkbox .field-label-after label,
+.form-type-radio .field-label-after label {
+  display: inline-block;
+  font-weight: normal;
+}
+
+/* Needed to override basic button styles */
+.node-basic-page-layout-builder-form > .form-actions#edit-actions{
+  background-color: var(--ucb-link)
+}
+.node-basic-page-layout-builder-form > #edit-actions{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  flex-wrap: wrap;
+  margin-top: 0px;
+  margin-bottom: 0px;
+}
+.node-basic-page-layout-builder-form > #edit-actions .button.button-gold,
+.node-basic-page-layout-builder-form > #edit-actions .button{
+  color: white !important;
+  display: inline-block;
+    padding: 10px 20px;
+    font-weight: normal;
+    transition: background-color 0.5s ease;
+    margin: 10px 5px;
+    text-decoration: none !important;
+    -webkit-border-radius: none !important;
+    -moz-border-radius: none !important;
+    border-radius: 0px !important;
+    -webkit-background-clip: padding-box;
+    -moz-background-clip: padding;
+    background-clip: padding-box;
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none;
+    transition: -webkit-box-shadow 0.5s ease, background-color 0.5s ease, color 0.5s ease;
+    transition: -moz-box-shadow 0.5s ease, background-color 0.5s ease, color 0.5s ease;
+    transition: box-shadow 0.5s ease, background-color 0.5s ease, color 0.5s ease;
+    background-color: inherit;
+    text-wrap: wrap;
+}
+
+.node-basic-page-layout-builder-form > #edit-actions div.form-type-checkbox{
+  background-color: white;
+}
+.node-basic-page-layout-builder-form > #edit-actions .button.button-gold:hover,
+.node-basic-page-layout-builder-form > #edit-actions .button:hover{
+  background-color: rgba(255 255 255 / 15%);
+  transition: background-color 200ms;
+}
+.node-basic-page-layout-builder-form > #edit-actions .form-item{
+  margin-top: 0;
+  margin-bottom: 0;
+  padding: 15px 15px;
+}
+
+.node-basic-page-layout-builder-form > #edit-actions div#edit-preview-toggle{
+  width: 100%;
+}
+
+.node-basic-page-layout-builder-form > #edit-actions #layout-builder-content-preview{
+  margin-left: 10px;
+}
+
+.node-basic-page-layout-builder-form > #edit-actions .button#edit-submit{
+  font-weight: bold !important;
+}
+.node-basic-page-layout-builder-form > #edit-actions .button#edit-rebuild-layout{
+  display: none !important;
+}
+
+.button.form-submit {
+  color: var(--button-text-color-gray-light) !important;
+  background-color: var(--button-background-color-gray-light);
+}
+
+.button.form-submit.button--primary,
+.button.form-submit.webform-button--next {
+  color: var(--button-text-color-blue) !important;
+  background-color: var(--button-background-color-blue);
+}
+
+/* Overrides sortable table styles in the stable9 theme */
+
+table.table-sort {
+  width: 100%;
+}
+
+button.tabledrag-toggle-weight {
+  font-size: .75em;
+  padding: 0 .75em;
+  margin-bottom: 1em;
+}
+
+.draggable a.tabledrag-handle {
+  height: auto;
+  margin-left: -.5em;
+}
+
+a.tabledrag-handle .handle {
+  box-sizing: content-box;
+  margin: -0.25em 0.5em;
+}
+
+h2.clear-margin,h3.clear-margin,h4.clear-margin,h5.clear-margin,h6.clear-margin,p.clear-margin{
+  margin-bottom: 0 !important;
+}
+/* Responsive Preview Tool - removes addtl padding, alerts and admin menus */
+.toolbar-icon-10.toolbar-vertical.responsive-preview-frame{
+  padding-top: 0px !important;
+}
+.responsive-preview-frame #block-boulder-base-primary-local-tasks,
+.responsive-preview-frame .ucb-admin-alert {
+  display:none;
+}
+
+
+/* Column List CSS */
+@media only screen and (min-width: 576px) {
+  .column-list.column-list-2 {
+    -webkit-columns: 2;
+    -moz-columns: 2;
+    columns: 2;
+  }
+  .column-list.column-list-3 {
+    -webkit-columns: 3;
+    -moz-columns: 3;
+    columns: 3;
+  }
+  .column-list.column-list-4 {
+    -webkit-columns: 4;
+    -moz-columns: 4;
+    columns: 4;
+  }
+}
+
+.ucb-basic-page-body {
+  display: inline-block;
+}
+
+.footer-columns {
+  display: flex;
+  flex-direction: column;
+}
+
+@media only screen and (min-width: 576px) {
+.ucb.ucb-header-hidden-title {
+  padding: 0;
+}
+}
+.ucb.ucb-header-hidden-title .ucb-menu-wrapper {
+  justify-content: right;
+}
+
+/*** KLARO Override ***/
+.klaro.ucb-klaro-styles {
+  --klaro-primary-color: #0277bd!important;
+}

@@ -1,0 +1,7 @@
+{
+    "name": "cu-boulder/ucb_third_party_libraries",
+    "description": "Module for attaching sitewide libraries to Drupal",
+    "license": "GPL-2.0-or-later",
+    "type": "drupal-custom-module"
+}
+

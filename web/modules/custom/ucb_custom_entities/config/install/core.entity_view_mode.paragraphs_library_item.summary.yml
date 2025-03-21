@@ -1,0 +1,7 @@
+langcode: en
+status: true
+id: paragraphs_library_item.summary
+label: Summary
+description: ''
+targetEntityType: paragraphs_library_item
+cache: true

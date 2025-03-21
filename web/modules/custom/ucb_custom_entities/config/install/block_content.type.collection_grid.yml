@@ -1,0 +1,7 @@
+langcode: en
+status: true
+dependencies: {  }
+id: collection_grid
+label: 'Collection Grid'
+revision: 0
+description: 'A grid containing a filtered list of collection items to be displayed.'

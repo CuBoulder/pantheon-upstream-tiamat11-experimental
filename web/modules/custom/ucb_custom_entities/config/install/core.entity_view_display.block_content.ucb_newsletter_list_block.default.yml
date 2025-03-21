@@ -1,0 +1,118 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.ucb_newsletter_list_block
+    - field.field.block_content.ucb_newsletter_list_block.body
+    - field.field.block_content.ucb_newsletter_list_block.field_bs_background_style
+    - field.field.block_content.ucb_newsletter_list_block.field_bs_content_font_scale
+    - field.field.block_content.ucb_newsletter_list_block.field_bs_heading
+    - field.field.block_content.ucb_newsletter_list_block.field_bs_heading_alignment
+    - field.field.block_content.ucb_newsletter_list_block.field_bs_heading_style
+    - field.field.block_content.ucb_newsletter_list_block.field_bs_icon
+    - field.field.block_content.ucb_newsletter_list_block.field_bs_icon_color
+    - field.field.block_content.ucb_newsletter_list_block.field_bs_icon_position
+    - field.field.block_content.ucb_newsletter_list_block.field_bs_icon_size
+    - field.field.block_content.ucb_newsletter_list_block.field_bs_title_font_scale
+    - field.field.block_content.ucb_newsletter_list_block.field_select_newsletter_lis_type
+    - field.field.block_content.ucb_newsletter_list_block.field_ucb_newsletter_list_count
+  module:
+    - options
+    - text
+id: block_content.ucb_newsletter_list_block.default
+targetEntityType: block_content
+bundle: ucb_newsletter_list_block
+mode: default
+content:
+  body:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 0
+    region: content
+  field_bs_background_style:
+    type: list_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 1
+    region: content
+  field_bs_content_font_scale:
+    type: list_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 2
+    region: content
+  field_bs_heading:
+    type: list_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 10
+    region: content
+  field_bs_heading_alignment:
+    type: list_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 3
+    region: content
+  field_bs_heading_style:
+    type: list_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 4
+    region: content
+  field_bs_icon:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 0
+    region: content
+  field_bs_icon_color:
+    type: list_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 5
+    region: content
+  field_bs_icon_position:
+    type: list_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 6
+    region: content
+  field_bs_icon_size:
+    type: list_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 7
+    region: content
+  field_bs_title_font_scale:
+    type: list_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 8
+    region: content
+  field_select_newsletter_lis_type:
+    type: entity_reference_entity_id
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 11
+    region: content
+  field_ucb_newsletter_list_count:
+    type: list_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 12
+    region: content
+hidden: {  }

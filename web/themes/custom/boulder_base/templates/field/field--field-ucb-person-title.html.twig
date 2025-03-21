@@ -1,0 +1,14 @@
+{#
+/**
+ * @file Contains the template to display the Person node's Title field.
+ */
+#}
+{% if items %}
+<div>
+	<ul class="ucb-person-title">
+		{% for item in items %}
+		<li itemprop="jobTitle">{{ item.content['#context'].value|trim }}</li>
+		{% endfor %}
+	</ul>
+</div>
+{% endif %}

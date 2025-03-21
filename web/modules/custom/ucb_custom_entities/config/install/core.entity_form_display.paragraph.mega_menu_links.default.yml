@@ -1,0 +1,33 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.mega_menu_links.field_mega_menu_links_desc
+    - field.field.paragraph.mega_menu_links.field_mega_menu_links_link
+    - paragraphs.paragraphs_type.mega_menu_links
+  module:
+    - link
+id: paragraph.mega_menu_links.default
+targetEntityType: paragraph
+bundle: mega_menu_links
+mode: default
+content:
+  field_mega_menu_links_desc:
+    type: string_textfield
+    weight: 1
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_mega_menu_links_link:
+    type: link_default
+    weight: 0
+    region: content
+    settings:
+      placeholder_url: ''
+      placeholder_title: ''
+    third_party_settings: {  }
+hidden:
+  created: true
+  status: true

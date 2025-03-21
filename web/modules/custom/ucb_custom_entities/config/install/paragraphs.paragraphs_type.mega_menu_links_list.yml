@@ -1,0 +1,9 @@
+langcode: en
+status: true
+dependencies: {  }
+id: mega_menu_links_list
+label: 'Mega Menu Links List'
+icon_uuid: null
+icon_default: null
+description: 'The paragraph to store all Mega Menu Links to be used in the Mega Menu'
+behavior_plugins: {  }

@@ -1,0 +1,10 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - media
+id: media.colorbox_small_thumbnail
+label: 'Colorbox Small - Thumbnail'
+description: 'Image width is sized to 100 pixels; lightbox added.'
+targetEntityType: media
+cache: true

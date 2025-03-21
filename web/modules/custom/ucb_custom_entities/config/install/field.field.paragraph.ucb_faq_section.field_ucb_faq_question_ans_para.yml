@@ -1,0 +1,75 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_ucb_faq_question_ans_para
+    - paragraphs.paragraphs_type.ucb_faq_question_and_answer
+    - paragraphs.paragraphs_type.ucb_faq_section
+  module:
+    - entity_reference_revisions
+id: paragraph.ucb_faq_section.field_ucb_faq_question_ans_para
+field_name: field_ucb_faq_question_ans_para
+entity_type: paragraph
+bundle: ucb_faq_section
+label: 'FAQ Question and Answer'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    target_bundles:
+      ucb_faq_question_and_answer: ucb_faq_question_and_answer
+    negate: 0
+    target_bundles_drag_drop:
+      article_content:
+        weight: 18
+        enabled: false
+      blockquote:
+        weight: 19
+        enabled: false
+      content_sequence_item:
+        weight: 20
+        enabled: false
+      expandable_content_text:
+        weight: 21
+        enabled: false
+      grid_layout_content:
+        weight: 22
+        enabled: false
+      media:
+        weight: 24
+        enabled: false
+      newsletter_section:
+        weight: 25
+        enabled: false
+      newsletter_section_article:
+        weight: 26
+        enabled: false
+      newsletter_section_content:
+        weight: 27
+        enabled: false
+      row_layout_content:
+        weight: 28
+        enabled: false
+      slider_image:
+        weight: 29
+        enabled: false
+      ucb_article_hero:
+        weight: 30
+        enabled: false
+      ucb_faq_question_and_answer:
+        weight: 31
+        enabled: true
+      ucb_faq_section:
+        weight: 32
+        enabled: false
+      ucb_issue_section:
+        weight: 33
+        enabled: false
+      ucb_related_articles_block:
+        weight: 34
+        enabled: false
+field_type: entity_reference_revisions

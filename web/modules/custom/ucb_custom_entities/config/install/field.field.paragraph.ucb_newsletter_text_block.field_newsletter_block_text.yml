@@ -1,0 +1,25 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_newsletter_block_text
+    - filter.format.full_html
+    - filter.format.wysiwyg
+    - paragraphs.paragraphs_type.ucb_newsletter_text_block
+  module:
+    - text
+id: paragraph.ucb_newsletter_text_block.field_newsletter_block_text
+field_name: field_newsletter_block_text
+entity_type: paragraph
+bundle: ucb_newsletter_text_block
+label: 'Newsletter Block Text'
+description: 'Left hand text block that will display beneath Sections.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  allowed_formats:
+    - wysiwyg
+    - full_html
+field_type: text_long

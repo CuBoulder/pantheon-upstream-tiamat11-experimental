@@ -1,0 +1,22 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.collection_grid
+    - field.storage.block_content.field_collections_filter
+  module:
+    - options
+id: block_content.collection_grid.field_collections_filter
+field_name: field_collections_filter
+entity_type: block_content
+bundle: collection_grid
+label: 'Filter Effect'
+description: 'Select how filtered items are displayed for desktop and tablet users. The remove option is applied for mobile users regardless of the setting.'
+required: true
+translatable: false
+default_value:
+  -
+    value: '0'
+default_value_callback: ''
+settings: {  }
+field_type: list_string

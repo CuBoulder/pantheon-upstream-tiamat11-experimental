@@ -1,0 +1,87 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.mega_menu
+    - field.storage.block_content.field_mega_menu_menu_links
+    - paragraphs.paragraphs_type.mega_menu_links_list
+  module:
+    - entity_reference_revisions
+id: block_content.mega_menu.field_mega_menu_menu_links
+field_name: field_mega_menu_menu_links
+entity_type: block_content
+bundle: mega_menu
+label: 'Menu Links'
+description: 'Each new item created here will display in a new column of menu links to be displayed in the mega menu'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    target_bundles:
+      mega_menu_links_list: mega_menu_links_list
+    negate: 0
+    target_bundles_drag_drop:
+      article_content:
+        weight: 21
+        enabled: false
+      blockquote:
+        weight: 22
+        enabled: false
+      collection_grid_filter:
+        weight: 23
+        enabled: false
+      content_sequence_item:
+        weight: 24
+        enabled: false
+      expandable_content_text:
+        weight: 25
+        enabled: false
+      grid_layout_content:
+        weight: 26
+        enabled: false
+      media:
+        weight: 27
+        enabled: false
+      mega_menu_links:
+        weight: 28
+        enabled: false
+      mega_menu_links_list:
+        weight: 29
+        enabled: true
+      newsletter_section:
+        weight: 30
+        enabled: false
+      newsletter_section_article:
+        weight: 31
+        enabled: false
+      newsletter_section_content:
+        weight: 32
+        enabled: false
+      row_layout_content:
+        weight: 33
+        enabled: false
+      slider_image:
+        weight: 34
+        enabled: false
+      ucb_article_hero:
+        weight: 35
+        enabled: false
+      ucb_faq_question_and_answer:
+        weight: 36
+        enabled: false
+      ucb_faq_section:
+        weight: 37
+        enabled: false
+      ucb_issue_section:
+        weight: 38
+        enabled: false
+      ucb_newsletter_text_block:
+        weight: 39
+        enabled: false
+      ucb_related_articles_block:
+        weight: 40
+        enabled: false
+field_type: entity_reference_revisions

@@ -1,0 +1,22 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.ucb_people_list_block
+    - field.storage.block_content.field_bs_icon
+  module:
+    - text
+id: block_content.ucb_people_list_block.field_bs_icon
+field_name: field_bs_icon
+entity_type: block_content
+bundle: ucb_people_list_block
+label: Icon
+description: "Use the Icon Button in the WYSIWYG bar to select your icon.\r\nOnly the icon will be used. Styling will be applied with the settings below."
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  allowed_formats:
+    - icon_picker
+field_type: text_long

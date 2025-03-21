@@ -1,0 +1,14 @@
+global-styling:
+  css:
+    component:
+      css/component/button.css: {}
+      css/component/form-warning.css: {}
+
+node-form:
+  css:
+    layout:
+      css/layout/node-form.css: {}
+  js:
+    js/node-form.js: {}
+  dependencies:
+    - core/internal.jquery.form

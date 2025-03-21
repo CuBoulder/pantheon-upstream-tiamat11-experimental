@@ -1,0 +1,22 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.faculty_publications
+    - field.storage.block_content.field_faculty_publications_auto
+id: block_content.faculty_publications.field_faculty_publications_auto
+field_name: field_faculty_publications_auto
+entity_type: block_content
+bundle: faculty_publications
+label: "If placed on a person page, use that person's email automatically"
+description: 'Automatically detects when this block is placed on a faculty member''s person page and uses their email as the faculty email. The faculty member''s primary email address must match the one on <a target="_blank" href="https://experts.colorado.edu/people">CU Experts</a> or no publications will be returned.'
+required: false
+translatable: false
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

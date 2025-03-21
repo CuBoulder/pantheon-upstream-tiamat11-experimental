@@ -1,0 +1,7 @@
+langcode: en
+status: true
+dependencies: {  }
+id: events_calendar
+label: 'Events Calendar'
+revision: 0
+description: 'A block that allows event calendar embed code to be displayed. Widget Builder: <a href="https://calendar.colorado.edu/help/widget">https://calendar.colorado.edu/help/widget</a>'

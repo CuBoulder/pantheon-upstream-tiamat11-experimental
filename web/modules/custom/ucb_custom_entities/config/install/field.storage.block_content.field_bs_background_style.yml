@@ -1,0 +1,56 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - block_content
+    - options
+id: block_content.field_bs_background_style
+field_name: field_bs_background_style
+entity_type: block_content
+type: list_string
+settings:
+  allowed_values:
+    -
+      value: bs_background_style_none
+      label: None
+    -
+      value: bs_background_style_white
+      label: White
+    -
+      value: bs_background_style_gray
+      label: 'Light Gray'
+    -
+      value: bs_background_style_dark_gray
+      label: 'Dark Gray'
+    -
+      value: bs_background_style_tan
+      label: Tan
+    -
+      value: bs_background_style_light_blue
+      label: 'Light Blue'
+    -
+      value: bs_background_style_medium_blue
+      label: 'Medium Blue'
+    -
+      value: bs_background_style_dark_blue
+      label: 'Dark Blue'
+    -
+      value: bs_background_style_light_green
+      label: 'Light Green'
+    -
+      value: bs_background_style_brick
+      label: Brick
+    -
+      value: bs_background_style_outline
+      label: Outline
+    -
+      value: bs_background_style_underline
+      label: Underline
+  allowed_values_function: ''
+module: options
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

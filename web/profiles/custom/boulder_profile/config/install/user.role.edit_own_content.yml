@@ -1,0 +1,67 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - filter.format.icon_picker
+    - filter.format.wysiwyg
+    - media.type.audio
+    - media.type.document
+    - media.type.image
+    - media.type.video
+    - node.type.basic_page
+    - node.type.form_page
+    - node.type.ucb_article
+    - node.type.ucb_article_list
+    - node.type.ucb_people_list_page
+    - node.type.ucb_person
+  module:
+    - contextual
+    - file
+    - filter
+    - help
+    - media
+    - node
+    - paragraphs
+    - responsive_preview
+    - system
+    - toolbar
+id: edit_own_content
+label: 'Edit My Own Content'
+weight: 9
+is_admin: null
+permissions:
+  - 'access administration pages'
+  - 'access contextual links'
+  - 'access files overview'
+  - 'access help pages'
+  - 'access media overview'
+  - 'access responsive preview'
+  - 'access toolbar'
+  - 'access user profiles'
+  - 'create document media'
+  - 'create image media'
+  - 'create media'
+  - 'create video media'
+  - 'delete media'
+  - 'delete own document media'
+  - 'delete own files'
+  - 'delete own image media'
+  - 'delete own video media'
+  - 'edit own audio media'
+  - 'edit own basic_page content'
+  - 'edit own document media'
+  - 'edit own form_page content'
+  - 'edit own image media'
+  - 'edit own ucb_article content'
+  - 'edit own ucb_article_list content'
+  - 'edit own ucb_people_list_page content'
+  - 'edit own ucb_person content'
+  - 'edit own video media'
+  - 'update media'
+  - 'use text format icon_picker'
+  - 'use text format wysiwyg'
+  - 'view all media revisions'
+  - 'view own unpublished content'
+  - 'view own unpublished media'
+  - 'view the administration theme'
+  - 'view unpublished paragraphs'

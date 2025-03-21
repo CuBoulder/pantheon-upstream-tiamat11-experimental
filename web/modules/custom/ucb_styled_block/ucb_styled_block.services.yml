@@ -1,0 +1,5 @@
+services:
+  ucb_styled_block.service:
+    class: 'Drupal\ucb_styled_block\StyledBlockService'
+    arguments:
+      - '@config.factory'

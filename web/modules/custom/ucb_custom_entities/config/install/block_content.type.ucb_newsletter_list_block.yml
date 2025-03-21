@@ -1,0 +1,7 @@
+langcode: en
+status: true
+dependencies: {  }
+id: ucb_newsletter_list_block
+label: 'Newsletter List Block'
+revision: 0
+description: 'Newsletters can be pulled into a Newsletter List block and displayed as a list'

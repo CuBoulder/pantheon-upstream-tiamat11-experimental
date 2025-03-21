@@ -1,0 +1,28 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.mega_menu
+    - field.storage.menu_link_content.field_mega_menu_select
+    - system.menu.main
+id: menu_link_content.main.field_mega_menu_select
+field_name: field_mega_menu_select
+entity_type: menu_link_content
+bundle: main
+label: 'Mega Menu'
+description: 'This field is used to select the already created mega menu to be displayed in the menu link.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:block_content'
+  handler_settings:
+    target_bundles:
+      mega_menu: mega_menu
+    sort:
+      field: _none
+      direction: ASC
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

@@ -1,0 +1,25 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.media.field_media_image_caption
+    - filter.format.full_html
+    - filter.format.wysiwyg
+    - media.type.image
+  module:
+    - text
+id: media.image.field_media_image_caption
+field_name: field_media_image_caption
+entity_type: media
+bundle: image
+label: Caption
+description: 'Optional text to add context or content to this image.  '
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  allowed_formats:
+    - wysiwyg
+    - full_html
+field_type: text_long

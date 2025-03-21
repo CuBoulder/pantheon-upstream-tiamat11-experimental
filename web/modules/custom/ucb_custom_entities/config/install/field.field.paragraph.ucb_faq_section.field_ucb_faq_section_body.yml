@@ -1,0 +1,25 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_ucb_faq_section_body
+    - filter.format.full_html
+    - filter.format.wysiwyg
+    - paragraphs.paragraphs_type.ucb_faq_section
+  module:
+    - text
+id: paragraph.ucb_faq_section.field_ucb_faq_section_body
+field_name: field_ucb_faq_section_body
+entity_type: paragraph
+bundle: ucb_faq_section
+label: 'FAQ Section Body'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  allowed_formats:
+    - wysiwyg
+    - full_html
+field_type: text_long

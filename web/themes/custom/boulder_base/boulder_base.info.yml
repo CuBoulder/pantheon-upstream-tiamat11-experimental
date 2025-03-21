@@ -1,0 +1,31 @@
+name: "University of Colorado Boulder base theme"
+description: "Drupal 10+ theme for CU Boulder branded web properties"
+package: Custom
+core_version_requirement: '^10.1 || ^11'
+type: theme
+base theme: stable9
+
+libraries:
+  - boulder_base/ucb-global
+  - boulder_base/migrate_styles # Needed for css polyfill during migration
+
+ckeditor5-stylesheets:
+  - css/colorbox-image.css
+
+regions:
+  header: "Header"
+  primary_menu: "Main Menu"
+  secondary_menu: "Secondary Menu"
+  alerts: "Alerts"
+  breadcrumb: "Breadcrumb Navigation"
+  intro_wide: "Intro Wide"
+  post_wide_title: "Post Wide Title"
+  above_content: "Above Content"
+  content: "Content"
+  sidebar: "Sidebar"
+  wide_post: "Wide Post"
+  below_content: "After Content"
+  second_below_content: "After Content 2"
+  footer: "Footer"
+  site_information: 'Site Information'
+  footer_menu: 'Footer Menu'

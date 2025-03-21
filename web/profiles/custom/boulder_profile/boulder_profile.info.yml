@@ -1,0 +1,121 @@
+---
+name: CU Boulder Install Profile
+type: profile
+description: "CU Boulder Web Express D10 Installation Profile"
+core_version_requirement: "^11"
+# Modules to install to support the profile.
+install:
+  - history
+  - administerusersbyrole
+  - automated_cron
+  - block_content
+  - breakpoint
+  - config
+  - comment
+  - contextual
+  - contact
+  - embed
+  - entity_embed
+  - menu_ui
+  - help
+  - image
+  - options
+  - path
+  - pathauto
+  - paragraphs
+  - paragraphs_library
+  - taxonomy
+  - dblog
+  - layout_builder
+  - layout_discovery
+  - layout_builder_iframe_modal
+  - linkit
+  - search
+  - shortcut
+  - toolbar
+  - field_ui
+  - file
+  - views
+  - views_ui
+  - editor
+  - ckeditor5
+  - ckeditor5_bootstrap_accordion
+  - ckeditor5_icons
+  - metatag
+  - metatag_open_graph
+  - menu_item_extras
+  - ucb_ckeditor_plugins
+  - webform
+  - webform_ui
+  - admin_toolbar
+  - admin_toolbar_tools
+  - admin_toolbar_links_access_filter
+  - media
+  - media_library
+  - field_group
+  - twig_tweak
+  - telephone
+  - crop
+  - focal_point
+  - serialization
+  - jsonapi
+  - consumer_image_styles
+  - jsonapi_extras
+  - consumers
+  - inline_form_errors
+  - aggregator
+  - externalauth
+  - config_update
+  - features
+  - simple_sitemap
+  - google_cse
+  - google_tag
+  #- klaro
+  - antibot
+  - smtp
+  - redirect
+  - unpublished_404
+  - datetime
+  - scheduler
+  - cu_boulder_content_types
+  - ucb_admin_menus
+  - ucb_site_configuration
+  - ucb_styled_block
+  - ucb_campus_news
+  - ucb_user_invite
+  - ucb_focal_image_enable
+  - ucb_bootstrap_layouts
+  - media_library_form_element
+  - media_alias_display
+  - media_entity_file_replace
+  - entity_usage
+  - media_file_delete
+  - menu_block
+  - ucb_third_party_libraries
+  - ucb_default_content
+  - ucb_person_title
+  - ucb_article_author
+  - ckeditor5_paste_filter
+  - menu_firstchild
+  - responsive_preview
+  - anchor_link
+  - captcha
+  - recaptcha_v3
+  - rebuild_cache_access
+  - ucb_drush_commands
+  - trash
+
+# Required modules
+# Note that any dependencies of the modules listed here
+# will be installed automatically.
+dependencies:
+  - node
+  - block
+  - views
+  - media
+
+# List any themes that should be installed as part of the profile installation.
+# Note that this will not set any theme as the default theme.
+themes:
+  - boulder_base
+  - express_admin

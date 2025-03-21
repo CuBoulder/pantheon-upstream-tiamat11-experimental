@@ -1,0 +1,99 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_article_media_selection
+    - paragraphs.paragraphs_type.article_content
+    - paragraphs.paragraphs_type.article_secondary_content
+    - paragraphs.paragraphs_type.blockquote
+    - paragraphs.paragraphs_type.from_library
+    - paragraphs.paragraphs_type.media
+  module:
+    - entity_reference_revisions
+id: paragraph.article_content.field_article_media_selection
+field_name: field_article_media_selection
+entity_type: paragraph
+bundle: article_content
+label: 'Secondary Content Selection'
+description: "Add media (image/video), stylized blockquotes, or a secondary text block to the section.<br>\r\nSecondary text blocks can be made reusable through the Paragraphs library.<br>\r\nReusable Secondary Text places reusable secondary text from the Paragraphs Library."
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    target_bundles:
+      media: media
+      blockquote: blockquote
+      article_secondary_content: article_secondary_content
+      from_library: from_library
+    negate: 0
+    target_bundles_drag_drop:
+      article_content:
+        weight: -13
+        enabled: false
+      article_secondary_content:
+        weight: 24
+        enabled: true
+      blockquote:
+        weight: -14
+        enabled: true
+      collection_grid_filter:
+        weight: 26
+        enabled: false
+      content_sequence_item:
+        weight: 27
+        enabled: false
+      expandable_content_text:
+        weight: 28
+        enabled: false
+      from_library:
+        weight: 29
+        enabled: true
+      grid_layout_content:
+        weight: 30
+        enabled: false
+      media:
+        weight: -15
+        enabled: true
+      mega_menu_links:
+        weight: 32
+        enabled: false
+      mega_menu_links_list:
+        weight: 33
+        enabled: false
+      newsletter_section:
+        weight: 34
+        enabled: false
+      newsletter_section_article:
+        weight: 35
+        enabled: false
+      newsletter_section_content:
+        weight: 36
+        enabled: false
+      row_layout_content:
+        weight: 37
+        enabled: false
+      slider_image:
+        weight: -10
+        enabled: false
+      ucb_article_hero:
+        weight: 39
+        enabled: false
+      ucb_faq_question_and_answer:
+        weight: 40
+        enabled: false
+      ucb_faq_section:
+        weight: 41
+        enabled: false
+      ucb_issue_section:
+        weight: 42
+        enabled: false
+      ucb_newsletter_text_block:
+        weight: 43
+        enabled: false
+      ucb_related_articles_block:
+        weight: 44
+        enabled: false
+field_type: entity_reference_revisions

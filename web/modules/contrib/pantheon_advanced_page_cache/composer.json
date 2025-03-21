@@ -1,0 +1,57 @@
+{
+    "name": "pantheon-systems/pantheon_advanced_page_cache",
+    "type": "drupal-module",
+    "description": "Drupal Integration for the Pantheon Advanced Page Cache. Code mirror at drupal/pantheon_advanced_page_cache.",
+    "license": "MIT",
+    "require": {
+        "php": ">=7.4",
+        "symfony/http-foundation": "^6 || ^7",
+        "guzzlehttp/psr7": "^2.4.5"
+    },
+    "require-dev": {
+        "consolidation/robo": "^5.1",
+        "drupal/coder": "@stable",
+        "drupal/drupal-extension": "@stable",
+        "phpunit/phpunit": "@stable",
+        "psy/psysh": "@stable",
+        "squizlabs/php_codesniffer": "@stable",
+        "symfony/finder": "^4.4|^5|^6|^7",
+        "symfony/yaml": "^4.4|^5|^6|^7",
+        "czproject/git-php": "^4.3"
+    },
+    "scripts": {
+        "code:fix": [
+            "vendor/bin/phpcs --config-set installed_paths vendor/drupal/coder/coder_sniffer",
+            "vendor/bin/phpcbf . --ignore=vendor src"
+        ],
+        "code:lint": [
+            "vendor/bin/phpcs --config-set installed_paths vendor/drupal/coder/coder_sniffer",
+            "vendor/bin/phpcs --ignore=RoboFile.php,vendor,.github . "
+        ],
+        "test": [
+            "vendor/bin/robo test:full"
+        ],
+        "pre-commit": [
+            "composer validate --strict",
+            "@code:fix",
+            "@code:lint"
+        ]
+    },
+    "repositories": {
+        "drupal": {
+            "type": "composer",
+            "url": "https://packages.drupal.org/8"
+        }
+    },
+    "minimum-stability": "stable",
+    "autoload": {
+        "psr-4": {
+            "PantheonSystems\\CDNBehatHelpers\\": "tests/behat/helper_classes/"
+        }
+    },
+    "config": {
+        "allow-plugins": {
+            "dealerdirect/phpcodesniffer-composer-installer": true
+        }
+    }
+}

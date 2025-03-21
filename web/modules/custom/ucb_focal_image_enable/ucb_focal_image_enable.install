@@ -1,0 +1,27 @@
+<?php
+/*
++----------+---------+-----------+-------------+----------+-------+------------------------+
+| bundle   | deleted | entity_id | revision_id | langcode | delta | image_styles_target_id |
++----------+---------+-----------+-------------+----------+-------+------------------------+
+| consumer |       0 |         1 |           1 | en       |     0 | focal_ima              |
++----------+---------+-----------+-------------+----------+-------+------------------------+ */
+use Drupal\Core\Database\Database;
+
+function ucb_focal_image_enable_install() {
+    Database::getConnection()->query("INSERT INTO `consumer__image_styles` VALUES ('consumer',0,1,1,'en',0,'focal_image_square');");
+    Database::getConnection()->query("INSERT INTO `consumer__image_styles` VALUES ('consumer',0,1,1,'en',1,'focal_image_wide');");
+    Database::getConnection()->query("INSERT INTO `consumer__image_styles` VALUES ('consumer',0,1,1,'en',2,'large_image_style');");
+}
+
+/**
+ * Adds large_image_style to consumer__image_styles via update hook
+ */
+function ucb_focal_image_enable_update_10001() {
+    // Check if the large_image_style does not already exist to prevent duplicate entries.
+    $exists = Database::getConnection()->query("SELECT COUNT(*) FROM `consumer__image_styles` WHERE image_styles_target_id = 'large_image_style'")->fetchField();
+    
+    // If it does not exist, insert the new record for the large_image_style
+    if (!$exists) {
+        Database::getConnection()->query("INSERT INTO `consumer__image_styles` VALUES ('consumer',0,1,1,'en',2,'large_image_style');");
+    }
+}

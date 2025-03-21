@@ -1,0 +1,22 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.ucb_people_list_block
+    - field.storage.block_content.field_bs_heading_style
+  module:
+    - options
+id: block_content.ucb_people_list_block.field_bs_heading_style
+field_name: field_bs_heading_style
+entity_type: block_content
+bundle: ucb_people_list_block
+label: 'Heading Style'
+description: ''
+required: true
+translatable: false
+default_value:
+  -
+    value: bs_heading_style_default
+default_value_callback: ''
+settings: {  }
+field_type: list_string

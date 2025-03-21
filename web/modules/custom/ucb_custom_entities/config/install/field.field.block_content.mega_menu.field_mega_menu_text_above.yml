@@ -1,0 +1,23 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.mega_menu
+    - field.storage.block_content.field_mega_menu_text_above
+    - filter.format.wysiwyg
+  module:
+    - text
+id: block_content.mega_menu.field_mega_menu_text_above
+field_name: field_mega_menu_text_above
+entity_type: block_content
+bundle: mega_menu
+label: 'Text Above'
+description: 'Text Above is a field to display text above the menu links (i. e. a description of the mega menu or other information)'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  allowed_formats:
+    - wysiwyg
+field_type: text_long

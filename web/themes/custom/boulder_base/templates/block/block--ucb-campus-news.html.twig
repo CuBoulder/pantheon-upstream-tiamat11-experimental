@@ -1,0 +1,13 @@
+{#
+/**
+ * @file Contains the template to display the Campus News block.
+ */
+#}
+{% set classes = [
+  'container',
+  'block',
+  'block-' ~ configuration.provider|clean_class,
+  'block-' ~ plugin_id|clean_class
+] %}
+
+{% extends '@boulder_base/block/styled-block.html.twig' %}

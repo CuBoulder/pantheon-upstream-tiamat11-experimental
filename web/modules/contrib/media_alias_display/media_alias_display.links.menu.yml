@@ -1,0 +1,6 @@
+media_alias_display.settings_form:
+  title: 'Media Alias Display Settings'
+  route_name: media_alias_display.settings_form
+  description: 'Administer media alias display settings'
+  parent: system.admin_config_media
+  weight: 99

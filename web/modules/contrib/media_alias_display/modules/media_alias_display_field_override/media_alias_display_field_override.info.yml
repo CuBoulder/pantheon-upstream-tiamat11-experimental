@@ -1,0 +1,12 @@
+name: Media Alias Display Field Override
+type: module
+description: Adds a media field to override media alias display on specific entities
+core_version_requirement: ^10 || ^11
+package: Media
+dependencies:
+  - media_alias_display:media_alias_display
+
+# Information added by Drupal.org packaging script on 2024-11-13
+version: '2.1.0'
+project: 'media_alias_display'
+datestamp: 1731509830

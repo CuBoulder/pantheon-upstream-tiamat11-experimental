@@ -1,0 +1,16 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - focal_point
+name: focal_image_teaser_wide
+label: 'Focal Image - Teaser Wide'
+effects:
+  760ea497-0a6a-4ba4-88d7-98783be7440b:
+    uuid: 760ea497-0a6a-4ba4-88d7-98783be7440b
+    id: focal_point_scale_and_crop
+    weight: 1
+    data:
+      width: 1200
+      height: 600
+      crop_type: focal_point

@@ -1,0 +1,21 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+id: ucb_article_list_by_title
+label: 'UCB Article List'
+type: 'canonical_entities:node'
+pattern: '/[node:menu-link:parent:url:path]/[node:title]'
+selection_criteria:
+  f068f38a-c8f0-4595-93d6-ddb4047b71bc:
+    id: 'entity_bundle:node'
+    negate: false
+    uuid: f068f38a-c8f0-4595-93d6-ddb4047b71bc
+    context_mapping:
+      node: node
+    bundles:
+      ucb_article_list: ucb_article_list
+selection_logic: and
+weight: -5
+relationships: {  }

@@ -1,0 +1,22 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.social_media_icons
+    - field.storage.block_content.field_social_media_link_size
+  module:
+    - options
+id: block_content.social_media_icons.field_social_media_link_size
+field_name: field_social_media_link_size
+entity_type: block_content
+bundle: social_media_icons
+label: 'Link size'
+description: ''
+required: true
+translatable: false
+default_value:
+  -
+    value: '0'
+default_value_callback: ''
+settings: {  }
+field_type: list_string

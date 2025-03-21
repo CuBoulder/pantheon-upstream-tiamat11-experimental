@@ -1,0 +1,22 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.ucb_article_grid
+    - field.storage.block_content.field_bs_heading
+  module:
+    - options
+id: block_content.ucb_article_grid.field_bs_heading
+field_name: field_bs_heading
+entity_type: block_content
+bundle: ucb_article_grid
+label: Heading
+description: 'This setting should be used to put your content in the proper hierarchy, not to change the font size of the title.'
+required: true
+translatable: false
+default_value:
+  -
+    value: bs_heading_default
+default_value_callback: ''
+settings: {  }
+field_type: list_string

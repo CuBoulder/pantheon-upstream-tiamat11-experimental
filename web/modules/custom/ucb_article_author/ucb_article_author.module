@@ -1,0 +1,31 @@
+<?php
+
+use Drupal\Core\Entity\EntityInterface;
+use Drupal\taxonomy\Entity\Term;
+use Drupal\node\Entity\Node;
+
+/**
+ * Implements hook_taxonomy_term_insert().
+ */
+function ucb_article_author_taxonomy_term_insert(EntityInterface $term) {
+  // Check if the inserted term is a 'byline' taxonomy term
+  if ($term->getEntityTypeId() === 'taxonomy_term' && $term->bundle() === 'byline') {
+    $term_name = $term->getName();
+
+    // Query to find a 'ucb_person' node with the same title.
+    $query = \Drupal::entityQuery('node')
+      ->condition('type', 'ucb_person')
+      ->condition('title', $term_name)
+      ->range(0, 1)  // We only need the first result.
+      ->accessCheck(FALSE);  // Skip access checks, needed or WSOD
+
+    $node_ids = $query->execute();
+
+    // If a 'ucb_person' node with the same title is found.
+    if (!empty($node_ids)) {
+      $node_id = reset($node_ids);
+      $term->set('field_author_person_page', ['target_id' => $node_id]);
+      $term->save();
+    }
+  }
+}

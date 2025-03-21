@@ -1,0 +1,22 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.ucb_newsletter_list_block
+    - field.storage.block_content.field_bs_content_font_scale
+  module:
+    - options
+id: block_content.ucb_newsletter_list_block.field_bs_content_font_scale
+field_name: field_bs_content_font_scale
+entity_type: block_content
+bundle: ucb_newsletter_list_block
+label: 'Content Font Scale'
+description: ''
+required: true
+translatable: false
+default_value:
+  -
+    value: bs_content_font_scale_default
+default_value_callback: ''
+settings: {  }
+field_type: list_string

@@ -1,0 +1,7 @@
+langcode: en
+status: true
+dependencies: {  }
+id: mega_menu
+label: 'Mega Menu'
+revision: 0
+description: 'This is a mega menu for use in menu items to create a large stylized menu as a dropdown to a menu'

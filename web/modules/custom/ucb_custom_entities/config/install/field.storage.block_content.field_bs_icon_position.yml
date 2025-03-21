@@ -1,0 +1,29 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - block_content
+    - options
+id: block_content.field_bs_icon_position
+field_name: field_bs_icon_position
+entity_type: block_content
+type: list_string
+settings:
+  allowed_values:
+    -
+      value: bs_icon_position_default
+      label: Default
+    -
+      value: bs_icon_position_offset
+      label: Offset
+    -
+      value: bs_icon_position_top
+      label: Top
+  allowed_values_function: ''
+module: options
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

@@ -1,0 +1,21 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+id: ucb_form_page
+label: 'UCB Form Page'
+type: 'canonical_entities:node'
+pattern: '/[node:menu-link:parent:url:path]/[node:title]'
+selection_criteria:
+  af8ad8c9-f450-4f28-a20a-522000cd31b1:
+    id: 'entity_bundle:node'
+    negate: false
+    uuid: af8ad8c9-f450-4f28-a20a-522000cd31b1
+    context_mapping:
+      node: node
+    bundles:
+      form_page: form_page
+selection_logic: and
+weight: -5
+relationships: {  }

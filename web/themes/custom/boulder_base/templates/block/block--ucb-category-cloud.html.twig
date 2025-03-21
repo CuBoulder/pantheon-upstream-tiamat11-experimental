@@ -1,0 +1,26 @@
+{#
+/**
+ * @file Contains the template to display the Category Cloud block.
+ */
+#}
+{% set classes = [
+  'block',
+  'container',
+  'block-' ~ configuration.provider|clean_class,
+  'block-' ~ plugin_id|clean_class,
+  bundle ? 'block--type-' ~ bundle|clean_class,
+  view_mode ? 'block--view-mode-' ~ view_mode|clean_class
+] %}
+
+{# Base Url #}
+{% set baseurlJSON = url('<front>')|render|trim('/') %}
+
+{# Logged In - Used for showing errors to only authenticated #}
+{% set logged_in_class = logged_in ? 'ucb-authenticated' : 'ucb-anonymous' %}
+
+{% extends '@boulder_base/block/styled-block.html.twig' %}
+{% block content %}
+  {{ attach_library('boulder_base/ucb-category-cloud') }}
+  {{ content.body }}
+  <category-cloud-block class={{logged_in_class}} base-uri="{{ baseurlJSON }}"></category-cloud-block>
+{% endblock %}

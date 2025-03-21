@@ -1,0 +1,29 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.collection_grid_filter.field_collection_filter_label
+    - field.field.paragraph.collection_grid_filter.field_collection_grid_category
+    - paragraphs.paragraphs_type.collection_grid_filter
+id: paragraph.collection_grid_filter.default
+targetEntityType: paragraph
+bundle: collection_grid_filter
+mode: default
+content:
+  field_collection_filter_label:
+    type: string_textfield
+    weight: 0
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_collection_grid_category:
+    type: options_buttons
+    weight: 1
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+hidden:
+  created: true
+  status: true

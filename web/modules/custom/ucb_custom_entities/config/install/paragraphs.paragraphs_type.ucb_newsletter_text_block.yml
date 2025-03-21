@@ -1,0 +1,9 @@
+langcode: en
+status: true
+dependencies: {  }
+id: ucb_newsletter_text_block
+label: 'Newsletter Block'
+icon_uuid: null
+icon_default: null
+description: 'Content in columns at the bottom of a Newsletter. The blocks display in two columns so it is best to add an even number of blocks.'
+behavior_plugins: {  }

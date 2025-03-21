@@ -1,0 +1,10 @@
+name: UCB Bootstrap Layouts
+description: Custom layout builder functionality for our theme.
+type: module
+core_version_requirement: '^10 || ^11'
+package: CU Boulder
+
+dependencies:
+  - drupal:layout_builder
+  - drupal:media
+  - drupal:media_library

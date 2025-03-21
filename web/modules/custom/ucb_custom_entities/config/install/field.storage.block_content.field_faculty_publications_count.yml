@@ -1,0 +1,32 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - block_content
+    - options
+id: block_content.field_faculty_publications_count
+field_name: field_faculty_publications_count
+entity_type: block_content
+type: list_integer
+settings:
+  allowed_values:
+    -
+      value: 10
+      label: '10'
+    -
+      value: 25
+      label: '25'
+    -
+      value: 50
+      label: '50'
+    -
+      value: 100
+      label: '100'
+  allowed_values_function: ''
+module: options
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

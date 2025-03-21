@@ -1,0 +1,52 @@
+{#
+/**
+ * @file Contains the template to display the Social Media Icons block.
+ */
+#}
+{# layoutSelection gathers the orientation value from the orientation field, 
+    0 -> Horizontal
+    1 -> Vertical #}
+{% set layoutSelection = content.field_social_media_icon_or['#items'].value %}
+
+{# imageSizeListValue gathers the icon size value from the icon size field
+    0 -> Tiny
+    1 -> Small
+    2 -> Medium
+    3 -> Large #}
+{% set imageSizeListValue = content.field_social_media_link_size['#items'].value %}
+
+{# imageSize coverts the value from imageSizeListValue into a css class.
+    Base value is Tiny corresponding to 0 in the imageSizeListValue. #}
+{% set imageSize = 'imgTiny' %}
+{% if imageSizeListValue  == 'tiny' %}
+  {% set imageSize = 'imgTiny' %}
+{% elseif imageSizeListValue == 'small' %}
+  {% set imageSize = 'imgSmall' %}
+{% elseif imageSizeListValue == 'medium' %}
+  {% set imageSize = 'imgMedium' %}
+{% elseif imageSizeListValue == 'large' %}
+  {% set imageSize = 'imgLarge' %}
+{% endif %}
+
+{% set classes = [
+  'block',
+  'block-' ~ configuration.provider|clean_class,
+  'block-' ~ plugin_id|clean_class,
+  bundle ? 'block--type-' ~ bundle|clean_class,
+  view_mode ? 'block--view-mode-' ~ view_mode|clean_class
+] %}
+
+{% extends '@boulder_base/block/styled-block.html.twig' %}
+{% block content %}
+  {{ attach_library('boulder_base/ucb-social-media-icons-block') }}
+  <div{{ create_attribute({
+    class: [
+      'social-media-icons-block',
+      layoutSelection ~ '-orientation',
+      imageSize
+    ]
+  }) }}>
+    {{ content.field_social_media_links }}
+    {{ content.field_social_media_email_link }}
+  </div>
+{% endblock content %}

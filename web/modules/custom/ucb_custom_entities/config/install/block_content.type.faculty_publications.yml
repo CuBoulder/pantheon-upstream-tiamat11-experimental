@@ -1,0 +1,7 @@
+langcode: en
+status: true
+dependencies: {  }
+id: faculty_publications
+label: 'Faculty Publications'
+revision: 0
+description: 'Provides a list of publications authored or co-authored by faculty members. Publications are sourced from <a target="_blank" href="https://experts.colorado.edu/">CU Experts</a>.'

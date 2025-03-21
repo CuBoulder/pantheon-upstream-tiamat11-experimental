@@ -1,0 +1,19 @@
+services:
+  main_content_renderer.iframe:
+    class: Drupal\layout_builder_iframe_modal\Render\MainContent\IframeRenderer
+    autowire: true
+    tags:
+      - { name: render.main_content_renderer, format: drupal_iframe }
+  layout_builder_iframe_modal.helper:
+    class: Drupal\layout_builder_iframe_modal\IframeModalHelper
+    autowire: true
+  Drupal\layout_builder_iframe_modal\IframeModalHelper: '@layout_builder_iframe_modal.helper'
+  Drupal\layout_builder_iframe_modal\Hook\FormHooks:
+    class: Drupal\layout_builder_iframe_modal\Hook\FormHooks
+    autowire: true
+  Drupal\layout_builder_iframe_modal\Hook\LinkHooks:
+    class: Drupal\layout_builder_iframe_modal\Hook\LinkHooks
+    autowire: true
+  Drupal\layout_builder_iframe_modal\Hook\ThemeHooks:
+    class: Drupal\layout_builder_iframe_modal\Hook\ThemeHooks
+    autowire: true

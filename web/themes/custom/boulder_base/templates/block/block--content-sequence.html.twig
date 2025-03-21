@@ -1,0 +1,63 @@
+{#
+/**
+ * @file Contains the template to display the Content Sequence block.
+ */
+#}
+{% set classes = [
+  'container',
+  'block',
+  'block-' ~ configuration.provider|clean_class,
+  'block-' ~ plugin_id|clean_class,
+  bundle ? 'block--type-' ~ bundle|clean_class,
+  view_mode ? 'block--view-mode-' ~ view_mode|clean_class,
+  'ucb-content-sequence'
+] %}
+
+{% extends '@boulder_base/block/styled-block.html.twig' %}
+{% block content %}
+  {{ attach_library('boulder_base/ucb-content-sequence') }}
+  <div class="vertical-timeline-container-wrapper">
+    <ol class="vertical-timeline-container">
+      {% for key, item in content['#block_content'].field_content_sequence_items %}
+        <li class="vertical-timeline-card">
+          <div class="vertical-timeline-card-wrapper">
+            <div class="vertical-timeline-card-media">
+              {% set imageField = item.entity.field_sequence_item_media.entity.field_media_image %}{% set videoField = item.entity.field_sequence_item_media.entity.field_media_oembed_video %}
+              {% if imageField %}
+                {{ imageField|view }}
+              {% elseif videoField %}
+                {{ videoField|view }}
+                <span class="noImage"></span>
+              {% else %}
+                <span class="noImage"></span>
+              {% endif %}
+            </div>
+            <div class="vertical-timeline-card-header">
+              <h3 class="vertical-timeline-card-date">
+                {% if item.entity.field_sequence_item_d_start_date.value %}
+                  {{ item.entity.field_sequence_item_d_start_date.value }}
+                {% elseif item.entity.field_sequence_item_start_date.value %}
+                  {{ item.entity.field_sequence_item_start_date.value|date('m/d/Y') }}
+                {% else %}
+                  {% set stepNo = key + 1 %}
+                  STEP
+                  {{ stepNo }}
+                {% endif %}
+              </h3>
+              <h4 class="vertical-timeline-card-title">
+                {% if item.entity.field_sequence_item_url.uri %}
+                  {{ link(item.entity.field_sequence_item_title.value, item.entity.field_sequence_item_url.uri) }}
+                {% else %}
+                  {{ item.entity.field_sequence_item_title.value }}
+                {% endif %}
+              </h4>
+            </div>
+            <div class="vertical-timeline-card-body">
+              {{ item.entity.field_sequence_item_descr|view }}
+            </div>
+          </div>
+        </li>
+      {% endfor %}
+    </ol>
+  </div>
+{% endblock %}

@@ -1,0 +1,22 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.ucb_slate_form
+    - field.storage.block_content.field_bs_icon_color
+  module:
+    - options
+id: block_content.ucb_slate_form.field_bs_icon_color
+field_name: field_bs_icon_color
+entity_type: block_content
+bundle: ucb_slate_form
+label: 'Icon Color'
+description: 'Choose the icon color'
+required: true
+translatable: false
+default_value:
+  -
+    value: bs_icon_color_default
+default_value_callback: ''
+settings: {  }
+field_type: list_string

@@ -1,0 +1,32 @@
+{{ attach_library('boulder_base/ucb-issue') }}
+
+{% set classes = [
+  'node',
+  'node--type-' ~ node.bundle|clean_class,
+  'container',
+  'ucb-content-wrapper',
+  not node.isPublished() ? 'node--unpublished',
+  view_mode ? 'node--view-mode-' ~ view_mode|clean_class,
+] %}
+
+<div {{attributes.addClass(classes)}}>
+  <div class="row">
+    <header role="banner" class="ucb-article-banner">
+      <h1{{ title_attributes.addClass(is_front ? 'visually-hidden') }}>
+        {{ label }}
+      </h1>
+    </header>
+  </div>
+
+  <div class="row">
+    <div class="col-sm-4 issue-sidebar-banner">
+      {{ content.field_ucb_issue_cover_image|render }}
+      <div class="issue-content">
+          {{ content.body }}
+      </div>
+    </div>
+    <div class="col-sm-8">
+      {{ content.field_ucb_issue_section }}
+    </div>
+  </div>
+</div>

@@ -1,0 +1,10 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - paragraphs
+id: paragraph.email_html
+label: 'Email HTML'
+description: ''
+targetEntityType: paragraph
+cache: true

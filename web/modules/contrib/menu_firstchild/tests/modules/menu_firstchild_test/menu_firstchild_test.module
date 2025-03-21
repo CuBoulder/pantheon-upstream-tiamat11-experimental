@@ -1,0 +1,13 @@
+<?php
+
+/**
+ * @file
+ * Contains menu_firstchild_test.module.
+ */
+
+/**
+ * Implements hook_menu_firstchild_item_alter().
+ */
+function menu_firstchild_test_menu_firstchild_item_alter(array &$menu_item, $child) {
+  $menu_item['attributes']->addClass('custom-class-to-test-for');
+}

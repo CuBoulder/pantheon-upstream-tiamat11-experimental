@@ -1,0 +1,22 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.ucb_article_feature
+    - field.storage.block_content.field_bs_icon_size
+  module:
+    - options
+id: block_content.ucb_article_feature.field_bs_icon_size
+field_name: field_bs_icon_size
+entity_type: block_content
+bundle: ucb_article_feature
+label: 'Icon Size'
+description: 'Choose the icon size'
+required: true
+translatable: false
+default_value:
+  -
+    value: bs_icon_size_default
+default_value_callback: ''
+settings: {  }
+field_type: list_string

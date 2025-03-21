@@ -1,0 +1,50 @@
+<?php
+
+/**
+ * @file
+ * Contains functional hooks for ucb_ckeditor_plugins.
+ *
+ * Hooks in Drupal typically start with the name of the module, in this case
+ * `ucb_ckeditor_plugins`. Code other than hooks should be put in a PHP class
+ * in the src folder.
+ *
+ * @see https://www.drupal.org/docs/develop/creating-modules/understanding-hooks
+ */
+
+/**
+ * Adds plugin styles to all pages on the site.
+ *
+ * Implements hook_page_attachments().
+ */
+function ucb_ckeditor_plugins_page_attachments(array &$page) {
+  $page['#attached']['library'][] = 'ucb_ckeditor_plugins/ckeditor-plugin-styles';
+}
+
+/**
+ * Exposes the needed templates for the map plugin.
+ *
+ * Implements hook_theme().
+ */
+function ucb_ckeditor_plugins_theme() {
+  return [
+    'ucb_campus_map_embed' => [
+      'variables' => [
+        'attributes' => [],
+        'mapLocation' => '',
+      ],
+    ],
+    'ucb_google_map_embed' => [
+      'variables' => [
+        'attributes' => [],
+        'googleMyMapsParams' => '',
+        'mapLocation' => '',
+      ],
+    ],
+    'ucb_google_calendar_embed' => [
+      'variables' => [
+        'attributes' => [],
+        'queryString' => '',
+      ],
+    ],
+  ];
+}

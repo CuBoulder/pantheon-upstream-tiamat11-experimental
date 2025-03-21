@@ -1,0 +1,4 @@
+FontAwesome6:
+  version: 1.0
+  js:
+    js/FontAwesome/all.min.js: { preprocess: false, minified: true, attributes: { defer: true } }

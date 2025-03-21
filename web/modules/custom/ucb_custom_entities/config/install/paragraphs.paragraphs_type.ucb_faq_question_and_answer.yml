@@ -1,0 +1,9 @@
+langcode: en
+status: true
+dependencies: {  }
+id: ucb_faq_question_and_answer
+label: 'FAQ Question and Answer'
+icon_uuid: null
+icon_default: null
+description: 'Provides a Question and Answer paragraph for the FAQ Section paragraph'
+behavior_plugins: {  }

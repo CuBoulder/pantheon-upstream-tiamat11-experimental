@@ -1,0 +1,137 @@
+<?php
+
+/**
+ * @file
+ * Contains menu_firstchild.module.
+ */
+
+use Drupal\Core\Ajax\AjaxResponse;
+use Drupal\Core\Ajax\HtmlCommand;
+use Drupal\Core\Form\FormStateInterface;
+use Drupal\Core\Routing\RouteMatchInterface;
+use Drupal\menu_firstchild\MenuItemParser;
+
+/**
+ * Implements hook_help().
+ */
+function menu_firstchild_help($route_name, RouteMatchInterface $route_match) {
+  if ($route_name == 'help.page.menu_firstchild') {
+    $output = '<h3>' . t('About') . '</h3>';
+    $output .= '<p>' . t('Allows to create parent menu items without path that link to their first viewable children.') . '</p>';
+    return $output;
+  }
+}
+
+/**
+ * Implements hook_form_BASE_FORM_ID_alter().
+ */
+function menu_firstchild_form_menu_link_content_form_alter(array &$form, FormStateInterface $form_state) {
+  // Add validation handler.
+  $form['#validate'] = array_merge(['menu_firstchild_menu_link_content_form_validate'], $form['#validate']);
+
+  $link = $form_state->getFormObject()->getEntity();
+
+  $form_storage = $form_state->getStorage();
+  if ($link->isDefaultTranslationAffectedOnly()  && $form_storage['entity_default_langcode'] != $form_storage['langcode']) {
+    return;
+  }
+
+  $options = $link->link->first()->options;
+  if (empty($options['menu_firstchild'])) {
+    $options['menu_firstchild'] = ['enabled' => FALSE];
+  }
+
+  $form['link']['#prefix'] = '<div id="menu-firstchild-link-wrapper">';
+  $form['link']['#suffix'] = '</div>';
+  $form['link']['widget']['#disabled'] = !empty($options['menu_firstchild']['enabled']);
+
+  $form['menu_firstchild_enabled'] = [
+    '#type' => 'checkbox',
+    '#title' => t('First child'),
+    '#description' => t('When enabled, this menu item will redirect to the first child item.'),
+    '#default_value' => $options['menu_firstchild']['enabled'],
+    '#ajax' => [
+      'callback' => 'menu_firstchild_menu_link_content_form_ajax_callback',
+    ],
+    '#weight' => $form['link']['#weight'] + 1,
+  ];
+
+  $ajax = $form_state->getValue(['menu_firstchild_enabled']) !== NULL;
+  if ($ajax) {
+    if ($form_state->getValue(['menu_firstchild_enabled'])) {
+      $form['link']['widget'][0]['uri']['#value'] = 'route:<none>';
+      $form['link']['widget']['#disabled'] = TRUE;
+    }
+    else {
+      $form['link']['widget'][0]['uri']['#default_value'] = '';
+      $form['link']['widget']['#disabled'] = FALSE;
+    }
+  }
+}
+
+/**
+ * AJAX callback.
+ *
+ * @param array $form
+ *   Form array.
+ * @param \Drupal\Core\Form\FormStateInterface $form_state
+ *   Form state.
+ *
+ * @return \Drupal\Core\Ajax\AjaxResponse
+ *   AJAX callback response.
+ */
+function menu_firstchild_menu_link_content_form_ajax_callback(array &$form, FormStateInterface $form_state) {
+  $replace_link = new HtmlCommand('#menu-firstchild-link-wrapper', $form['link']);
+
+  $response = new AjaxResponse();
+  $response->addCommand($replace_link);
+  return $response;
+}
+
+/**
+ * Form Validate callback.
+ */
+function menu_firstchild_menu_link_content_form_validate($form, FormStateInterface $form_state) {
+  $og_link_obj = $form_state->getFormObject()->getEntity();
+  $form_storage = $form_state->getStorage();
+  if ($og_link_obj->isDefaultTranslationAffectedOnly()  && $form_storage['entity_default_langcode'] != $form_storage['langcode']) {
+    $og_options = $og_link_obj->link->first()->options;
+
+    $options_to_merge = [
+      'menu_firstchild' => [
+        'enabled' => $og_options['menu_firstchild']['enabled'],
+      ],
+    ];
+  }
+  else {
+    $options_to_merge = [
+      'menu_firstchild' => [
+        'enabled' => $form_state->getValue('menu_firstchild_enabled'),
+      ],
+    ];
+  }
+
+  // Build out link array.
+  $link = $form_state->getValue('link');
+  if (!isset($link[0]['options'])) {
+    $link[0]['options'] = [];
+  }
+  $link[0]['options'] = array_merge($link[0]['options'], $options_to_merge);
+  $form_state->setValue('link', $link);
+
+  $form_state->setTemporaryValue('entity_validated', TRUE);
+}
+
+/**
+ * Implements hook_preprocess_menu().
+ *
+ * Parses all menu items.
+ */
+function menu_firstchild_preprocess_menu(&$variables) {
+  $parser = new MenuItemParser();
+  foreach ($variables['items'] as &$item) {
+    if (isset($variables['menu_name'])) {
+      $item = $parser->parse($item, $variables['menu_name']);
+    }
+  }
+}

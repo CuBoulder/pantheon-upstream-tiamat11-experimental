@@ -1,0 +1,47 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - block_content
+    - options
+id: block_content.field_bs_icon_color
+field_name: field_bs_icon_color
+entity_type: block_content
+type: list_string
+settings:
+  allowed_values:
+    -
+      value: bs_icon_color_default
+      label: Default
+    -
+      value: bs_icon_color_gray
+      label: Gray
+    -
+      value: bs_icon_color_gold
+      label: Gold
+    -
+      value: bs_icon_color_blue
+      label: Blue
+    -
+      value: bs_icon_color_green
+      label: Green
+    -
+      value: bs_icon_color_orange
+      label: Orange
+    -
+      value: bs_icon_color_purple
+      label: Purple
+    -
+      value: bs_icon_color_red
+      label: Red
+    -
+      value: bs_icon_color_yellow
+      label: Yellow
+  allowed_values_function: ''
+module: options
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

@@ -1,0 +1,20 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.newsletter
+  module:
+    - node
+id: newsletter
+label: Newsletter
+weight: 10
+is_admin: null
+permissions:
+  - 'create newsletter content'
+  - 'delete any newsletter content'
+  - 'delete newsletter revisions'
+  - 'delete own newsletter content'
+  - 'edit any newsletter content'
+  - 'edit own newsletter content'
+  - 'revert newsletter revisions'
+  - 'view newsletter revisions'

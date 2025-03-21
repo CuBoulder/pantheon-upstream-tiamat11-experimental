@@ -1,0 +1,21 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+id: ucb_issue
+label: 'UCB Issue'
+type: 'canonical_entities:node'
+pattern: '/[node:menu-link:parent:url:path]/[node:title]'
+selection_criteria:
+  ead605b0-316c-43dd-9a1c-bb8ed798e71b:
+    id: 'entity_bundle:node'
+    negate: false
+    uuid: ead605b0-316c-43dd-9a1c-bb8ed798e71b
+    context_mapping:
+      node: node
+    bundles:
+      ucb_issue: ucb_issue
+selection_logic: and
+weight: -5
+relationships: {  }

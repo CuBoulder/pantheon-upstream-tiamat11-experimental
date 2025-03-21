@@ -1,0 +1,18 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.faculty_publications
+    - field.storage.block_content.field_faculty_publications_email
+id: block_content.faculty_publications.field_faculty_publications_email
+field_name: field_faculty_publications_email
+entity_type: block_content
+bundle: faculty_publications
+label: 'Faculty email'
+description: 'University of Colorado Boulder faculty email as it appears on <a target="_blank" href="https://experts.colorado.edu/people">CU Experts</a>.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: email

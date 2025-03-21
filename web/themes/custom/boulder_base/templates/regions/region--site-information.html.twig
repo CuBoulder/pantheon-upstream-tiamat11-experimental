@@ -1,0 +1,54 @@
+{#
+/**
+ * @file
+ * Contains the template to display the site information region of the footer.
+ *
+ * Available variables:
+ * - content: The content for this region, typically blocks.
+ * - attributes: HTML attributes for the region <div>.
+ * - region: The name of the region variable as defined in the theme's
+ *   .info.yml file.
+ *
+ * @see template_preprocess_region()
+ */
+#}
+
+{% if content %}
+  {% if ucb_be_boulder == '1' %}
+    <div class="be-boulder-container row gx-4 gy-4">
+      <div class="col-lg-8 col-md-8 col-sm-6 col-xs-12">
+        {{ content }}
+      </div>
+      <div class="col-log-4 col-md-4 col-sm-6 col-xs-12">
+        <div class="ucb-footer">
+          <p><a href="https://www.colorado.edu"><img alt="Be Boulder." class="ucb-footer-be-boulder" src="https://cdn.colorado.edu/static/brand-assets/live/images/be-boulder-white.svg" style="max-width:240px; height:auto;"></a></p>
+          <p><a class="ucb-home-link" href="https://www.colorado.edu">University of Colorado Boulder</a></p>
+          <p>&copy; Regents of the University of Colorado</p>
+          <p class="ucb-info-footer-links"><a href="https://www.colorado.edu/compliance/policies/privacy-statement">Privacy</a> &bull; <a href="https://www.colorado.edu/about/legal-trademarks">Legal &amp; Trademarks</a> &bull; <a href="https://www.colorado.edu/map">Campus Map</a></p>
+        </div>
+      </div>
+        <div class="ucb-footer-print">
+          <p><a class="ucb-home-link ucb-site-information-print-title" href="https://www.colorado.edu">University of Colorado Boulder</a></p>
+          <p class = "ucb-site-information-print">© Regents of the University of Colorado</p>
+        </div>
+    </div>
+  {% elseif ucb_be_boulder == '3' %}
+    <div class="be-boulder-container text-center">
+        <div class="ucb-footer" style="width: 100%;">
+          <p><a href="https://www.colorado.edu"><img alt="Be Boulder." class="ucb-footer-be-boulder" src="https://cdn.colorado.edu/static/brand-assets/live/images/be-boulder-white.svg" style="max-width:320px; height:auto;"></a></p>
+          {{ content }}
+          <p>&copy; Regents of the University of Colorado</p>
+          <p class="ucb-info-footer-links"><a href="https://www.colorado.edu/compliance/policies/privacy-statement">Privacy</a> &bull; <a href="https://www.colorado.edu/about/legal-trademarks">Legal &amp; Trademarks</a> &bull; <a href="https://www.colorado.edu/map">Campus Map</a></p>
+          <p class="ucb-info-footer-links mb-3"><a href="https://www.colorado.edu/accessibility" class="">Accessibility</a>&nbsp;•&nbsp;<a href="https://www.colorado.edu/your-right-know">Student Consumer Information</a>&nbsp;• <a href="https://www.colorado.edu/about/land-acknowledgment">Land Acknowledgement</a> •&nbsp;<a href="https://www.colorado.edu/policies">Policies</a>&nbsp;• <a href="https://www.colorado.edu/jobs">CU Boulder Jobs</a></p>
+          <p>Download the&nbsp;<strong><a href="https://www.colorado.edu/clery/annual-security-fire-safety-report-asfsr">Clery Act Annual Security &amp;&nbsp;Fire safety report</a></strong>,&nbsp;or&nbsp;<strong><a href="https://www.colorado.edu/police/data-dashboards">request a paper&nbsp;copy</a></strong>&nbsp;from&nbsp;the CU&nbsp;Boulder&nbsp;<strong><a href="https://www.colorado.edu/police/">Police Department</a></strong>. &nbsp;</p>
+        </div>
+      </div>
+        <div class="ucb-footer-print">
+          <p><a class="ucb-home-link ucb-site-information-print-title" href="https://www.colorado.edu">University of Colorado Boulder</a></p>
+          <p class = "ucb-site-information-print">© Regents of the University of Colorado</p>
+        </div>
+    </div>
+  {% else %}
+    {{ content }}
+  {% endif %}
+{% endif %}

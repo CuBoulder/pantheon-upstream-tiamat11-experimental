@@ -1,0 +1,16 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - focal_point
+name: slider_widescreen
+label: 'Slider Widescreen'
+effects:
+  381fe7f4-2db0-4f21-8979-8f2cd7c7ed9f:
+    uuid: 381fe7f4-2db0-4f21-8979-8f2cd7c7ed9f
+    id: focal_point_scale_and_crop
+    weight: 1
+    data:
+      width: 1600
+      height: 900
+      crop_type: focal_point

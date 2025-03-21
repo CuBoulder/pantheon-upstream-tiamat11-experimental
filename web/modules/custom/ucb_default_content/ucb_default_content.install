@@ -1,0 +1,39 @@
+<?php
+
+/**
+ * @file
+ * Contains functional hooks used by the CU Boulder Default Content module.
+ */
+
+use Drupal\node\Entity\Node;
+
+/**
+ * Runs when the CU Boulder Default Content module is installed.
+ *
+ * Implements hook_install().
+ */
+function ucb_default_content_install() {
+  $defaultContent = \Drupal::service('ucb_default_content');
+  $defaultContent->createHomepage();
+  $defaultContent->create404Page();
+}
+
+/**
+ * Updates the 404 page in the sandboxes.
+ *
+ * Introduced in version 1.3 to address ucb_default_content#6.
+ */
+function ucb_default_content_update_9502() {
+  $path = \Drupal::service('path_alias.manager')->getPathByAlias('/404');
+  if (preg_match('/node\/(\d+)/', $path, $matches)) {
+    $node = Node::load($matches[1]);
+    if ($node) {
+      $node->body->value = '<p>The page you are looking for appears to have been moved, deleted, or does not exist.</p>';
+      $node->body->format = 'wysiwyg';
+      $node->save();
+      return;
+    }
+  }
+  $defaultContent = \Drupal::service('ucb_default_content');
+  $defaultContent->create404Page();
+}

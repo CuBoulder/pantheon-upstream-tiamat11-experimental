@@ -1,0 +1,33 @@
+{#
+/**
+ * @file Contains the template to display the Text block.
+ */
+#}
+{% set classes = [
+  'container',
+  'block',
+  'block-' ~ configuration.provider|clean_class,
+  'block-' ~ plugin_id|clean_class,
+  bundle ? 'block--type-' ~ bundle|clean_class,
+  view_mode ? 'block--view-mode-' ~ view_mode|clean_class
+] %}
+
+{% set blockContent = content['#block_content'] %}
+
+{% set _rendered = blockContent|view|render %}
+{# Easiest way to ensure the cache is updated when the block or a referenced node is. Resolves #387. #}
+
+{# Alert Switch for Text Block Alert Block Style #}
+{% set isAlert = content.field_bs_text_block_alert|render|striptags|trim %}
+
+{% if isAlert == 'True' %}
+  {% set block_styles = block_styles|merge({ 'background_style': 'bs-background-alert' }) %}
+{% endif %}
+
+{% extends '@boulder_base/block/styled-block.html.twig' %}
+{% block content %}
+  {{ attach_library('boulder_base/ucb-text-block') }}
+  <div class="text-block-body block-content">
+    {{ content.field_text_block_body }}
+  </div>
+{% endblock %}

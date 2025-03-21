@@ -1,0 +1,24 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.video_hero_unit
+    - field.storage.block_content.field_hero_bottom_padding
+id: block_content.video_hero_unit.field_hero_bottom_padding
+field_name: field_hero_bottom_padding
+entity_type: block_content
+bundle: video_hero_unit
+label: "Bottom Padding\t"
+description: 'Set number of pixels to extend the bottom padding by. Used for adjusting video height.'
+required: false
+translatable: false
+default_value:
+  -
+    value: 100
+default_value_callback: ''
+settings:
+  min: 0
+  max: null
+  prefix: ''
+  suffix: ''
+field_type: integer

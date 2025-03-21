@@ -1,0 +1,31 @@
+{{ attach_library('boulder_base/ucb-class-notes') }}
+
+{% set classes = [
+    'node',
+    'ucb-class-notes',
+    'container',
+    'ucb-content-wrapper',
+  ] %}
+  
+ 
+<article{{ attributes.addClass(classes) }}>
+  <h1{{ title_attributes.addClass(is_front ? 'visually-hidden') }}>
+    {{ label }}
+  </h1>
+  {% if content %}
+    <div{{ content_attributes }}>
+      <div class="ucb-class-notes-body">
+        {{ content.body }}
+      </div>
+      
+      <div class="ucb-class-notes-image">
+        {{ content.field_ucb_class_note_image }}
+      </div>
+
+      <div class="ucb-class-notes-year-container">
+        {{ content.field_ucb_class_year }}
+      </div>
+    </div>
+  {% endif %}
+</article>
+  

@@ -1,0 +1,383 @@
+<?php
+
+/**
+ * @file
+ * Contains functions to support the CU Boulder Drupal 10 base theme.
+ */
+
+use Drupal\Core\Form\FormStateInterface;
+use Drupal\node\Entity\Node;
+use Drupal\node\NodeInterface;
+use Drupal\user\Entity\User;
+
+/**
+ * Implements hook_theme_suggestions_HOOK_alter().
+ */
+function boulder_base_theme_suggestions_page_alter(array &$suggestions, array $variables) {
+  if ($node = \Drupal::routeMatch()->getParameter('node')) {
+    $content_type = $node->bundle();
+    $suggestions[] = 'page__' . $content_type;
+  }
+}
+
+/**
+ * Implements hook_theme_suggestions_HOOK_alter().
+ */
+function boulder_base_theme_suggestions_block_alter(array &$suggestions, array $variables) {
+  if (isset($variables['elements']['content']['#block_content'])) {
+    $bundle = $variables['elements']['content']['#block_content']->bundle();
+    array_splice($suggestions, 1, 0, 'block__' . $bundle);
+  }
+}
+
+/**
+ * This a helper function to set the favicon appropriately.
+ */
+function boulder_base_page_attachments_alter(array &$page) {
+  foreach ($page['#attached']['html_head_link'] as $k => $v) {
+    if (array_key_exists('rel', $v[0]) && $v[0]['rel'] == 'icon') {
+      $page['#attached']['html_head_link'][$k][0]['href'] = base_path() . \Drupal::service('extension.list.theme')->getPath('boulder_base') . '/favicon.png';
+    }
+  }
+  // Exposes a relative theme path in drupalSettings.
+  $page['#attached']['drupalSettings']['themePath'] = \Drupal::theme()->getActiveTheme()->getPath();
+}
+
+/**
+ * Preprocess function to check if this page is set as front page, available to all nodes.
+ */
+function boulder_base_preprocess(&$variables, $hook) {
+  try {
+    $variables['is_front'] = \Drupal::service('path.matcher')->isFrontPage();
+  }
+  catch (Exception $e) {
+    $variables['is_front'] = FALSE;
+  }
+  // Ensure the cache varies correctly (new in Drupal 8.3).
+  $variables['#cache']['contexts'][] = 'url.path.is_front';
+}
+
+/**
+ * Preprocess function to get the variables we'll need on the html template.
+ */
+function boulder_base_preprocess_html(array &$variables) {
+  $variables['ucb_gtm_account'] = theme_get_setting('ucb_gtm_account');
+  $variables['theme_path'] = base_path() . $variables['directory'];
+  if (\Drupal::config('system.site')->get('name') != 'University of Colorado Boulder') {
+    // Adds "University of Colorado Boulder" to the title of the page if the
+    // site isn't already called that. Resolves tiamat-theme#1188.
+    $variables['head_title'][] = 'University of Colorado Boulder';
+  }
+}
+
+/**
+ * Attaches an `is_unpublished` attribute to menu links.
+ *
+ * Implements hook_preprocess_HOOK().
+ */
+function boulder_base_preprocess_menu(array &$variables) {
+  $menuName = $variables['menu_name'];
+  // Attaches only to menu links in the `main`, `secondary`, and `footer`
+  // menus.
+  if ($menuName == 'main' || $menuName == 'secondary' || $menuName == 'footer') {
+    foreach ($variables['items'] as $key => &$value) {
+      /** @var \Drupal\Core\Url */
+      $url = $value['url'];
+      // Ignores menu links to external URLs.
+      if ($url->isRouted()) {
+        $urlParams = $url->getRouteParameters();
+        // Ignores menu links to non-node routes.
+        if (isset($urlParams['node'])) {
+          $nid = $urlParams['node'];
+          $node = Node::load($nid);
+          $value['is_unpublished'] = !$node->isPublished();
+        }
+      }
+    }
+  }
+}
+
+/**
+ * Preprocess function to get the variables we'll need on the block template.
+ */
+function boulder_base_preprocess_block(array &$variables) {
+  $config = \Drupal::config('system.site');
+  $variables['site_name'] = $config->get('name');
+  // Provides some extra functionality for the Faculty Publications blocks.
+  if (isset($variables['elements']['content']['field_faculty_publications_email'])) {
+    $blockContent = $variables['elements']['content']['#block_content'];
+    $fieldP = $blockContent->field_faculty_publications_p;
+    $fieldJt = $blockContent->field_faculty_publications_jt;
+    if ($blockContent->field_faculty_publications_auto->value === '1') {
+      $node = \Drupal::routeMatch()->getParameter('node');
+      // Checks if the block is included on a person page.
+      if ($node instanceof NodeInterface && $node->getType() == 'ucb_person') {
+        // Gets the email of the person page and provides it to the block
+        // template.
+        $email = $node->field_ucb_person_email->value;
+        $variables['faculty_publications_auto_email'] = $email;
+      }
+      // Updates the block on each different page.
+      $variables['#cache']['contexts'][] = 'url.path';
+      // Updates the block whenever any person page is saved or deleted.
+      $variables['#cache']['tags'][] = 'node_list:ucb_person';
+    }
+    // Enables the job type filter if it's specified. Includes all people with
+    // that specific job type.
+    if (count($fieldJt) > 0) {
+      $query = \Drupal::entityQuery('node');
+      $group = $query->orConditionGroup();
+      $jobTypeIds = [];
+      for ($i = 0; $i < count($fieldJt); $i++) {
+        $jobTypeIds[] = $fieldJt[$i]->entity->id();
+      }
+      $group->condition('field_ucb_person_job_type', $jobTypeIds, 'IN');
+      $results = $query
+        ->condition($group)
+        ->accessCheck(TRUE)
+        ->execute();
+      $variables['faculty_publications_jt_people'] = array_filter(
+        array_values(Node::loadMultiple(array_values($results))),
+        function ($item) {
+          return $item->field_ucb_person_email !== NULL;
+        }
+      );
+      // Updates the block whenever any person page is saved or deleted.
+      $variables['#cache']['tags'][] = 'node_list:ucb_person';
+    }
+    elseif (count($fieldP) > 0) {
+      for ($i = 0; $i < count($fieldP); $i++) {
+        // Updates the block whenever one of the referenced person pages is
+        // saved or deleted.
+        $variables['#cache']['tags'][] = 'node:' . $fieldP[$i]->entity->id();
+      }
+    }
+  }
+}
+
+/**
+ * Preprocess function to get the variables we'll need on the page template.
+ */
+function boulder_base_preprocess_page(array &$variables) {
+  $config = \Drupal::config('system.site');
+  $variables['site_name'] = $config->get('name');
+  $variables['site_slogan'] = $config->get('slogan');
+  $variables['ucb_secondary_menu_position'] = theme_get_setting('ucb_secondary_menu_position');
+  $variables['ucb_footer_menu_default_links'] = theme_get_setting('ucb_footer_menu_default_links');
+  $variables['show_breadcrumb'] = theme_get_setting('ucb_breadcrumb_nav');
+  $variables['theme_path'] = base_path() . $variables['directory'];
+  $variables['ucb_homepage_header'] = theme_get_setting('ucb_homepage_header');
+  $variables['ucb_campus_header_color'] = theme_get_setting('ucb_campus_header_color');
+  $variables['ucb_header_color'] = $headerColor = theme_get_setting('ucb_header_color');
+  $variables['ucb_be_boulder'] = theme_get_setting('ucb_be_boulder');
+  $variables['ucb_sidebar_position'] = theme_get_setting('ucb_sidebar_position');
+  $variables['ucb_rave_alerts'] = theme_get_setting('ucb_rave_alerts');
+  $variables['ucb_sticky_menu'] = theme_get_setting('ucb_sticky_menu');
+  $variables['ucb_heading_font'] = theme_get_setting('ucb_heading_font');
+  $variables['ucb_above_content_region_color'] = theme_get_setting('ucb_above_content_region_color');
+  $variables['ucb_after_content_one_region_color'] = theme_get_setting('ucb_after_content_one_region_color');
+  $variables['ucb_after_content_two_region_color'] = theme_get_setting('ucb_after_content_two_region_color');
+  $useCustomLogo = theme_get_setting('ucb_use_custom_logo');
+  if ($useCustomLogo) {
+    $fileUrlGenerator = \Drupal::service('file_url_generator');
+    $logoDarkURL = $fileUrlGenerator->generateAbsoluteString(theme_get_setting('ucb_custom_logo_dark_path'));
+    $logoLightURL = $fileUrlGenerator->generateAbsoluteString(theme_get_setting('ucb_custom_logo_light_path'));
+    $variables['ucb_custom_logo'] = [
+      'dark_url' => $logoDarkURL,
+      'light_url' => $logoLightURL,
+      'url' => $headerColor == '1' || $headerColor == '2' ? $logoLightURL : $logoDarkURL,
+      'scale' => theme_get_setting('ucb_custom_logo_scale') ?? '2x',
+    ];
+  }
+}
+
+/**
+ * Preprocess function to get the variables we'll need on the page user template.
+ */
+function boulder_base_preprocess_page__user(array &$variables) {
+  $config = \Drupal::config('system.site');
+  $variables['site_name'] = $config->get('name');
+  $variables['site_slogan'] = $config->get('slogan');
+  $variables['ucb_secondary_menu_position'] = theme_get_setting('ucb_secondary_menu_position');
+  $variables['ucb_footer_menu_default_links'] = theme_get_setting('ucb_footer_menu_default_links');
+  $variables['theme_path'] = base_path() . $variables['directory'];
+  $variables['ucb_campus_header_color'] = theme_get_setting('ucb_campus_header_color');
+  $variables['ucb_header_color'] = theme_get_setting('ucb_header_color');
+  $variables['ucb_be_boulder'] = theme_get_setting('ucb_be_boulder');
+  $variables['web_express_version'] = theme_get_setting('web_express_version');
+}
+
+/**
+ * Preprocess function to get the variables we'll need on the page user login template.
+ */
+function boulder_base_preprocess_page__user__login(array &$variables) {
+  $config = \Drupal::config('system.site');
+  $variables['site_name'] = $config->get('name');
+  $variables['site_slogan'] = $config->get('slogan');
+  $variables['ucb_secondary_menu_position'] = theme_get_setting('ucb_secondary_menu_position');
+  $variables['ucb_footer_menu_default_links'] = theme_get_setting('ucb_footer_menu_default_links');
+  $variables['theme_path'] = base_path() . $variables['directory'];
+  $variables['ucb_campus_header_color'] = theme_get_setting('ucb_campus_header_color');
+  $variables['ucb_header_color'] = theme_get_setting('ucb_header_color');
+  $variables['ucb_be_boulder'] = theme_get_setting('ucb_be_boulder');
+}
+
+/**
+ * Exposes theme variables to the primary menu region.
+ */
+function boulder_base_preprocess_region__primary_menu(array &$variables) {
+  $variables['ucb_secondary_menu_position'] = theme_get_setting('ucb_secondary_menu_position');
+}
+
+/**
+ * Exposes theme variables to the secondary menu region.
+ */
+function boulder_base_preprocess_region__secondary_menu(array &$variables) {
+  $variables['ucb_secondary_menu_default_links'] = theme_get_setting('ucb_secondary_menu_default_links');
+  $variables['ucb_secondary_menu_position'] = theme_get_setting('ucb_secondary_menu_position');
+  $variables['ucb_secondary_menu_button_display'] = theme_get_setting('ucb_secondary_menu_button_display');
+}
+
+/**
+ * Preprocess function to show or hide the breadcrumb nav based on the selected setting.
+ */
+function boulder_base_preprocess_region__breadcrumb(array &$variables) {
+  $variables['show_breadcrumb'] = theme_get_setting('ucb_breadcrumb_nav');
+}
+
+/**
+ * Preprocess function to enable the current page title to show up in the breadcrumb nav.
+ */
+function boulder_base_preprocess_breadcrumb(array &$variables) {
+  $variables['current_page_title'] = \Drupal::service('title_resolver')->getTitle(\Drupal::request(), \Drupal::routeMatch()->getRouteObject());
+  $variables['#cache']['contexts'][] = 'url';
+  $node = \Drupal::routeMatch()->getParameter('node');
+  if ($node instanceof NodeInterface) {
+    $variables['#cache']['tags'][] = 'node:' . $node->id();
+  }
+}
+
+/**
+ * Preprocess function to enable the current site name to show up on Nodes -- newsletter
+ */
+function boulder_base_preprocess_node(array &$variables) {
+  if (!isset($variables['site_name'])) {
+    $config = \Drupal::config('system.site');
+    $variables['site_name'] = $config->get('name');
+  }
+}
+
+/**
+ * Preprocess function to get the variables we'll need on the header region template.
+ */
+function boulder_base_preprocess_region__header(array &$variables) {
+  $variables['theme_path'] = base_path() . $variables['directory'];
+  $variables['ucb_be_boulder'] = theme_get_setting('ucb_be_boulder');
+}
+
+/**
+ * Preprocess function to get the variables we'll need on the footer region template.
+ */
+function boulder_base_preprocess_region__site_information(array &$variables) {
+  $variables['theme_path'] = base_path() . $variables['directory'];
+  $variables['ucb_be_boulder'] = theme_get_setting('ucb_be_boulder');
+}
+
+/**
+ * Preprocess function to get the variables we'll need on the Organization node template.
+ */
+function boulder_base_preprocess_node__organization(array &$variables) {
+  $variables['uuid'] = $variables['node']->uuid();
+}
+
+/**
+ * Exposes a variable to indicate if a user can edit a node.
+ * Exposes a variable for positioning data of title background images.
+ */
+function boulder_base_preprocess_node__ucb_article(array &$variables) {
+  if ($node = \Drupal::routeMatch()->getParameter('node')) {
+    $user = User::load(\Drupal::currentUser()->id());
+    $userCanEdit = $node->access('update', $user);
+    $variables['user_can_edit'] = $userCanEdit;
+  }
+
+
+  $route_name = \Drupal::routeMatch()->getRouteName();
+  if ($route_name == 'entity.node.canonical') {
+    $node = \Drupal::routeMatch()->getParameter('node');
+  }
+  elseif ($route_name == 'entity.node.preview') {
+    $node = \Drupal::routeMatch()->getParameter('node_preview');
+  }
+  // Get the media image positioning
+  if ($node->hasField('field_article_title_background') && $node->get('field_article_title_background')->entity) {
+    $media_entity = $node->get('field_article_title_background')->entity;
+    $fid = $media_entity->getSource()->getSourceFieldValue($media_entity);
+    $file = \Drupal::entityTypeManager()->getStorage('file')->load($fid);
+
+  $crop = \Drupal::service('focal_point.manager')->getCropEntity($file, 'focal_point');
+  if ($crop) {
+    // Get the x and y position from the crop.
+    $fp_abs = $crop->position();
+    $x = $fp_abs['x'];
+    $y = $fp_abs['y'];
+
+    // Get the original width and height from the image.
+    $image_factory = \Drupal::service('image.factory');
+    $image = $image_factory->get($file->getFileUri());
+    $width = $image->getWidth();
+    $height = $image->getHeight();
+
+    // Convert the absolute x and y positions to relative values.
+    $fp_rel = \Drupal::service('focal_point.manager')->absoluteToRelative($x, $y, $width, $height);
+    $variables['position_vars'] =  $fp_rel['x'] . '% ' . $fp_rel['y'] . '%;';
+  }
+}
+}
+
+/**
+ * Custom theme settings worker function.
+ */
+function boulder_base_form_system_theme_settings_alter(&$form, FormStateInterface &$form_state, $form_id = NULL) {
+  // Work-around for a core bug affecting admin themes. See issue #943212.
+  if (isset($form_id)) {
+    return;
+  }
+
+  if (\Drupal::service('module_handler')->moduleExists('ucb_site_configuration')) {
+    // This call relies on the module dependency `ucb_site_configuration`.
+    // It uses the function `buildThemeSettingsForm` in the module to build the
+    // theme settings form.
+    \Drupal::service('ucb_site_configuration')->buildThemeSettingsForm($form, $form_state);
+  }
+  else {
+    \Drupal::service('messenger')->addError('Module `CU Boulder Site Configuration`, required to display the CU Boulder theme settings form, isn\'t installed.');
+  }
+}
+
+/**
+ * Implements hook_preprocess_views_view().
+ */
+function boulder_base_preprocess_views_view(&$variables) {
+  // Adjust header content for the taxonomy_term view.
+  // Needed because the Full HTML text filter doesn't escape special HTML entities like &amp
+  if ($variables['view']->id() === 'taxonomy_term') {
+    if (isset($variables['header']['area']['#text'])) {
+      // Decode HTML entities in the header text.
+      $variables['header']['area']['#text'] = html_entity_decode($variables['header']['area']['#text']);
+    }
+  }
+}
+
+
+
+
+
+
+
+/**
+ * This is for list styles during migration.
+ */
+function boulder_base_page_attachments(array &$attachments) {
+  $attachments['#attached']['library'][] = 'boulder_base/migrate_styles';
+}

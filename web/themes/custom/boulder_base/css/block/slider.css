@@ -1,0 +1,291 @@
+/*
+ * CSS for slider block
+ */
+
+.ucb-slider-block {
+  width: 100%;
+}
+
+/* Bootstrap Carousel overrides */
+.ucb-slider-block .carousel-control-next,
+.ucb-slider-block .carousel-control-prev {
+  width: 5%;
+  opacity: 1;
+}
+
+/* sizes */
+.ucb-slider-block img {
+  width: 100%;
+  object-fit: cover;
+}
+
+.ucb-slider-block.size-ultrawide img {
+  max-height: 600px;
+  max-width: 1600px;
+}
+
+.ucb-slider-block.size-widescreen img {
+  max-height: 900px;
+  max-width: 1600px;
+}
+
+.ucb-slider-block.size-threetwo img {
+  max-height: 1000px;
+  max-width: 1500px;
+}
+
+.ucb-slider-block.size-large img {
+  max-height: 70vh;
+}
+
+/* text position */
+.ucb-slider-block a.slide-link {
+  color: white;
+}
+
+.ucb-slider-block .carousel-caption {
+  padding: 1em;
+}
+
+.ucb-slider-block .carousel-inner .carousel-caption {
+  position: absolute;
+  font-size: 14px;
+}
+
+.ucb-slider-block.bottom-overlay .carousel-inner .carousel-caption {
+  top: auto;
+  background-color: rgba(0, 0, 0, 0.7);
+  right: 0;
+  left: 0;
+  text-align: left;
+}
+
+.ucb-slider-block.right-overlay .carousel-inner .carousel-caption {
+  top: 0;
+  right: 0;
+  left: 70%;
+  background-color: rgba(0, 0, 0, 0.7);
+  text-align: left;
+  padding: 1rem;
+}
+
+.ucb-slider-block.center-overlay .carousel-inner .carousel-caption {
+  top: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.ucb-slider-block.right-content .carousel-inner .carousel-caption {
+  right: 0;
+  left: 0;
+  text-align: left;
+  padding: 2rem 1rem;
+  position: relative;
+  max-width: 400px;
+  width: 100%;
+}
+
+.ucb-slider-block.right-content .slide-image-container {
+  padding-bottom: 0px;
+}
+
+.ucb-slider-block.right-content .carousel-inner {
+  display: flex;
+}
+
+.ucb-slider-block.right-content .carousel-item.active,
+.ucb-slider-block .carousel-item.carousel-item-next.carousel-item-start,
+.ucb-slider-block .carousel-item.carousel-item-next.carousel-item-end,
+.ucb-slider-block .carousel-item.carousel-item-prev.carousel-item-start,
+.ucb-slider-block .carousel-item.carousel-item-prev.carousel-item-end {
+  display: flex;
+  flex-direction: row;
+}
+
+.ucb-slider-block.content-right .carousel-caption {
+  position: relative;
+}
+
+.ucb-slider-block .slide-image-container {
+  flex-grow: 1;
+  padding-bottom: 20px;
+}
+
+.ucb-slider-block.bottom-content .carousel-inner .carousel-caption {
+  background-color: var(--ucb-darker);
+  right: 0;
+  left: 0;
+  text-align: left;
+  position: relative;
+}
+
+.ucb-slider-block.right-overlay .slide-text-container {
+  display: flex;
+  height: 100%;
+  width: 100%;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.ucb-slider-block.center-overlay .slide-text-container {
+  margin: auto;
+  justify-content: center;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  max-width: calc(100% - 100px);
+}
+
+.ucb-slider-block .slide-text-container .slide-text a:link,
+.ucb-slider-block .slide-text-container .slide-text a:visited {
+  color: var(--ucb-gold);
+}
+
+.ucb-slider-block .slide-text-container .slide-text a:hover,
+.ucb-slider-block .slide-text-container .slide-text a:active,
+.ucb-slider-block .slide-text-container .slide-text a:focus {
+  color: #FFF;
+}
+
+.ucb-slider-block .carousel-inner a:hover {
+  cursor: pointer;
+}
+
+.ucb-slider-block .carousel-control-prev-icon,
+.ucb-slider-block .carousel-control-next-icon {
+  border-radius: 100px;
+  width: 3rem;
+  height: 3rem;
+  background-size: 75% 75%;
+}
+
+.ucb-slider-block .carousel-control-next-icon {
+  background-position: 60%;
+}
+
+.ucb-slider-block .carousel-control-prev-icon {
+  background-position: 30%;
+}
+
+.ucb-slider-block .carousel-control-prev-icon:hover,
+.ucb-slider-block .carousel-control-next-icon:hover {
+  background-color: rgba(0, 0, 0, 0.6);
+}
+
+.ucb-slider-block a.slide-link i.fa,
+.ucb-slider-block a.slide-link i.fab {
+  color: #aaa;
+}
+
+/* media queries */
+@media screen and (max-width: 992px) {
+  .ucb-slider-block.right-content .carousel-inner .carousel-caption {
+    max-width: 100%;
+    width: 100%;
+    top: auto;
+    bottom: 0;
+    background-color: var(--ucb-darker);
+    right: 0;
+    left: 0;
+    text-align: left;
+    position: relative;
+  }
+
+  .ucb-slider-block.right-content .carousel-inner {
+    display: block;
+  }
+
+  .ucb-slider-block.right-content .carousel-item.active,
+  .ucb-slider-block .carousel-item.carousel-item-next.carousel-item-start,
+  .ucb-slider-block .carousel-item.carousel-item-next.carousel-item-end,
+  .ucb-slider-block .carousel-item.carousel-item-prev.carousel-item-start,
+  .ucb-slider-block .carousel-item.carousel-item-prev.carousel-item-end {
+    display: block;
+    flex-direction: row;
+  }
+
+  .ucb-slider-block .slide-image-container {
+    padding-bottom: 0px;
+  }
+
+  .ucb-slider-block .carousel-caption {
+    width: 100%;
+  }
+
+  .ucb-slider-block.right-overlay .carousel-caption {
+    height: 100%;
+    width: auto;
+    font-size: 75%;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .ucb-slider-block.bottom-overlay .carousel-inner .carousel-caption,
+  .ucb-slider-block.right-overlay .carousel-inner .carousel-caption,
+  .ucb-slider-block.center-overlay .carousel-inner .carousel-caption,
+  .ucb-slider-block.right-content .carousel-inner .carousel-caption,
+  .ucb-slider-block.bottom-content .carousel-inner .carousel-caption {
+    max-width: 100%;
+    top: auto;
+    bottom: 0;
+    background-color: var(--ucb-darker);
+    right: 0;
+    left: 0;
+    text-align: left;
+    position: relative;
+  }
+
+  .ucb-slider-block .carousel-inner .carousel-caption {
+    top: auto;
+    bottom: 0;
+    background-color: var(--ucb-darker);
+    right: 0;
+    left: 0;
+    text-align: left;
+  }
+
+  .ucb-slider-block .carousel-caption {
+    width: 100%;
+  }
+
+  .ucb-slider-block.right-overlay .carousel-caption {
+    height: 100%;
+    width: auto;
+  }
+}
+
+@media screen and (max-width:576px) {
+  .ucb-slider-block.right-content .carousel-item-structure {
+    display: flex;
+    flex-direction: column !important;
+  }
+}
+
+.ucb-slider-block.right-content .carousel-item-structure {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  background-color: var(--ucb-darker);
+}
+
+.ucb-slider-block.center-overlay .carousel-item-structure,
+.ucb-slider-block.right-overlay .carousel-item-structure,
+.ucb-slider-block.bottom-overlay .carousel-item-structure,
+.ucb-slider-block.bottom-content .carousel-item-structure {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.ucb-slider-block .slide-image-container img {
+  padding-bottom: 0px;
+}
+
+.ucb-edge-to-edge .ucb-slider-block .carousel-item img {
+  max-width: 100%;
+  width: 100%;
+  min-width: 100%;
+  height: auto;
+}

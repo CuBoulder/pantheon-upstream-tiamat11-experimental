@@ -1,0 +1,30 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.ucb_faq_question_and_answer.field_ucb_faq_answer
+    - field.field.paragraph.ucb_faq_question_and_answer.field_ucb_faq_question
+    - paragraphs.paragraphs_type.ucb_faq_question_and_answer
+  module:
+    - text
+id: paragraph.ucb_faq_question_and_answer.default
+targetEntityType: paragraph
+bundle: ucb_faq_question_and_answer
+mode: default
+content:
+  field_ucb_faq_answer:
+    type: text_default
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 1
+    region: content
+  field_ucb_faq_question:
+    type: string
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 0
+    region: content
+hidden: {  }

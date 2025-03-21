@@ -1,0 +1,204 @@
+<?php
+use Drupal\views\Entity\View;
+use Drupal\views\ViewEntityInterface;
+
+/**
+ * @file
+ * Contains update hooks used by the CU Boulder Site Configuration module.
+ */
+
+use Symfony\Component\Yaml\Yaml;
+
+/**
+ * Updates the configuration.
+ *
+ * @param string[] $configKeys
+ *   The configuration to update.
+ */
+function _ucb_site_configuration_update_config(array $configKeys) {
+  $modulePath = Drupal::getContainer()->get('extension.path.resolver')->getPath('module', 'ucb_site_configuration');
+  $configYaml = Yaml::parse(file_get_contents($modulePath . '/config/install/ucb_site_configuration.configuration.yml'));
+  $configEditable = \Drupal::configFactory()->getEditable('ucb_site_configuration.configuration');
+  foreach ($configKeys as $configKey) {
+    $configEditable->set($configKey, $configYaml[$configKey]);
+  }
+  $configEditable->save();
+}
+
+/**
+ * Updates the settings.
+ *
+ * Important: This will override any user-defined settings. Recommended only
+ * for adding previously non-existent settings.
+ *
+ * @param string[] $settingKeys
+ *   The settings to update.
+ */
+function _ucb_site_configuration_update_settings(array $settingKeys) {
+  $modulePath = Drupal::getContainer()->get('extension.path.resolver')->getPath('module', 'ucb_site_configuration');
+  $settingsYaml = Yaml::parse(file_get_contents($modulePath . '/config/install/ucb_site_configuration.settings.yml'));
+  $settingsEditable = \Drupal::configFactory()->getEditable('ucb_site_configuration.settings');
+  foreach ($settingKeys as $settingKey) {
+    $settingsEditable->set($settingKey, $settingsYaml[$settingKey]);
+  }
+  $settingsEditable->save();
+}
+
+/**
+ * Adds configuration and settings for the site type and affiliation.
+ *
+ * Introduced in version 2.1 to address tiamat-theme#210, tiamat-theme#211.
+ */
+function ucb_site_configuration_update_9502() {
+  _ucb_site_configuration_update_config([
+    'site_type_options',
+    'site_affiliation_options',
+  ]);
+  _ucb_site_configuration_update_settings([
+    'site_type',
+    'site_affiliation',
+    'site_affiliation_label',
+    'site_affiliation_url',
+  ]);
+}
+
+/**
+ * Removes "Be Boulder slogan" from Appearance settings.
+ *
+ * Introduced in version 2.1.1 to address tiamat-theme#230.
+ */
+function ucb_site_configuration_update_9503() {
+  $config = \Drupal::configFactory()->getEditable('ucb_site_configuration.configuration');
+  $editableThemeSettings = $config->get('editable_theme_settings');
+  $index = array_search('ucb_be_boulder', $editableThemeSettings);
+  if ($index !== FALSE) {
+    array_splice($editableThemeSettings, $index, 1);
+    $config->set('editable_theme_settings', $editableThemeSettings)->save();
+  }
+}
+
+/**
+ * Admin Helpscout Beacon moved to ucb_admin_menus.
+ *
+ * Introduced in version 2.2 to address ucb_admin_menus#2.
+ */
+function ucb_site_configuration_update_9504() {
+  \Drupal::configFactory()->getEditable('ucb_site_configuration.configuration')->clear('admin_helpscout_beacon_id')->save();
+}
+
+/**
+ * Modifies contact info settings.
+ *
+ * Introduced in version 2.3 to address tiamat-theme#269.
+ */
+function ucb_site_configuration_update_9505() {
+  \Drupal::configFactory()->getEditable('ucb_site_configuration.contact_info')
+    ->clear('address_visible')
+    ->clear('address')
+    ->set('general_visible', FALSE)
+    ->set('general', [
+      [
+        'visible' => FALSE,
+        'label' => '',
+        'value' => ['value' => '', 'format' => 'wysiwyg'],
+      ],
+    ])
+    ->save();
+}
+
+/**
+ * Adds configuration and settings for the site search.
+ *
+ * Introduced in version 2.5 to address tiamat-theme#266.
+ */
+function ucb_site_configuration_update_9506() {
+  _ucb_site_configuration_update_config([
+    'site_search_options',
+  ]);
+  _ucb_site_configuration_update_settings([
+    'site_search_enabled',
+    'site_search_label',
+    'site_search_placeholder',
+    'site_search_url',
+  ]);
+}
+
+/**
+ * Adds the Service Cloud third-party service.
+ *
+ * Introduced in version 2.8 to address issue #46.
+ */
+function ucb_site_configuration_update_9507() {
+  _ucb_site_configuration_update_config([
+    'external_services',
+  ]);
+}
+
+/**
+ * Updates a site affiliation.
+ *
+ * Renames Infrastructure and Sustainability to Infrastructure and Resilience.
+ *
+ * Introduced in version 2.9 to address issue #65.
+ */
+function ucb_site_configuration_update_9508() {
+  _ucb_site_configuration_update_config([
+    'site_affiliation_options',
+  ]);
+}
+
+/**
+ * Updates a site affiliation.
+ *
+ * Renames Office of Integrity, Safety and Compliance to Office of Compliance,
+ * Ethics and Policy, and adds a URL to this affiliation.
+ *
+ * Introduced in version 2.10 to address issue #74.
+ */
+function ucb_site_configuration_update_9509() {
+  _ucb_site_configuration_update_config([
+    'site_affiliation_options',
+  ]);
+}
+
+/**
+ * Updates the 'newsletter_by_type' view from the profile to change its path and disable it to fix the one taxonomy view to rule them all
+ */
+function ucb_site_configuration_update_9510() {
+  $view_id = 'newsletter_by_type';
+
+  // Load the view
+  $view = View::load($view_id);
+  if ($view instanceof ViewEntityInterface) {
+    // Modify the path to prevent conflict, needs path to be changed
+    $new_path = '/temporary-disabled/newsletter-type';
+
+    foreach ($view->get('display') as &$display) {
+      if (isset($display['display_options']['path'])) {
+        $display['display_options']['path'] = $new_path;
+      }
+    }
+
+    // Save the modified view
+    $view->save();
+
+    // Then disable the view
+    $view->disable();
+    $view->save();
+
+    \Drupal::logger('ucb_site_configuration')->notice("Updated and disabled the '$view_id' view to resolve path conflict.");
+  }
+  else {
+    \Drupal::logger('ucb_site_configuration')->warning("View '$view_id' not found.");
+  }
+}
+
+/**
+ * Updates the Third-party services to add the Goodkind AI chatbot option. 
+ */
+
+function ucb_site_configuration_update_9511() {
+  _ucb_site_configuration_update_config([
+    'external_services',
+  ]);
+}

@@ -1,0 +1,22 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_newsletter_content_url
+    - paragraphs.paragraphs_type.newsletter_section_content
+  module:
+    - link
+id: paragraph.newsletter_section_content.field_newsletter_content_url
+field_name: field_newsletter_content_url
+entity_type: paragraph
+bundle: newsletter_section_content
+label: URL
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  title: 0
+  link_type: 17
+field_type: link

@@ -1,0 +1,72 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.collection_grid
+    - field.storage.block_content.field_collection_category_select
+    - paragraphs.paragraphs_type.collection_grid_filter
+  module:
+    - entity_reference_revisions
+id: block_content.collection_grid.field_collection_category_select
+field_name: field_collection_category_select
+entity_type: block_content
+bundle: collection_grid
+label: 'Collection Category Selection'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    target_bundles:
+      collection_grid_filter: collection_grid_filter
+    negate: 0
+    target_bundles_drag_drop:
+      article_content:
+        weight: 17
+        enabled: false
+      blockquote:
+        weight: 18
+        enabled: false
+      collection_grid_filter:
+        weight: 19
+        enabled: true
+      content_sequence_item:
+        weight: 20
+        enabled: false
+      expandable_content_text:
+        weight: 21
+        enabled: false
+      grid_layout_content:
+        weight: 22
+        enabled: false
+      media:
+        weight: 24
+        enabled: false
+      newsletter_section:
+        weight: 25
+        enabled: false
+      newsletter_section_article:
+        weight: 26
+        enabled: false
+      newsletter_section_content:
+        weight: 27
+        enabled: false
+      row_layout_content:
+        weight: 28
+        enabled: false
+      slider_image:
+        weight: 29
+        enabled: false
+      ucb_article_hero:
+        weight: 30
+        enabled: false
+      ucb_issue_section:
+        weight: 31
+        enabled: false
+      ucb_related_articles_block:
+        weight: 32
+        enabled: false
+field_type: entity_reference_revisions

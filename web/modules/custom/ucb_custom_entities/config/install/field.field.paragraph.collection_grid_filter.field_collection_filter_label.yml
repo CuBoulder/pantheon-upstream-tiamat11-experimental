@@ -1,0 +1,18 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_collection_filter_label
+    - paragraphs.paragraphs_type.collection_grid_filter
+id: paragraph.collection_grid_filter.field_collection_filter_label
+field_name: field_collection_filter_label
+entity_type: paragraph
+bundle: collection_grid_filter
+label: Label
+description: 'Title for the set of filters'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

@@ -1,0 +1,14 @@
+langcode: en
+status: true
+dependencies: {  }
+name: colorbox_small
+label: 'Colorbox Small'
+effects:
+  69caf9d2-c3f8-4107-8826-4254793e6090:
+    uuid: 69caf9d2-c3f8-4107-8826-4254793e6090
+    id: image_scale
+    weight: 1
+    data:
+      width: 300
+      height: null
+      upscale: false

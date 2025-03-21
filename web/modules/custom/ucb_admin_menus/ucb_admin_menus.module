@@ -1,0 +1,117 @@
+<?php
+
+/**
+ * @file
+ * Contains functional hooks used by the CU Boulder Admin Menus module.
+ */
+
+use Drupal\Core\Form\FormStateInterface;
+use Drupal\node\NodeInterface;
+
+/**
+ * Adds the Helpscout Beacon widget into the admin toolbar.
+ *
+ * Implements hook_page_attachments_alter().
+ */
+function ucb_admin_menus_page_attachments_alter(array &$page) {
+  $user = \Drupal::currentUser();
+  if ($user->hasPermission('access toolbar')) {
+    $configuration = \Drupal::config('ucb_admin_menus.configuration');
+    $roles = implode(', ', $user->getRoles());
+    $site_name = \Drupal::config('system.site')->get('name');
+    $site_name = str_replace(' ', '-', $site_name);
+    $site_name = preg_replace('/[^A-Za-z0-9\-]/', '', $site_name);
+    $page['#attached']['library'][] = 'ucb_admin_menus/admin_helpscout_beacon';
+    $page['#attached']['drupalSettings']['admin_helpscout_beacon'] = [
+      'id' => $configuration->get('admin_helpscout_beacon_id'),
+      'prefill' => [
+        'name' => $user->getDisplayName(),
+        'email' => $user->getEmail(),
+        'user_email' => $user->getEmail(),
+        'roles' => $roles,
+        'site_name' => $site_name,
+        'site_url' => (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] ? 'https://' : 'http://') . $_SERVER['HTTP_HOST'] . \Drupal::request()->getRequestUri(),
+      ],
+    ];
+    $page['#attached']['library'][] = 'ucb_admin_menus/admin_toolbar_enhancer';
+  }
+}
+
+/**
+ * Modifies the help text under link URI fields.
+ *
+ * Introduced to address [CuBoulder/tiamat-theme#406](https://github.com/CuBoulder/tiamat-theme/issues/406).
+ *
+ * Implements hook_field_widget_single_element_form_alter().
+ */
+function ucb_admin_menus_field_widget_single_element_form_alter(array &$element, FormStateInterface $form_state, array $context) {
+  $field_definition = $context['items']->getFieldDefinition();
+  if ($field_definition->getType() == 'link') {
+    $element['uri']['#description'] = t(
+      'Start typing the title of a piece of content to select it. You can also enter an internal path such as %intpath or an external URL such as %exturl. Enter %frontpath to link to the front page.',
+      [
+        '%intpath' => '/about',
+        '%exturl' => 'https://www.colorado.edu',
+        '%frontpath' => '<front>',
+      ]
+    );
+  }
+}
+
+/**
+ * Removes extra "HTML and style options" from menu blocks.
+ *
+ * Introduced in version 1.1.3 to address [CuBoulder/tiamat-theme#267](https://github.com/CuBoulder/tiamat-theme/issues/267).
+ *
+ * Implements hook_form_alter().
+ */
+function ucb_admin_menus_form_alter(&$form, FormStateInterface $form_state, $form_id) {
+  if ($form_id == 'block_form' && isset($form['settings']['provider']['#value']) && $form['settings']['provider']['#value'] == 'menu_block' && isset($form['settings']['style'])) {
+    $form['settings']['style']['#access'] = FALSE;
+  }
+}
+
+/**
+ * Implements hook_form_FORM_ID_alter().
+ *
+ * Removes the 'Clear Related Data' button from the main menu navigation
+ * settings page.
+ */
+function ucb_admin_menus_form_menu_edit_form_alter(array &$form, FormStateInterface $form_state) {
+  unset($form['actions']['clear']);
+}
+
+/**
+ * Implements hook_node_predelete().
+ *
+ * Prevents the node set as the omepage from being deleted
+ */
+function ucb_admin_menus_node_predelete(NodeInterface $node) {
+  // Get the front page path
+  $front_page_path = \Drupal::config('system.site')->get('page.front');
+
+  // Check if this node is the front page
+  if ($front_page_path === '/node/' . $node->id()) {
+    // Get the current user
+    $current_user = \Drupal::currentUser();
+    $uid = $current_user->id();
+    $username = $current_user->getDisplayName();
+
+    // Log the attempted deletion, log which user attempted this
+    \Drupal::logger('ucb_admin_menus')->error(
+      'User @username (UID: @uid) attempted to delete the front-page node (ID: @nid).',
+      [
+        '@username' => $username,
+        '@uid' => $uid,
+        '@nid' => $node->id(),
+      ]
+    );
+
+    \Drupal::messenger()->addError(t('You cannot delete the front-page node.'));
+
+    \Drupal::service('router.builder')->rebuild();
+    $response = new \Symfony\Component\HttpFoundation\RedirectResponse('/admin/content');
+    $response->send();
+    exit;
+  }
+}

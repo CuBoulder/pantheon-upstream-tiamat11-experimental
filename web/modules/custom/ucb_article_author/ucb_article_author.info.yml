@@ -1,0 +1,12 @@
+name: UCB Article Author
+description: 'Programatically generates a Author taxonomy from People Pages'
+type: module
+core_version_requirement: '^10 || ^11'
+dependencies:
+  - file
+  - field
+  - image
+  - system
+
+version: '1.0.0'
+package: 'UCB Article Author'

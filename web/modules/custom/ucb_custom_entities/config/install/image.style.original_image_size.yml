@@ -1,0 +1,6 @@
+langcode: en
+status: true
+dependencies: {  }
+name: original_image_size
+label: 'Original Image Size'
+effects: {  }

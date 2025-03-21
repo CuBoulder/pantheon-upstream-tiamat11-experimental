@@ -1,0 +1,9 @@
+services:
+  ucb_linkmod_service:
+    class: Drupal\ucb_linkmod\Service
+
+  ucb_linkmod.middleware:
+    class: Drupal\ucb_linkmod\UcbLinkmodMiddleware
+    arguments: ['@config.factory']
+    tags:
+      - { name: http_middleware, priority: 10 }

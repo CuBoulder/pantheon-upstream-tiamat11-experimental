@@ -1,0 +1,28 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.faculty_publications
+    - field.storage.block_content.field_faculty_publications_jt
+    - taxonomy.vocabulary.ucb_person_job_type
+id: block_content.faculty_publications.field_faculty_publications_jt
+field_name: field_faculty_publications_jt
+entity_type: block_content
+bundle: faculty_publications
+label: 'Job type'
+description: 'Choose one or more job types to include. All people with the corresponding job type will be included.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      ucb_person_job_type: ucb_person_job_type
+    sort:
+      field: name
+      direction: asc
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

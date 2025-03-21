@@ -1,0 +1,35 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - block_content
+    - options
+id: block_content.field_bs_heading_style
+field_name: field_bs_heading_style
+entity_type: block_content
+type: list_string
+settings:
+  allowed_values:
+    -
+      value: bs_heading_style_default
+      label: Default
+    -
+      value: bs_heading_style_default_hero
+      label: Hero
+    -
+      value: bs_heading_style_default_hero_bold
+      label: 'Hero Bold'
+    -
+      value: bs_heading_style_default_supersize
+      label: Supersize
+    -
+      value: bs_heading_style_default_supersize_bold
+      label: 'Supersize Bold'
+  allowed_values_function: ''
+module: options
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

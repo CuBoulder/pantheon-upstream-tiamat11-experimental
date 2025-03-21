@@ -1,0 +1,25 @@
+{#
+/**
+ * @file Contains the template to display the Events Calender block.
+ */
+#}
+{% set classes = [
+'container',
+  'block',
+  'block-' ~ configuration.provider|clean_class,
+  'block-' ~ plugin_id|clean_class,
+  bundle ? 'block--type-' ~ bundle|clean_class,
+  view_mode ? 'block--view-mode-' ~ view_mode|clean_class
+] %}
+
+{% extends '@boulder_base/block/styled-block.html.twig' %}
+{% block content %}
+  {{ attach_library('boulder_base/ucb-events-calendar') }}
+  {{ content.field_calendar_code }}
+  {# Events Link #}
+  <events-calendar-block class="ucb-calendar-block-link-container">
+    {% for item in content['#block_content'].field_additional_events_link.value %}
+      {{ link(item.title, item.uri, {'class': ['ucb-calendar-button']} ) }}
+    {% endfor %}
+  </events-calendar-block>
+{% endblock %}

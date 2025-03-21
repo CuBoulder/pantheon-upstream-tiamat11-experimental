@@ -1,0 +1,16 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - focal_point
+name: colorbox_square
+label: 'Colorbox Square'
+effects:
+  2667a07e-b710-4944-9396-353547578864:
+    uuid: 2667a07e-b710-4944-9396-353547578864
+    id: focal_point_scale_and_crop
+    weight: 2
+    data:
+      width: 180
+      height: 180
+      crop_type: focal_point

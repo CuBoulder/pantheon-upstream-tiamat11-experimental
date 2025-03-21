@@ -1,0 +1,16 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - focal_point
+name: colorbox_small_square
+label: 'Colorbox Small - Square'
+effects:
+  0be50b7f-3777-4e84-a684-dfcea22eba50:
+    uuid: 0be50b7f-3777-4e84-a684-dfcea22eba50
+    id: focal_point_scale_and_crop
+    weight: 2
+    data:
+      width: 70
+      height: 70
+      crop_type: focal_point

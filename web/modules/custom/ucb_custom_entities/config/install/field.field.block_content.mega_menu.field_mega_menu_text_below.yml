@@ -1,0 +1,23 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.mega_menu
+    - field.storage.block_content.field_mega_menu_text_below
+    - filter.format.wysiwyg
+  module:
+    - text
+id: block_content.mega_menu.field_mega_menu_text_below
+field_name: field_mega_menu_text_below
+entity_type: block_content
+bundle: mega_menu
+label: 'Text Below'
+description: 'Text to be displayed below the menu items'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  allowed_formats:
+    - wysiwyg
+field_type: text_long

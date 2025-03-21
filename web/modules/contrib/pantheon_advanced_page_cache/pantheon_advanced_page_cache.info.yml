@@ -1,0 +1,10 @@
+name: Pantheon Advanced Page Cache
+description: 'Advanced page cache capabilities for Pantheon.'
+package: Performance and scalability
+type: module
+core_version_requirement: ^9.4 || ^10 || ^11
+
+# Information added by Drupal.org packaging script on 2025-03-01
+version: '2.3.2'
+project: 'pantheon_advanced_page_cache'
+datestamp: 1740801037

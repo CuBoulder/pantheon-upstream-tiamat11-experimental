@@ -1,0 +1,9 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - media
+id: media.small_square_image_style
+label: 'Small Square'
+targetEntityType: media
+cache: true

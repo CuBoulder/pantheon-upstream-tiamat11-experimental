@@ -1,0 +1,13 @@
+services:
+  ucb_site_configuration:
+    class: 'Drupal\ucb_site_configuration\SiteConfiguration'
+    arguments: # The list of arguments will match the constructor of the class exactly
+      - '@current_user'
+      - '@module_handler'
+      - '@config.factory'
+      - '@string_translation'
+      - '@entity_type.manager'
+      - '@entity_type.repository'
+      - '@router.request_context'
+      - '@current_route_match'
+      - '@messenger'

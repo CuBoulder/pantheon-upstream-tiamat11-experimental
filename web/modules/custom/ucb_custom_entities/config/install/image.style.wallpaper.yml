@@ -1,0 +1,14 @@
+langcode: en
+status: true
+dependencies: {  }
+name: wallpaper
+label: Wallpaper
+effects:
+  c11ab279-f9a2-41e9-96ba-53636cce6db8:
+    uuid: c11ab279-f9a2-41e9-96ba-53636cce6db8
+    id: image_scale
+    weight: 1
+    data:
+      width: 2500
+      height: 2500
+      upscale: true

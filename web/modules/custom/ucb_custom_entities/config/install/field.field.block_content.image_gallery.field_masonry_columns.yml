@@ -1,0 +1,22 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.image_gallery
+    - field.storage.block_content.field_masonry_columns
+  module:
+    - options
+id: block_content.image_gallery.field_masonry_columns
+field_name: field_masonry_columns
+entity_type: block_content
+bundle: image_gallery
+label: 'Masonry Columns'
+description: 'The amount of columns at full screen view of the image gallery when in the masonry style.'
+required: true
+translatable: false
+default_value:
+  -
+    value: 2
+default_value_callback: ''
+settings: {  }
+field_type: list_integer

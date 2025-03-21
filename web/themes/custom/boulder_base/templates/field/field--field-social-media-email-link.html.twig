@@ -1,0 +1,17 @@
+{#
+/**
+ * @file Contains the template to display the Social Media Email Link field of a Social Media Icons block.
+ */
+#}
+
+{% import '@boulder_base/navigation/menu--social-media-menu.html.twig' as socialMediaMenu %}
+
+{% if items %}
+  <ul>
+    {% for item in items %}
+      <li>
+        {{ socialMediaMenu.link('Email', 'Email', 'mailto:' ~ item.content|render, 'fa-solid fa-envelope', 'email') }}
+      </li>
+    {% endfor %}
+  </ul>
+{% endif %}

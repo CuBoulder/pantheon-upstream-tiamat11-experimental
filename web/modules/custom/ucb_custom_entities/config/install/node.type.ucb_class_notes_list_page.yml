@@ -1,0 +1,33 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - menu_ui
+    - scheduler
+third_party_settings:
+  menu_ui:
+    available_menus:
+      - footer
+      - main
+      - secondary
+    parent: 'main:'
+  scheduler:
+    expand_fieldset: when_required
+    fields_display_mode: vertical_tab
+    publish_enable: false
+    publish_past_date: error
+    publish_past_date_created: false
+    publish_required: false
+    publish_revision: false
+    publish_touch: false
+    show_message_after_update: true
+    unpublish_enable: false
+    unpublish_required: false
+    unpublish_revision: false
+name: 'Class Notes List Page'
+type: ucb_class_notes_list_page
+description: 'A Class Note List Page lists your Class Notes. The Class Note List Page has built in filters to allow visitors to filter by year or sort by class year or date posted.'
+help: ''
+new_revision: true
+preview_mode: 1
+display_submitted: true

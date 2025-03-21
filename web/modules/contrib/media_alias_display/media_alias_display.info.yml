@@ -1,0 +1,13 @@
+name: Media Alias Display
+type: module
+description: Allows files to be displayed via media alias
+core_version_requirement: ^10.3 || ^11
+package: Media
+configure: media_alias_display.settings_form
+dependencies:
+  - drupal:media_library
+
+# Information added by Drupal.org packaging script on 2024-11-13
+version: '2.1.0'
+project: 'media_alias_display'
+datestamp: 1731509830

@@ -1,0 +1,4 @@
+bundle: cu_boulder_content_types
+excluded:
+  - media.type.image
+required: true

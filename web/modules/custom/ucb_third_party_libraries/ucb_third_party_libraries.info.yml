@@ -1,0 +1,7 @@
+name: UCB Libraries
+description: Module for attaching sitewide libraries to Drupal
+type: module
+core_version_requirement: '^9.5 || ^10 || ^11'
+package: CU Boulder
+libraries:
+  - ucb_third_party_libraries/FontAwesome6

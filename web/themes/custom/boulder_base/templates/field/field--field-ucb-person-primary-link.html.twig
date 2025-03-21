@@ -1,0 +1,13 @@
+{#
+/**
+ * @file Contains the template to display the Primary Link field of a Person node.
+ */
+#}
+
+{% import '@boulder_base/navigation/menu--social-media-menu.html.twig' as socialMediaMenu %}
+
+{% if items %}
+  <ul class="ucb-person-primary-link">
+    {{ socialMediaMenu.links(items, true) }}
+  </ul>
+{% endif %}

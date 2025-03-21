@@ -1,0 +1,67 @@
+block_styles:
+  background_style:
+    bs_background_style_none: 'bs-background-unstyled bs-background-none'
+    bs_background_style_white: 'bs-background-styled bs-background-white'
+    bs_background_style_gray: 'bs-background-styled bs-background-gray'
+    bs_background_style_dark_gray: 'bs-background-styled bs-background-dark-gray'
+    bs_background_style_tan: 'bs-background-styled bs-background-tan'
+    bs_background_style_light_blue: 'bs-background-styled bs-background-light-blue'
+    bs_background_style_medium_blue: 'bs-background-styled bs-background-medium-blue'
+    bs_background_style_dark_blue: 'bs-background-styled bs-background-dark-blue'
+    bs_background_style_light_green: 'bs-background-styled bs-background-light-green'
+    bs_background_style_brick: 'bs-background-styled bs-background-brick'
+    bs_background_style_outline: 'bs-background-styled bs-background-outline'
+    bs_background_style_underline: 'bs-background-styled bs-background-underline'
+  title_font_scale:
+    bs_title_font_scale_default: bs-title-scale-default
+    bs_title_font_scale_increase: bs-title-scale-increase
+    bs_title_font_scale_decrease: bs-title-scale-decrease
+  content_font_scale:
+    bs_content_font_scale_default: bs-content-scale-default
+    bs_content_font_scale_increase: bs-content-scale-increase
+    bs_content_font_scale_decrease: bs-content-scale-decrease
+  icon: {  }
+  icon_color:
+    bs_icon_color_default: bs-icon-color-default
+    bs_icon_color_gray: bs-icon-color-gray
+    bs_icon_color_gold: bs-icon-color-gold
+    bs_icon_color_blue: bs-icon-color-blue
+    bs_icon_color_green: bs-icon-color-green
+    bs_icon_color_orange: bs-icon-color-orange
+    bs_icon_color_purple: bs-icon-color-purple
+    bs_icon_color_red: bs-icon-color-red
+    bs_icon_color_yellow: bs-icon-color-yellow
+  icon_position:
+    bs_icon_position_default: bs-icon-position-default
+    bs_icon_position_offset: bs-icon-position-offset
+    bs_icon_position_top: bs-icon-position-top
+  icon_size:
+    bs_icon_size_default: bs-icon-size-default
+    bs_icon_size_increase: bs-icon-size-increase
+  heading:
+    bs_heading_default: h2
+    bs_heading_h3: h3
+    bs_heading_h4: h4
+    bs_heading_h5: h5
+    bs_heading_h6: h6
+    bs_heading_strong: strong
+  heading_alignment:
+    bs_heading_align_default: bs-heading-align-default
+    bs_heading_align_centered: bs-heading-align-centered
+  heading_style:
+    bs_heading_style_default: bs-heading-style-default
+    bs_heading_style_default_hero: hero
+    bs_heading_style_default_hero_bold: 'hero strong'
+    bs_heading_style_default_supersize: supersize
+    bs_heading_style_default_supersize_bold: 'supersize bold'
+block_style_defaults:
+  background_style: bs_background_style_none
+  title_font_scale: bs_title_font_scale_default
+  content_font_scale: bs_content_font_scale_default
+  icon: ''
+  icon_color: bs_icon_color_default
+  icon_position: bs_icon_position_default
+  icon_size: bs_icon_size_default
+  heading: bs_heading_default
+  heading_alignment: bs_heading_align_default
+  heading_style: bs_heading_style_default

@@ -1,0 +1,16 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - focal_point
+name: slider_3_2
+label: 'Slider 3:2'
+effects:
+  772c7b9a-e377-4b52-998f-cfc8adad5685:
+    uuid: 772c7b9a-e377-4b52-998f-cfc8adad5685
+    id: focal_point_scale_and_crop
+    weight: 1
+    data:
+      width: 1500
+      height: 1000
+      crop_type: focal_point

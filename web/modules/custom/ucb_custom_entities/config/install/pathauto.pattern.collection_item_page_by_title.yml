@@ -1,0 +1,21 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+id: collection_item_page_by_title
+label: 'Collection Item page by title'
+type: 'canonical_entities:node'
+pattern: '/[node:title]'
+selection_criteria:
+  2b8e8147-0440-4fae-8ac8-42d0a52e99c3:
+    id: 'entity_bundle:node'
+    negate: false
+    uuid: 2b8e8147-0440-4fae-8ac8-42d0a52e99c3
+    context_mapping:
+      node: node
+    bundles:
+      collection_item_page: collection_item_page
+selection_logic: and
+weight: -5
+relationships: {  }

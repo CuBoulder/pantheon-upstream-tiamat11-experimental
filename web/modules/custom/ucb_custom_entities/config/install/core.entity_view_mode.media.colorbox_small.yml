@@ -1,0 +1,10 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - media
+id: media.colorbox_small
+label: 'Colorbox Small'
+description: 'Width is sized to 300 pixels; lightbox added.'
+targetEntityType: media
+cache: true

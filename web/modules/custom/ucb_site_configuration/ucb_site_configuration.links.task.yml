@@ -1,0 +1,25 @@
+ucb_site_configuration.general_form:
+  route_name: ucb_site_configuration.general_form
+  title: 'General'
+  base_route: ucb_site_configuration
+  weight: 0
+ucb_site_configuration.appearance_form:
+  route_name: ucb_site_configuration.appearance_form
+  title: 'Appearance and layout'
+  base_route: ucb_site_configuration
+  weight: 1
+ucb_site_configuration.content_types_form:
+  route_name: ucb_site_configuration.content_types_form
+  title: 'Content types'
+  base_route: ucb_site_configuration
+  weight: 2
+ucb_site_configuration.contact_info_form:
+  route_name: ucb_site_configuration.contact_info_form
+  title: 'Contact info'
+  base_route: ucb_site_configuration
+  weight: 3
+ucb_site_configuration.external_services:
+  route_name: entity.ucb_external_service_include.collection
+  title: 'Third-party services'
+  base_route: ucb_site_configuration
+  weight: 4

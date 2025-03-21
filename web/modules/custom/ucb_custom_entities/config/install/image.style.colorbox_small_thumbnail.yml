@@ -1,0 +1,14 @@
+langcode: en
+status: true
+dependencies: {  }
+name: colorbox_small_thumbnail
+label: 'Colorbox Small - Thumbnail'
+effects:
+  49440330-9e93-47ee-8fe6-5affd078d575:
+    uuid: 49440330-9e93-47ee-8fe6-5affd078d575
+    id: image_scale
+    weight: 1
+    data:
+      width: 100
+      height: null
+      upscale: false

@@ -1,0 +1,7 @@
+langcode: en
+status: true
+dependencies: {  }
+id: social_media_icons
+label: 'Social Media Icons'
+revision: 0
+description: 'A block that stores social media icons.'

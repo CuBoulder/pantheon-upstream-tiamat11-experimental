@@ -1,0 +1,33 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.teaser
+    - field.field.node.ucb_class_notes.body
+    - field.field.node.ucb_class_notes.field_ucb_class_note_image
+    - field.field.node.ucb_class_notes.field_ucb_class_year
+    - node.type.ucb_class_notes
+  module:
+    - text
+    - user
+id: node.ucb_class_notes.teaser
+targetEntityType: node
+bundle: ucb_class_notes
+mode: teaser
+content:
+  body:
+    type: text_summary_or_trimmed
+    label: hidden
+    settings:
+      trim_length: 600
+    third_party_settings: {  }
+    weight: 101
+    region: content
+  links:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 100
+    region: content
+hidden:
+  field_ucb_class_note_image: true
+  field_ucb_class_year: true

@@ -1,0 +1,13 @@
+name: CU Boulder Default Content
+description: 'Provides default content for new CU Boulder sites.'
+type: module
+core_version_requirement: '^10 || ^11'
+dependencies:
+  - cu_boulder_content_types
+  - node
+  - path_alias
+  - pathauto
+  - simple_sitemap
+  - system
+version: '1.5.0'
+package: CU Boulder

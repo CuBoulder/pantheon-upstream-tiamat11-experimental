@@ -1,0 +1,18 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_mega_menu_links_list_label
+    - paragraphs.paragraphs_type.mega_menu_links_list
+id: paragraph.mega_menu_links_list.field_mega_menu_links_list_label
+field_name: field_mega_menu_links_list_label
+entity_type: paragraph
+bundle: mega_menu_links_list
+label: Label
+description: 'A label or title for the current column in the mega menu'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

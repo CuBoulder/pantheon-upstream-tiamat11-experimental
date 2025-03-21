@@ -1,0 +1,28 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.faculty_publications
+    - field.storage.block_content.field_faculty_publications_p
+    - node.type.ucb_person
+id: block_content.faculty_publications.field_faculty_publications_p
+field_name: field_faculty_publications_p
+entity_type: block_content
+bundle: faculty_publications
+label: People
+description: 'Choose one or more people to include.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:node'
+  handler_settings:
+    target_bundles:
+      ucb_person: ucb_person
+    sort:
+      field: field_ucb_person_last_name
+      direction: ASC
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

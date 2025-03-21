@@ -1,0 +1,16 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - focal_point
+name: slider_ultrawide
+label: 'Slider Ultrawide'
+effects:
+  4e7c1679-0505-4e91-8bef-3aa81b8f218f:
+    uuid: 4e7c1679-0505-4e91-8bef-3aa81b8f218f
+    id: focal_point_scale_and_crop
+    weight: 1
+    data:
+      width: 1600
+      height: 600
+      crop_type: focal_point

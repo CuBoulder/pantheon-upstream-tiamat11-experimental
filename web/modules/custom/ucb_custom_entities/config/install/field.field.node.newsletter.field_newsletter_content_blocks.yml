@@ -1,0 +1,81 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_newsletter_content_blocks
+    - node.type.newsletter
+    - paragraphs.paragraphs_type.ucb_newsletter_text_block
+  module:
+    - entity_reference_revisions
+id: node.newsletter.field_newsletter_content_blocks
+field_name: field_newsletter_content_blocks
+entity_type: node
+bundle: newsletter
+label: 'Newsletter Content Blocks'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    target_bundles:
+      ucb_newsletter_text_block: ucb_newsletter_text_block
+    negate: 0
+    target_bundles_drag_drop:
+      article_content:
+        weight: 20
+        enabled: false
+      blockquote:
+        weight: 21
+        enabled: false
+      collection_grid_filter:
+        weight: 22
+        enabled: false
+      content_sequence_item:
+        weight: 23
+        enabled: false
+      expandable_content_text:
+        weight: 24
+        enabled: false
+      grid_layout_content:
+        weight: 25
+        enabled: false
+      media:
+        weight: 27
+        enabled: false
+      newsletter_section:
+        weight: 28
+        enabled: false
+      newsletter_section_article:
+        weight: 29
+        enabled: false
+      newsletter_section_content:
+        weight: 30
+        enabled: false
+      row_layout_content:
+        weight: 31
+        enabled: false
+      slider_image:
+        weight: 32
+        enabled: false
+      ucb_article_hero:
+        weight: 33
+        enabled: false
+      ucb_faq_question_and_answer:
+        weight: 34
+        enabled: false
+      ucb_faq_section:
+        weight: 35
+        enabled: false
+      ucb_issue_section:
+        weight: 36
+        enabled: false
+      ucb_newsletter_text_block:
+        weight: 37
+        enabled: true
+      ucb_related_articles_block:
+        weight: 38
+        enabled: false
+field_type: entity_reference_revisions

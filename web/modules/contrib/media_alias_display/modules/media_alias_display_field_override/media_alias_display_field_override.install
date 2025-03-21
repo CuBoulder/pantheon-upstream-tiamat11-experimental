@@ -1,0 +1,56 @@
+<?php
+
+/**
+ * @file
+ * Installation functions for media_alias_display_field_override module.
+ */
+
+use Drupal\field\Entity\FieldConfig;
+use Drupal\field\Entity\FieldStorageConfig;
+
+/**
+ * Implements hook_install().
+ *
+ * Add override field to media bundles.
+ */
+function media_alias_display_field_override_install(): void {
+
+  $types = \Drupal::entityTypeManager()
+    ->getStorage('media_type')
+    ->loadMultiple();
+
+  // Create a field with settings to validate.
+  if (!FieldStorageConfig::loadByName('media', 'field_override_mad_module')) {
+    $fieldStorage = FieldStorageConfig::create([
+      'field_name' => 'field_override_mad_module',
+      'entity_type' => 'media',
+      'type' => 'boolean',
+    ]);
+    $fieldStorage->save();
+  }
+
+  foreach ($types as $bundle) {
+    $bundle_name = $bundle->id();
+    if (!FieldConfig::loadByName('media', $bundle_name, 'field_override_mad_module')) {
+      FieldConfig::create([
+        'field_name' => 'field_override_mad_module',
+        'entity_type' => 'media',
+        // Content type.
+        'bundle' => $bundle_name,
+        'field_type' => 'boolean',
+        'label' => 'Override Media Alias Display',
+        'description' => t('Check to have this media entity override the Media Alias Display module.'),
+      ])->save();
+
+      // Manage form display.
+      $form_display = \Drupal::service('entity_display.repository')
+        ->getFormDisplay('media', $bundle_name);
+      $form_display = $form_display->setComponent('field_override_mad_module',
+        [
+          'type' => 'boolean_checkbox',
+          'weight' => 2,
+        ]);
+      $form_display->save();
+    }
+  }
+}

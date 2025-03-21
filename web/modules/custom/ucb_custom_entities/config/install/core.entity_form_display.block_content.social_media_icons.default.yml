@@ -1,0 +1,258 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.social_media_icons
+    - field.field.block_content.social_media_icons.field_bs_background_style
+    - field.field.block_content.social_media_icons.field_bs_content_font_scale
+    - field.field.block_content.social_media_icons.field_bs_heading
+    - field.field.block_content.social_media_icons.field_bs_heading_alignment
+    - field.field.block_content.social_media_icons.field_bs_heading_style
+    - field.field.block_content.social_media_icons.field_bs_icon
+    - field.field.block_content.social_media_icons.field_bs_icon_color
+    - field.field.block_content.social_media_icons.field_bs_icon_position
+    - field.field.block_content.social_media_icons.field_bs_icon_size
+    - field.field.block_content.social_media_icons.field_bs_title_font_scale
+    - field.field.block_content.social_media_icons.field_social_media_email_link
+    - field.field.block_content.social_media_icons.field_social_media_icon_or
+    - field.field.block_content.social_media_icons.field_social_media_link_size
+    - field.field.block_content.social_media_icons.field_social_media_links
+  module:
+    - field_group
+    - link
+    - text
+third_party_settings:
+  field_group:
+    group_social_media_tabs:
+      children:
+        - group_sm_custom_links
+        - group_styles
+      label: 'Social Media Tabs'
+      region: content
+      parent_name: ''
+      weight: 3
+      format_type: tabs
+      format_settings:
+        classes: ''
+        show_empty_fields: false
+        id: ''
+        direction: horizontal
+        width_breakpoint: 640
+    group_sm_custom_links:
+      children:
+        - field_social_media_links
+        - field_social_media_email_link
+      label: Links
+      region: content
+      parent_name: group_social_media_tabs
+      weight: 2
+      format_type: tab
+      format_settings:
+        classes: ''
+        show_empty_fields: false
+        id: ''
+        formatter: open
+        description: ''
+        required_fields: false
+    group_styles:
+      children:
+        - group_block_styles
+        - group_icon_settings
+        - group_block_heading
+        - group_block_style
+        - group_block_typography
+      label: Styles
+      region: content
+      parent_name: group_social_media_tabs
+      weight: 3
+      format_type: tab
+      format_settings:
+        classes: ''
+        show_empty_fields: false
+        id: ''
+        formatter: closed
+        description: ''
+        required_fields: true
+    group_block_styles:
+      children: {  }
+      label: 'Block Styles'
+      region: content
+      parent_name: group_styles
+      weight: 4
+      format_type: tabs
+      format_settings:
+        classes: ''
+        show_empty_fields: false
+        id: ''
+        direction: vertical
+        width_breakpoint: 640
+    group_icon_settings:
+      children:
+        - field_bs_icon
+        - field_bs_icon_position
+        - field_bs_icon_color
+        - field_bs_icon_size
+      label: 'Icon Settings'
+      region: content
+      parent_name: group_styles
+      weight: 5
+      format_type: tab
+      format_settings:
+        classes: ''
+        show_empty_fields: false
+        id: ''
+        formatter: closed
+        description: ''
+        required_fields: true
+    group_block_heading:
+      children:
+        - field_bs_heading
+        - field_bs_heading_alignment
+        - field_bs_heading_style
+      label: 'Block Heading'
+      region: content
+      parent_name: group_styles
+      weight: 6
+      format_type: tab
+      format_settings:
+        classes: ''
+        show_empty_fields: false
+        id: ''
+        formatter: closed
+        description: ''
+        required_fields: true
+    group_block_style:
+      children:
+        - field_bs_background_style
+      label: 'Block Style'
+      region: content
+      parent_name: group_styles
+      weight: 7
+      format_type: tab
+      format_settings:
+        classes: ''
+        show_empty_fields: false
+        id: ''
+        formatter: closed
+        description: ''
+        required_fields: true
+    group_block_typography:
+      children:
+        - field_bs_title_font_scale
+        - field_bs_content_font_scale
+      label: 'Block Typography'
+      region: content
+      parent_name: group_styles
+      weight: 8
+      format_type: tab
+      format_settings:
+        classes: ''
+        show_empty_fields: false
+        id: ''
+        formatter: closed
+        description: ''
+        required_fields: true
+id: block_content.social_media_icons.default
+targetEntityType: block_content
+bundle: social_media_icons
+mode: default
+content:
+  field_bs_background_style:
+    type: options_select
+    weight: 12
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_bs_content_font_scale:
+    type: options_select
+    weight: 11
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_bs_heading:
+    type: options_select
+    weight: 7
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_bs_heading_alignment:
+    type: options_select
+    weight: 8
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_bs_heading_style:
+    type: options_select
+    weight: 9
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_bs_icon:
+    type: text_textarea
+    weight: 2
+    region: content
+    settings:
+      rows: 1
+      placeholder: ''
+    third_party_settings: {  }
+  field_bs_icon_color:
+    type: options_select
+    weight: 4
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_bs_icon_position:
+    type: options_select
+    weight: 3
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_bs_icon_size:
+    type: options_select
+    weight: 6
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_bs_title_font_scale:
+    type: options_select
+    weight: 10
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_social_media_email_link:
+    type: email_default
+    weight: 5
+    region: content
+    settings:
+      placeholder: ''
+      size: 60
+    third_party_settings: {  }
+  field_social_media_icon_or:
+    type: options_select
+    weight: 2
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_social_media_link_size:
+    type: options_select
+    weight: 1
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_social_media_links:
+    type: link_default
+    weight: 4
+    region: content
+    settings:
+      placeholder_url: ''
+      placeholder_title: ''
+    third_party_settings: {  }
+  info:
+    type: string_textfield
+    weight: 0
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+hidden: {  }

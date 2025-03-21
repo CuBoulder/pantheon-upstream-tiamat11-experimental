@@ -1,0 +1,193 @@
+{
+    "name": "cu-boulder/tiamat_upstream",
+    "description": "Install Tiamat with Composer on Pantheon.",
+    "type": "project",
+    "license": "GPL-2.0-or-later",
+    "repositories": [
+        {
+            "type": "composer",
+            "url": "https://packages.drupal.org/8"
+        },
+        {
+            "type": "composer",
+            "url": "https://asset-packagist.org"
+        }
+    ],
+    "require": {
+        "composer/installers": "^2.1",
+        "cweagans/composer-patches": "^1.7",
+        "drush/drush": "^13",
+        "oomphinc/composer-installers-extender": "^2.0",
+        "simplehtmldom/simplehtmldom": "^2.0@RC",
+        "npm-asset/codemirror": "5.65.3",
+        "npm-asset/inputmask": "5.0.7",
+        "npm-asset/intl-tel-input": "17.0.19",
+        "npm-asset/jquery.rateit": "1.1.5",
+        "npm-asset/select2": "4.0.13",
+        "npm-asset/jquery-text-counter": "0.9.0",
+        "npm-asset/timepicker": "1.14.0",
+        "npm-asset/popperjs--core": "2.11.6",
+        "npm-asset/progress-tracker": "2.0.7",
+        "bower-asset/signature-pad": "2.3.0",
+        "npm-asset/tabbyjs": "12.0.3",
+        "npm-asset/tippy.js": "6.3.7",
+        "npm-asset/northernco--ckeditor5-anchor-drupal": "0.5.0",
+        "composer/installers": "^2.1",
+        "cu-boulder/boulder_base": "20250312",
+        "cu-boulder/boulder_profile": "20250312",
+        "cu-boulder/express_admin": "dev-main",
+        "cu-boulder/ucb_admin_menus": "dev-main",
+        "cu-boulder/ucb_article_author": "dev-main",
+        "cu-boulder/ucb_article_syndication": "dev-main",
+        "cu-boulder/ucb_bootstrap_layouts": "dev-main",
+        "cu-boulder/ucb_campus_news": "dev-main",
+        "cu-boulder/ucb_ckeditor_plugins": "dev-main",
+        "cu-boulder/ucb_custom_entities": "20250312",
+        "cu-boulder/ucb_default_content": "dev-main",
+        "cu-boulder/ucb_drush_commands": "1.0.0",
+        "cu-boulder/ucb_focal_image_enable": "dev-main",
+        "cu-boulder/ucb_linkmod": "1.0.0",
+        "cu-boulder/ucb_person_title": "dev-main",
+        "cu-boulder/ucb_site_configuration": "dev-main",
+        "cu-boulder/ucb_styled_block": "dev-main",
+        "cu-boulder/ucb_third_party_libraries": "dev-main",
+        "cu-boulder/ucb_user_invite": "dev-main",
+        "cweagans/composer-patches": "^1.7",
+        "drupal/admin_toolbar": "^3.4",
+        "drupal/administerusersbyrole": "^3.4",
+        "drupal/aggregator": "^2.0",
+        "drupal/anchor_link": "^3.0@beta",
+        "drupal/antibot": "^2.0",
+        "drupal/better_social_sharing_buttons": "^4.0",
+        "drupal/ckeditor5_bootstrap_accordion": "^1.0",
+        "drupal/ckeditor5_icons": "~1.0",
+        "drupal/ckeditor5_paste_filter": "^1.0",
+        "drupal/consumer_image_styles": "^4.0",
+        "drupal/core-composer-scaffold": "~11.1.0",
+        "drupal/core-project-message": "~11.1.0",
+        "drupal/core-recommended": "~11.1.0",
+        "drupal/devel": "^5.0",
+        "drupal/entity_embed": "^1.1",
+        "drupal/entity_usage": "^2.0@beta",
+        "drupal/externalauth": "^2.0",
+        "drupal/field_group": "^3.1",
+        "drupal/focal_point": "^2.0",
+        "drupal/google_cse": "^5.0",
+        "drupal/google_tag": "^2.0",
+        "drupal/jsonapi_extras": "^3.26",
+        "drupal/klaro": "^3.0",
+        "drupal/layout_builder_iframe_modal": "^1.3",
+        "drupal/linkit": "^7.0",
+        "drupal/media_alias_display": "^2.0",
+        "drupal/media_entity_file_replace": "^1.1",
+        "drupal/media_file_delete": "^1.3",
+        "drupal/media_library_form_element": "^2.0",
+        "drupal/menu_block": "^1.10",
+        "drupal/menu_firstchild": "^2.1",
+        "drupal/menu_item_extras": "^3.0",
+        "drupal/metatag": "^2.0",
+        "drupal/migrate_plus": "^6.0",
+        "drupal/migrate_tools": "^6.0",
+        "drupal/pantheon_advanced_page_cache": "^2.0",
+        "drupal/paragraphs": "^1.14",
+        "drupal/pathauto": "^1.8",
+        "drupal/rebuild_cache_access": "^1.10",
+        "drupal/recaptcha_v3": "^2.0",
+        "drupal/redirect": "^1.8",
+        "drupal/redis": "^1.8",
+        "drupal/responsive_preview": "^2.1",
+        "drupal/scheduler": "^2.0",
+        "drupal/simple_sitemap": "^4.1",
+        "drupal/smtp": "^1.0",
+        "drupal/trash": "^3.0",
+        "drupal/twig_tweak": "^3.1",
+        "drupal/unpublished_404": "^2.0",
+        "drupal/webform": "^6.2",
+        "pantheon-systems/drupal-integrations": "^11",
+        "pantheon-systems/pantheon_domain_masking": "^2.0",
+        "pantheon-systems/upstream-management": "^1.0",
+        "robrichards/xmlseclibs": "3.1.1",
+        "drupal/config_update": "^2.0@alpha"
+    },
+    "require-dev": {
+        "drupal/core-dev": "~11.1.0"
+    },
+    "conflict": {
+        "drupal/drupal": "*"
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true,
+    "extra": {
+        "drupal-scaffold": {
+            "locations": {
+                "web-root": "./web"
+            },
+            "allowed-packages": ["pantheon-systems/drupal-integrations"],
+            "file-mapping": {
+                "[project-root]/.editorconfig": false,
+                "[project-root]/pantheon.upstream.yml": false,
+                "[project-root]/.gitattributes": false
+            }
+        },
+        "patchLevel": {
+            "drupal/core": "-p2"
+        },
+        "installer-types": [
+            "npm-asset",
+            "bower-asset"
+        ],
+        "installer-paths": {
+            "web/core": ["type:drupal-core"],
+            "web/libraries/jquery.inputmask": ["npm-asset/inputmask"],
+            "web/libraries/jquery.intl-tel-input": ["npm-asset/intl-tel-input"],
+            "web/libraries/jquery.select2": ["npm-asset/select2"],
+            "web/libraries/jquery.textcounter": ["npm-asset/jquery-text-counter"],
+            "web/libraries/jquery.timepicker": ["npm-asset/timepicker"],
+            "web/libraries/popperjs": ["npm-asset/popperjs--core"],
+            "web/libraries/signature_pad": ["bower-asset/signature-pad"],
+            "web/libraries/tabby": ["npm-asset/tabbyjs"],
+            "web/libraries/tippyjs": ["npm-asset/tippy.js"],
+            "web/libraries/ckeditor5-anchor-drupal": ["npm-asset/northernco--ckeditor5-anchor-drupal"],
+            "web/libraries/{$name}": [
+                "type:drupal-library",
+                "type:npm-asset",
+                "type:bower-asset"
+            ],
+            "web/modules/contrib/{$name}": ["type:drupal-module"],
+            "web/profiles/contrib/{$name}": ["type:drupal-profile"],
+            "web/themes/contrib/{$name}": ["type:drupal-theme"],
+            "drush/Commands/contrib/{$name}": ["type:drupal-drush"],
+            "web/modules/custom/{$name}": ["type:drupal-custom-module"],
+            "web/profiles/custom/{$name}": ["type:drupal-custom-profile"],
+            "web/themes/custom/{$name}": ["type:drupal-custom-theme"],
+            "web/private/scripts/quicksilver/{$name}/": ["type:quicksilver-script"]
+        },
+        "merge-plugin": {
+            "include": ["composer.libraries.json"]
+        },
+        "composer-exit-on-patch-failure": true,
+        "enable-patching": true
+    },
+    "config": {
+        "preferred-install": "dist",
+        "sort-packages": true,
+        "platform": {
+            "php": "8.3"
+        },
+        "allow-plugins": {
+            "composer/installers": true,
+            "cweagans/composer-patches": true,
+            "drupal/core-composer-scaffold": true,
+            "dealerdirect/phpcodesniffer-composer-installer": true,
+            "simplesamlphp/composer-module-installer": true,
+            "wikimedia/composer-merge-plugin": true,
+            "phpstan/extension-installer": true,
+            "drupal/core-project-message": true,
+            "php-http/discovery": true,
+            "pantheon-systems/upstream-management": true,
+            "oomphinc/composer-installers-extender": true,
+            "simplesamlphp/composer-xmlprovider-installer": true,
+            "tbachert/spi": true
+        }
+    }
+}

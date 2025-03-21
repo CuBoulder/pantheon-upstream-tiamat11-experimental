@@ -1,0 +1,7 @@
+langcode: en
+status: true
+dependencies: {  }
+name: 'Collection Category'
+vid: collection_category
+description: 'A taxonomy term for use in the collection item page'
+weight: 0

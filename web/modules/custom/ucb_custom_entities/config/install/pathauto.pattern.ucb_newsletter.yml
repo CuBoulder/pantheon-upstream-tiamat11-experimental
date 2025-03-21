@@ -1,0 +1,21 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+id: ucb_newsletter
+label: 'UCB Newsletter'
+type: 'canonical_entities:node'
+pattern: '/newsletter/[node:field_newsletter_type:entity:field_newsletter_path]/[node:title]'
+selection_criteria:
+  c1688b06-7830-453e-a681-f352c5b63a64:
+    id: 'entity_bundle:node'
+    negate: false
+    uuid: c1688b06-7830-453e-a681-f352c5b63a64
+    context_mapping:
+      node: node
+    bundles:
+      newsletter: newsletter
+selection_logic: and
+weight: -5
+relationships: {  }

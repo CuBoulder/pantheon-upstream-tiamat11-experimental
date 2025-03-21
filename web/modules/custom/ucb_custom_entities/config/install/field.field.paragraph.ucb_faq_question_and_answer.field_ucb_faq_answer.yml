@@ -1,0 +1,25 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_ucb_faq_answer
+    - filter.format.full_html
+    - filter.format.wysiwyg
+    - paragraphs.paragraphs_type.ucb_faq_question_and_answer
+  module:
+    - text
+id: paragraph.ucb_faq_question_and_answer.field_ucb_faq_answer
+field_name: field_ucb_faq_answer
+entity_type: paragraph
+bundle: ucb_faq_question_and_answer
+label: Answer
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  allowed_formats:
+    - wysiwyg
+    - full_html
+field_type: text_long

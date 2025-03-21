@@ -1,0 +1,18 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.social_media_icons
+    - field.storage.block_content.field_social_media_email_link
+id: block_content.social_media_icons.field_social_media_email_link
+field_name: field_social_media_email_link
+entity_type: block_content
+bundle: social_media_icons
+label: 'Email link'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: email
